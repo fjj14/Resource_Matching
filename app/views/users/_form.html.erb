@@ -1,4 +1,4 @@
-<form>
+
 <%= form_with(model: user) do |form| %>
   <% if user.errors.any? %>
     <div id="error_explanation">
@@ -10,36 +10,36 @@
         <% end %>
       </ul>
     </div>
-  <% end %>
+<% end %>
 
 <div class="form-row">
   <div class="form-group col-md-6 nopadding-left">
-  <%= form.label :first %>
+  <%= form.label :first, class: "control-label" %>
   <%= form.text_field :first, class: "form-control"%>
 </div>
 
   <div class="form-group col-md-6 nopadding-left">
-    <%= form.label :last %>
+    <%= form.label :last, class: "control-label" %>
     <%= form.text_field :last, class: "form-control" %>
   </div>
 </div>
   <div class="form-group">
-    <%= form.label :email %>
+    <%= form.label :email, class: "control-label" %>
     <%= form.text_field :email, class: "form-control" %>
   </div>
 
+  
   <div class="form-group">
-    <%= form.label :password %>
+    <%= form.label :username, class: "control-label" %>
+    <%= form.text_field :username, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= form.label :password, class: "control-label" %>
     <%= form.text_field :password, class: "form-control" %>
   </div>
 
-  <div class="form-group">
-    <%= form.label :username %>
-    <%= form.text_field :username, class: "form-control" %>
-  </div>
-
   <div class="actions">
-    <%= form.submit :"Create Account", class: 'btn btn-success' %>
+    <%= form.submit :submit, class: 'btn btn-primary' %>
   </div>
 <% end %>
-<form>
+
