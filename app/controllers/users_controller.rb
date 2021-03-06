@@ -12,7 +12,7 @@ class UsersController < ApplicationController
 
   # GET /users/new
   def new
-    render html: @user = User.new
+    @user = User.new
   end
 
   # GET /users/1/edit
