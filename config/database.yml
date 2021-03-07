@@ -19,11 +19,7 @@ default: &default
   encoding: unicode
   #username: teamApp
   #password: password1
-<<<<<<< HEAD
   host: ''
-=======
-  host: localhost
->>>>>>> 74637a3e1ed78fd0f38b7c5868225dda58cd0958
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
