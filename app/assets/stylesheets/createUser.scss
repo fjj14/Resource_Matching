@@ -22,7 +22,6 @@ h1{
 }
 .nopadding {
     padding: 0 !important;
-    margin: 0 !important;
  }
 
 .nopadding-left{
@@ -69,7 +68,9 @@ a{
 
 h5{
     margin-bottom: 5%;
+    margin-left: 10%;
 }
+
 #links a:link, a:hover, a:visited, a:active {
     color: #0F9BBA;
 }
