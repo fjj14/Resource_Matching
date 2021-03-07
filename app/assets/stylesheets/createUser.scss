@@ -22,7 +22,6 @@ h1{
 }
 .nopadding {
     padding: 0 !important;
- 
  }
 
 .nopadding-left{
@@ -64,18 +63,14 @@ form{
 a{
    color: #0F9BBA;
    color: inherit;
-   text-decoration: underline;
+  text-decoration: underline;
 }
 
 h5{
     margin-bottom: 5%;
     margin-left: 10%;
 }
+
 #links a:link, a:hover, a:visited, a:active {
     color: #0F9BBA;
-}
-
-.control-label{
-
-    text-align: left;
 }
