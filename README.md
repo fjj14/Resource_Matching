@@ -1,5 +1,5 @@
 # README
--- Seed Data created for Product and User. Use rails console to see data. 
+-- Seed Data created for Product and User. Use rails console to see data of products and see url/users for visual of user database table.
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
