@@ -10,5 +10,5 @@ class User < ApplicationRecord
     validates :email, uniqueness: true
    
     validates :username, length: {minimum: 3}, uniqueness: true
-    has_secure_password
+   # has_secure_password
 end

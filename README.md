@@ -1,9 +1,6 @@
 # README
-<<<<<<< HEAD
+-- Seed Data created for Product and User. Use rails console to see data. 
 
-=======
-hello -sophia
->>>>>>> 74637a3e1ed78fd0f38b7c5868225dda58cd0958
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
