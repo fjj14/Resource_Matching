@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to welcome_path, notice: "Logged in succesfully"
     else
-      flash[:alert] = 'Invalid email/password combination'
+      flash[:error] = 'Invalid email/password combination'
       render 'new'
     end
   end
