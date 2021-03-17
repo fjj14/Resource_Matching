@@ -1,5 +1,7 @@
 <%= form_for( @product, url: createProduct_path) do |form| %>
-    <% if product.errors.any? %>
+   
+  <%= stylesheet_link_tag 'createUser' %>
+  <% if product.errors.any? %>
   
       <div class="alert alert-danger">
         <h2><%= pluralize(product.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -13,7 +15,7 @@
   <% end %>
   
   <div class="form-row">
-    <div class="form-group col-md-6 nopadding-left">
+  <div class="form-group col-md-6 nopadding-left">
     <%= form.label :name, class: "control-label" %>
     <%= form.text_field :name, class: "form-control"%>
   </div>
