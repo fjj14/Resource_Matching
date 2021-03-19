@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-    
+    has_many :products
     
     validates :first, length: { minimum: 2 }, 
     presence: true

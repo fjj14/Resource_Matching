@@ -1,25 +1,18 @@
-<h2>Hello World</h2>
-<p> This is the home page </p>
-<h5> Want to add product? <%= link_to 'Add product', createProduct_path %></h5>
->
-
-
 <head>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<%= stylesheet_link_tag 'welcome' %>
+<meta charset="utf-8">
+<%= csrf_meta_tags %>
+<%= csp_meta_tag %>
+
+<%= stylesheet_link_tag 'welcome', media: 'all',
+                                       'data-turbolinks-track': 'reload' %>
+
 </head>
 
 <h2>Hello World</h2>
 <p> This is the home page </p>
 <h5> Want to add product? <%= link_to 'Add product', createProduct_path %></h5>
->
-
-<div class="card" style="width: 40rem;margin-left:5%">
-<h1 class="card-title" style="text-align:left;margin-left:3%">EUC Oversized Jacket </h1>
-
-  <img class="card-img-top" src="https://di2ponv0v5otw.cloudfront.net/posts/2019/10/07/5d9b69302f8276218a1bdd62/m_5d9b69612eb33f01c14614a3.jpg" alt="Card image cap">
-  <div class="card-body">
-    <a href="#" class="btn btn-primary pull-right">message</a>
-    <a href="#" class="btn btn-primary align-left">likes</a>
-    <p class="card-text">EUC soft denim oversized jacket. Embroidered flowers with velvet petals. 5 large silver buttons. 100% cotton</p>
-  </div>
-</div>
+<br>
+<div class ="container">
+<%= render '/products/listAll' %>
+</div >

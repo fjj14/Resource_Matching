@@ -1,0 +1,35 @@
+
+<% Product.all.each_slice(3)  do |products| %>
+<div class="row ">
+ <% products.each do |product| %>
+    <div class="col-md-4 ">
+        <div class="card">
+            <h5 class="card-title">
+             <div class ="col-md-6 nopadding" >
+               <%= product.name %>
+               </div>
+               <div class ="col-md-6 nopadding" id="pri">
+                @<%= User.where(id: product.user_id).first.username %>
+               </div>
+             </h5>
+             <br>
+            <img class="card-img-top img-responsive" src="/loginImage.jpg" alt="Card image cap">
+            <div class="card-body">
+            <br>
+            <div class ="col-md-6 nopadding">
+               <a href="" class="btn btn-primary">Message</a>
+               </div>
+               <div class ="col-md-6 nopadding" id="pri">
+                 <%= product.price %>
+               </div>
+               <br>
+               <div class ="col-md-12">
+                <p class="card-text"><%= product.description %></p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+<% end %>
+</div>
+<% end %>
