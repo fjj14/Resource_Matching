@@ -1,5 +1,4 @@
 body{
-
     background: #F6FDFF;
 }
 
@@ -14,12 +13,11 @@ h1{
 
 
 .row {
-    margin-left: 10%;
-    margin-right: 10%;
-    height: 80%;
     border: #ededed thin solid;
     background: white;
+    height: 70%;
 }
+
 .nopadding {
     padding: 0 !important;
  }
@@ -27,6 +25,7 @@ h1{
 .nopadding-left{
     padding-left: 0 !important;
 }
+
 h2{
     margin-top: 10%;
     color: #2F3F5F;
@@ -38,6 +37,7 @@ h2{
 #info{
     background: white;
 }
+
 .col{
     height: 100%;
 }
@@ -47,8 +47,6 @@ form{
    margin-right: 10%;
    margin-top: 10%;
    margin-bottom: 10%;
-   
-
 }
 
 .form-row .col{
@@ -63,7 +61,7 @@ form{
 a{
    color: #0F9BBA;
    color: inherit;
-  text-decoration: underline;
+   text-decoration: underline;
 }
 
 h5{
@@ -73,4 +71,12 @@ h5{
 
 #links a:link, a:hover, a:visited, a:active {
     color: #0F9BBA;
+}
+
+.container{
+    padding-top:0% ;
+    margin-left: 10%;
+    margin-right: 10%;
+    width: 80%;
+   
 }

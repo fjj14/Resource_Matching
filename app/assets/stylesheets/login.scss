@@ -1,7 +1,34 @@
 .row {
-    margin-left: 35% ;
-    margin-right: 35%;
-    height: 90%;
+    margin-left: 15% ;
+    margin-right: 15%;
+    width: 70%;
+    height: 70%;
     border: #ededed thin solid;
     background: white;
   }
+
+
+  #links a:link, a:hover, a:visited, a:active {
+    color: #0F9BBA;
+}
+h1{
+  color:  #2F3F5F;
+  font-family: serif;
+  font-weight: bold;
+  font-size: xxx-large;
+  font-size: 400%;
+  margin-top: 0%;
+}
+
+
+h2{
+  margin-top: 10%;
+  color: #2F3F5F;
+  font-family: serif;
+  font-weight: bold;
+  font-size: xx-large;
+}
+
+body{
+  background: #F6FDFF;
+}
