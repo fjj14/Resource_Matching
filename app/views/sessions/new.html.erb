@@ -1,6 +1,5 @@
 
-<h1>buyDeis</h1>
-
+<h1 id="log">buyDeis</h1>
 <%= stylesheet_link_tag 'login', media: 'all'%>
 
   <% flash.each do |key, value| %>
@@ -8,11 +7,10 @@
 
   <% end %>
 
-<div class='row'>
-<h2>Sign in</h2>
-  <div class='col-sm-6 col-sm-offset-3'>
+  <div class="container" id="sign">
+  <h2 id="signin">Sign in</h2>
+  <div class="form-row">
     <%= form_with url: login_path do |f| %>
-
       <div class="form-group">
         <%= f.label :email %>
         <%= f.text_field :email, class: "form-control" %>
@@ -26,14 +24,7 @@
       <div class="actions" >
         <%= f.submit "Sign In", class: "btn btn-success" %>
       </div>
-      <div style="padding:10%"> </div>
-
-      <h5> Don't have an account? <%= link_to 'sign up', signup_path %></h5>
-     
-      <div style="padding:10%"> </div>
-
-  <% end %>
-
-  </div>
-
+    <% end %>
+</div>
+<h5> Don't have an account? <%= link_to 'sign up', signup_path %></h5>
 </div>

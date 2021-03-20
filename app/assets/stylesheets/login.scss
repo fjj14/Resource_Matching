@@ -1,33 +1,58 @@
-.row {
-    margin-left: 15% ;
-    margin-right: 15%;
-    width: 70%;
-    height: 70%;
-    border: #ededed thin solid;
-    background: white;
-  }
 
 
-  #links a:link, a:hover, a:visited, a:active {
+#links a:link, a:hover, a:visited, a:active {
     color: #0F9BBA;
 }
-h1{
+
+#log{
   color:  #2F3F5F;
   font-family: serif;
   font-weight: bold;
   font-size: xxx-large;
   font-size: 400%;
-  margin-top: 0%;
+  margin-top: 5%;
 }
 
-
-h2{
+#signin{
   margin-top: 10%;
   color: #2F3F5F;
   font-family: serif;
   font-weight: bold;
   font-size: xx-large;
 }
+
+
+#sign{
+border-width:thick;
+border-color: gray;
+background: white;
+width: 50%;
+margin-left: 25%;
+margin-right: 25%;
+margin-top: 5%;
+
+  form{
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    width: 60%;
+    font-size: large;
+    color: #2F3F5F;
+    font-family: serif;
+ }
+  h5{
+    margin-left: 20%;
+    margin-bottom: 15%;
+
+  }
+   .btn{
+     font-size: large;
+     background:  #2F3F5F;
+     border: none;
+   }
+}
+
 
 body{
   background: #F6FDFF;

@@ -2,24 +2,26 @@ body{
     background: #F6FDFF;
 }
 
-h1{
+#wel{
+
     color:  #2F3F5F;
     font-family: serif;
     font-weight: bold;
     font-size: xxx-large;
-    font-size: 400%;
-    margin-top: 0%;
+    font-size: 500%;
+    margin-top: 5%;
 }
-
 
 .row {
     border: #ededed thin solid;
     background: white;
     height: 70%;
+    padding-left: 0 !important;
 }
 
 .nopadding {
     padding: 0 !important;
+
  }
 
 .nopadding-left{
@@ -31,7 +33,7 @@ h2{
     color: #2F3F5F;
     font-family: serif;
     font-weight: bold;
-    font-size: xx-large;
+    font-size: large;
 }
 
 #info{
@@ -73,7 +75,7 @@ h5{
     color: #0F9BBA;
 }
 
-.container{
+#signupform{
     padding-top:0% ;
     margin-left: 10%;
     margin-right: 10%;
