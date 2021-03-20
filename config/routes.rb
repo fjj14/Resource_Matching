@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   post   '/login',   to: 'sessions#create'
   get    '/welcome', to: "welcome#index"
   post   '/welcome', to: "welcome#index"
-
+  delete 'logout', to: "sessions#destroy"
  # get    '/createProduct', to: 'welcome#newProduct'
  # post   '/createProduct', to:  'welcome#newProduct'
   get    '/createProduct',  to: 'products#new'
