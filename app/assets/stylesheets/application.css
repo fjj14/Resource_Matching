@@ -14,25 +14,76 @@
  *= require_self
  */
 
+body{
+   margin:0px;
+   margin-bottom:5%;
+   background-color: #F6FDFF;
+}
+
  .navbar{
-    
+    padding:.3%;
+   background-color: #2F3F5F;
+   border:none;
+    box-shadow:none;
+    outline:none;
     position: relative;
-    padding-top: 0% !important;
-   
+
+
     width: 100%;
-    padding-left: 0%;
-    margin-right: 0%;
-    margin-left: 0%;
-    margin-top: 0%;
+
      
  }
 
  .nav-link, .navbar-brand{
     text-decoration: none;
- }
+ } 
+
+
 
  .navbar .navbar-nav {
    display: inline-block;
    float: none;
    vertical-align: top;
+
  }
+ .navbar-brand{
+   font-family: serif;
+   font-size: 2.5rem;
+    color:white !important;
+   
+ }
+ .navbar-brand:hover{
+     font-family: serif;
+      color:#0F9BBA !important;
+    
+ }
+ #searchbutton{
+    color:white;
+    background-color: #2F3F5F;
+    border: 1px solid white;
+    font-size: 1.2rem;
+ }
+ #searchbutton:hover{
+   border: 1px solid  #0F9BBA;
+   color: #0F9BBA;
+
+ }
+*{
+   border-radius: 0 !important;
+   -moz-border-radius: 0 !important;
+}
+.navbutt{
+   color:white !important;
+   text-decoration: none !important;
+}
+
+/*
+.dropdownbutt{
+   color: #2F3F5F !important;
+   text-decoration: none !important;
+
+}
+*/
+.navbutt:hover{
+   color:#0F9BBA !important;
+}
