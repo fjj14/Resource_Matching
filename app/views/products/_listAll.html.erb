@@ -15,7 +15,7 @@
              </h5>
              <br>
               <% if product.image.present? %>
-                <%= image_tag(product.image , class:"card-img-top")%> 
+                <%= image_tag( url_for(product.image), class:"card-img-top")%> 
               <% else %>
                 <%= image_tag( '/loginImage.jpg', class:"card-img-top") %> 
               <% end %>
