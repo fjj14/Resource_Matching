@@ -14,7 +14,12 @@ class UsersController < ApplicationController
   def new
     @user = User.new
   end
-
+  def name
+    email
+  end
+  def mailboxer_email(object)
+    self.email
+  end
   # GET /users/1/edit
   def edit
   end
