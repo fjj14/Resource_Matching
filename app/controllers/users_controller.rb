@@ -15,7 +15,7 @@ class UsersController < ApplicationController
     @user = User.new
   end
   def name
-    email
+    @user.name
   end
   def mailboxer_email(object)
     self.email
