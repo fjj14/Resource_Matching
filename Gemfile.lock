@@ -337,7 +337,7 @@ DEPENDENCIES
   jquery-rails
   listen (~> 3.3)
   mailboxer!
-  pg (~> 1.1)
+  pg
   puma (~> 5.0)
   rack-mini-profiler (~> 2.0)
   rails (~> 6.1.3)
