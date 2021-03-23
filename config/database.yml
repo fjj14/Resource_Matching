@@ -86,9 +86,6 @@ test:
 #
 production:
   <<: *default
-  adapter: postgresql
-  encoding: unicode
-   url: <%= ENV['DATABASE_URL'].sub(/^postgres/, "postgis") %>
   database: resource_matching_production
   username: resource_matching
   password: <%= ENV['RESOURCE_MATCHING_DATABASE_PASSWORD'] %>
