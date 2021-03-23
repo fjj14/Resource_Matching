@@ -88,6 +88,7 @@ production:
   <<: *default
   adapter: postgresql
   encoding: unicode
+  url: <%= ENV['RESOURCE_MATCHING_DATABASE_URL'] %>
   database: resource_matching_production
   username: resource_matching
   password: <%= ENV['RESOURCE_MATCHING_DATABASE_PASSWORD'] %>
