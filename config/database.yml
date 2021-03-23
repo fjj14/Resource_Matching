@@ -84,8 +84,8 @@ test:
 # Read https://guides.rubyonrails.org/configuring.html#configuring-a-database
 # for a full overview on how database connection configuration can be specified.
 #
-production:
-  <<: *default
+<<: *default
+  adapter: postgresql
   database: resource_matching_production
-  username: resource_matching
-  password: <%= ENV['RESOURCE_MATCHING_DATABASE_PASSWORD'] %>
+  username: 
+  password:  <%= ENV['MYAPP_DATABASE_PASSWORD'] %
