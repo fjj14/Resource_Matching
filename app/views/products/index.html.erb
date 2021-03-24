@@ -1,5 +1,5 @@
 <div class="row">
- <% @products.each do |product| %>
+ <% Product.all.each do |product| %>
   <div class="col-md-4">
   <div class="card">
     <img class="card-img-top" src="/loginImage.jpg" alt="Card image cap">
@@ -13,6 +13,7 @@
   </div>
 </div>
 <% end %>
-</div%>
+</div>
+<h5> Products page </h5>
 
 

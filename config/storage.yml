@@ -18,7 +18,7 @@ local:
 google:
    service: GCS
    project: buydeis
-   credentials: <%= Rails.application.credentials.gcs_buyeis.to_json %>
+   credentials: <%= Rails.application.credentials.gcs_buydeis.to_json %>
    bucket: buydeis-bucket
 
 google_dev:
