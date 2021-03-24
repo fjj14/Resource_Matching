@@ -1,9 +1,6 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  #username: teamApp
-  #password: password1
-  host: ''
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
@@ -70,6 +67,4 @@ test:
 #
 production:
   <<: *default
-  database: resource_matching_production
-  username: resource_matching
-  password: <%= ENV['RESOURCE_MATCHING_DATABASE_PASSWORD'] %>
+  
