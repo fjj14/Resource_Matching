@@ -9,7 +9,9 @@ class ProductsController < ApplicationController
 
     def create
         @product = Product.new(product_params)
-        @product[:user_id] = session[:user_id]
+        if !@product[:user_id]
+          @product[:user_id] = session[:user_id]
+        end
         respond_to do |format|
           if @product.save
             #redirect_to welcome_path, notice: "Succesfully Created Account" 

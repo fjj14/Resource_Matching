@@ -13,7 +13,7 @@ Product.destroy_all
 end
  
 20.times do
-    Product.create(name: Faker::Commerce.product_name, description: Faker::Lorem.paragraphs(number: 1), price: rand(100), user_id: rand(10000), category_id: rand(10000), status: [true, false].sample, quantity: rand(3)) 
+    Product.create(name: Faker::Commerce.product_name, description: Faker::Lorem.paragraphs(number: 1), price: rand(100), user_id: User.all.ids[rand(0 .. 19)], category_id: rand(10000), status: [true, false].sample, quantity: rand(3)) 
 end
 
 # img:Faker::LoremFlickr.image(size: "50x60")

@@ -26,17 +26,18 @@
         <ul class="nav navbar-nav navbar-right">
         
         <% if session[:user_id] %>
+          <li><a class="navbutt" href="/messages">Messages</a></li>
           <li><a class="navbutt" href="/createProduct">createProduct</a></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle navbutt" data-toggle="dropdown"  role="button" aria-expanded="false">You<span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
               <li><a href="#" class="dropdownbutt">Mypage</a></li>
-              <li><a class="dropdownbutt"><%= link_to "Logout" , logout_path, :method => :delete %></a></li>
+              <li><%= link_to "Log out", logout_path, :method => :delete  %></li>
             </ul>
           </li>
         <% else %>
-            <li><%= link_to "Log in", login_path %></li>
-            <li><%= link_to "Sign up", signup_path %></li>
+            <li><a class="navbutt" href="/login">Sign in</a></li>
+            <li><a class="navbutt" href="/signup">Sign up</a></li>
         <% end %>
         </ul>
       </div><!-- /.navbar-collapse -->

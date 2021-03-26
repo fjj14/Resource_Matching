@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+  resources :sessions
   resources :products
   resources :users
   resources :conversations do
@@ -12,11 +12,15 @@ Rails.application.routes.draw do
   
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
-
+  delete 'logout', to: "sessions#destroy"
   get    '/welcome', to: "welcome#index"
   post   '/welcome', to: "welcome#index"
-  
-  delete 'logout', to: "sessions#destroy"
+  get '/send_message', to: "welcome#send_message"
+  post '/send_message', to: "welcome#send_message"
+  get '/NewConversation', to: "conversations#create_with_param"
+  post '/NewConversation', to: "conversations#create_with_param"
+  get '/messages', to: 'conversations#index'
+  post  '/messages', to: 'conversations#index'
  # get    '/createProduct', to: 'welcome#newProduct'
  # post   '/createProduct', to:  'welcome#newProduct'
   get    '/createProduct',  to: 'products#new'
