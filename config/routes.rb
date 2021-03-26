@@ -15,10 +15,7 @@ Rails.application.routes.draw do
   delete 'logout', to: "sessions#destroy"
   get    '/welcome', to: "welcome#index"
   post   '/welcome', to: "welcome#index"
-  get '/send_message', to: "welcome#send_message"
-  post '/send_message', to: "welcome#send_message"
-  get '/NewConversation', to: "conversations#create_with_param"
-  post '/NewConversation', to: "conversations#create_with_param"
+  
   get '/messages', to: 'conversations#index'
   post  '/messages', to: 'conversations#index'
  # get    '/createProduct', to: 'welcome#newProduct'

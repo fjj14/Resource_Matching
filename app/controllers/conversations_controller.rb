@@ -14,9 +14,4 @@ class ConversationsController < ApplicationController
         redirect_to conversation_path(receipt.conversation)
     end
 
-    def create_with_param(product)
-        recipient = User.where(id: product.user_id).first
-        receipt = User.where(id: session[:user_id]).first.send_message(recipient, "Hey, I am interested in your product", product.name)
-        redirect_to conversation_path(receipt.conversation)
-    end
 end
