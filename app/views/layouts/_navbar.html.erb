@@ -32,7 +32,7 @@
             <a href="#" class="dropdown-toggle navbutt" data-toggle="dropdown"  role="button" aria-expanded="false">You<span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
               <li><a href="#" class="dropdownbutt">Mypage</a></li>
-              <li><%= link_to "Log out", logout_path, :method => :delete  %></li>
+              <li><a  class="dropdownbutt"><%= link_to "Log out", logout_path, :method => :delete  %></a></li>
             </ul>
           </li>
         <% else %>

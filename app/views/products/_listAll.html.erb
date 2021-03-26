@@ -20,8 +20,9 @@
             <div class="card-body">
             <br>
             <div class ="col-md-6 nopadding">
+            <%if session[:user_id] %>
             <%= link_to "Message", conversations_path(user_id: product.user_id, body: "I want to buy your product", subject: product.name ), method: 'post', class: 'btn btn-primary' %>
-              
+             <% end %> 
                </div>
                <div class ="col-md-6 nopadding" id="pri">
                  <%= product.price %>
