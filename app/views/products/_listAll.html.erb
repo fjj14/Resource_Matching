@@ -1,4 +1,4 @@
-<% Product.all.each_slice(3)  do |products| %>
+<% Product.all.order('created_at DESC').each_slice(3)  do |products| %>
 <div class="row no-gutters" id="pro">
  <% products.each do |product| %> 
   <div class="col-md-4 ">
