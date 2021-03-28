@@ -10,11 +10,11 @@
     width: 100%;
     margin-left: 0%;
     border: none;
-   
+    background-color: #F6FDFF;
  }
 .card{
     margin-top: 10%;
-   
+    background-color: white;
     border: black;
  }
 
@@ -35,6 +35,7 @@
 
 .card{
    color: #2F3F5F;
+   
  }
 .card-title{
     margin-left: 0;
@@ -48,5 +49,9 @@
     text-align: left;
     padding-left: 0 !important;
 }
-
+.col-md-4{
+    background-color: white;
+    margin-left: 2%;
+    width: 30%;
+}
 

@@ -7,6 +7,7 @@ class ProductsController < ApplicationController
       @product = Product.new
     end
     def edit 
+     @product = Product.find_by(id: params[:id])
     end
     def create
       @product = Product.new(product_params)

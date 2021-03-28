@@ -13,7 +13,7 @@
 
 
   <body>
-    <% unless controller_name=="sessions" || controller_name=="users" %>
+    <% unless controller_name=="sessions" || request.path == login_path || request.path == signup_path || request.path == root_path%>
     <%= render "/layouts/navbar" %>
     <%end%>
     <%= yield %>

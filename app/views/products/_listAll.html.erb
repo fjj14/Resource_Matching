@@ -1,7 +1,7 @@
 <% Product.all.order('created_at DESC').each_slice(3)  do |products| %>
-<div class="row no-gutters" id="pro">
+<div class="row " >
  <% products.each do |product| %> 
-  <div class="col-md-4 ">
+  <div class="col-md-4 " >
         <div class="card">
             <h5 class="card-title">
              <div class ="col-md-6 nopadding" >

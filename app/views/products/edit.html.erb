@@ -1,5 +1,8 @@
-<h5> Edit Product </h5>
-<%= render 'form', product: product %>
+<h5 id ="EditProd"> Edit Product </h5>
+<div class ="container" id="fo">
+<%= render 'form', product: @product %>
+</div>
+<br>
+<%= link_to 'Delete Product', @product, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-primary', id: 'del'  %>
+<%= link_to 'Cancel', mypage_path , id:'cancel', class: 'btn btn-primary' %>
 
-
-<%= link_to "Delete", deleteProduct_path class: 'btn btn-primary' %>

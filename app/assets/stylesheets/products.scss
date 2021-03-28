@@ -2,3 +2,36 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+#EditProd{
+    color:  #2F3F5F;
+    font-family: serif;
+    font-weight: bold;
+    font-size: xxx-large;
+    font-size: 400%;
+    margin-top: 5%;
+    text-align: center;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+
+#del{
+    text-align: left;
+    margin-left: 10%;
+}
+#cancel{
+    text-align: right;
+    margin-left:65% ;
+}
+
+#fo{
+    background-color: white;
+    width: 80%;
+    margin-left: 10%;
+   form{
+       margin-top: 0%;
+       padding-top: 5%;
+       margin-bottom: 3%;
+      
+   }
+}

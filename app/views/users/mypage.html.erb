@@ -1,3 +1,18 @@
+<%= stylesheet_link_tag 'users', media: 'all'%>
+<div class= "container" id="me">
+<div class="card"  id="userIcon" >
+    <img class="card-img-top" src="..." alt="My profile picture">
+    <div class="card-body">
+        <div class = "col-md-6 nopadding">
+        <%= User.where(id: session[:user_id]).first.first %>
+        </div>
+        <div class = "col-md-6 nopadding" id="lastName">
+        <%= User.where(id: session[:user_id]).first.last %>
+        </div>
+        <p class="card-text"> @<%= User.where(id: session[:user_id]).first.username %></p>
+    </div>
+</div>
+</div>
 <br>
 <% Product.where(user_id: session[:user_id]).order('created_at DESC').each_slice(3)  do |products| %>
     <div class="row no-gutters" id="pro">
@@ -18,10 +33,15 @@
                      <br>
                     <div class="card-body">
                     <br>
+                
                     <div class ="col-md-6 nopadding" >
                         $<%= number_with_precision(product.price, :precision => 2)%>
                     </div>
-                    <%= link_to "edit/delete", products_path(action: "edit", product: product), class: 'btn btn-primary' %>
+                    
+                    <div class ="col-md-6 nopadding" id="wa" >
+                    <%= link_to "edit/delete", edit_product_path(product.id) ,  class: 'btn btn-primary', id:'edi' %>
+             
+                    </div>
                     <br>
                     <div class ="col-md-12">
                         <p class="card-text"><%= product.description %></p>
