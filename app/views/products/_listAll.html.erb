@@ -25,7 +25,7 @@
              <% end %> 
                </div>
                <div class ="col-md-6 nopadding" id="pri">
-                 <%= product.price %>
+                 $<%= number_with_precision(product.price, :precision => 2)%>
                </div>
                <br>
                <div class ="col-md-12">
