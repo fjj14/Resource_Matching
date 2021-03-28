@@ -1,7 +1,7 @@
 class Product < ApplicationRecord
     validates :name, length: { minimum: 2 }, 
     presence: true
-    validates :descripton, length: { minimum: 20 }, 
+    validates :description, length: { minimum: 20 }, 
     presence: true
     validates :price, 
     presence: true

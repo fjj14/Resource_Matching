@@ -18,9 +18,9 @@ Rails.application.routes.draw do
   
   get '/messages', to: 'conversations#index'
   post  '/messages', to: 'conversations#index'
- # get    '/createProduct', to: 'welcome#newProduct'
- # post   '/createProduct', to:  'welcome#newProduct'
+  get    '/mypage', to: 'users#mypage'
+  post   '/mypage', to:  'users#mypage'
   get    '/createProduct',  to: 'products#new'
   post   '/createProduct', to:  'products#create'
-
+  delete 'deleteProduct', to: "products#destroy"
 end
