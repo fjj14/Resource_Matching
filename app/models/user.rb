@@ -14,6 +14,6 @@ class User < ApplicationRecord
    
     validates :username, length: {minimum: 3}, uniqueness: true
     has_secure_password
-
+    has_one_attached :image
     acts_as_messageable
 end

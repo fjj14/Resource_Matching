@@ -1,7 +1,11 @@
 <%= stylesheet_link_tag 'users', media: 'all'%>
 <div class= "container" id="me">
 <div class="card"  id="userIcon" >
-    <img class="card-img-top" src="..." alt="My profile picture">
+ <% if User.where(id: session[:user_id]).first.image.present? %>
+    <%= image_tag(User.where(id: session[:user_id]).first.image, class:"card-img-top")%> 
+ <% else %>
+   <img class="card-img-top" src="..." alt="My profile picture">
+<% end %>
     <div class="card-body">
         <div class = "col-md-6 nopadding">
         <%= User.where(id: session[:user_id]).first.first %>
