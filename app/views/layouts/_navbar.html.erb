@@ -27,10 +27,10 @@
         <ul class="nav navbar-nav navbar-right">
         
         <% if session[:user_id] %>
-          <li><a class="navbutt" href="/messages"><i class="fas fa-comment fa-lg"></i></a></li>
-          <li><a class="navbutt" href="/createProduct"><i class="fas fa-plus-square fa-lg"></i></a></li>
+          <li><a class="navbutt" href="/messages"><i class="fa fa-comment fa-lg"></i></a></li>
+          <li><a class="navbutt" href="/createProduct"><i class="fa fa-plus-square fa-lg"></i></a></li>
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle navbutt" data-toggle="dropdown"  role="button" aria-expanded="false"><i class="fas fa-user fa-2x"></i><span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle navbutt" data-toggle="dropdown"  role="button" aria-expanded="false"><i class="fa fa-user fa-2x"></i><span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
               <li><a href="/mypage" class="dropdownbutt">Mypage</a></li>
               <li><a  class="dropdownbutt"><%= link_to "Log out", logout_path, :method => :delete  %></a></li>
