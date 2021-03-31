@@ -1,48 +1,25 @@
-<head>
-<style>
-  body{
-    margin: 33px !important; 
-  }
+<% User.all.order('created_at DESC').each_slice(3)  do |users| %>
+<div class="row">
+ <% users.each do |user| %>
+  <div class="col-md-4">
+  <div class="card">
+  <% if user.image.present? %>
+    <%= image_tag(user.image, class:"card-img-top")%> 
+ <% else %>
+ <%= link_to image_tag('default.png', class:"card-img-top") %> 
+<% end %>
+    <div class="card-body">
+      <h5 class="card-title"><%= user.first+" "+user.last %></h5>
+      <p class="card-text"><%= user.username%></p>
+    </div>
+    <div class="card-footer">
+      <small class="text-muted"><%= user.email %></small>
+    </div>
+    
+  </div>
+</div>
+<% end %>
+</div>
+<% end %>
 
-</style>
 
-</head>
-
-<p id="notice"><%= notice %></p>
-
-
-<h1>Users</h1>
-
-<table>
-  <thead>
-    <tr>
-    <th> ID </th>
-      <th>First</th>
-      <th>Last</th>
-      <th>Email</th>
-      <th>Username</th>
-      <th>Password</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= user.id %></td>
-        <td><%= user.first %></td>
-        <td><%= user.last %></td>
-        <td><%= user.email %></td>
-        <td><%= user.password %></td> 
-        <td><%= user.username %></td>
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New User', new_user_path %>
