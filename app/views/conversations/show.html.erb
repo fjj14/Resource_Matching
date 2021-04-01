@@ -2,7 +2,13 @@
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 
 
+<div class="col-xl-8 col-lg-8 col-md-8 col-sm-9 col-9">
+                            <div class="selected-user">
 
+   
+<span>To: <span class="name">  name  </span></span>
+
+</div>
 
 <h1> <% @conversation.subject %> </h1>
 <% @conversation.receipts_for(User.where(id: session[:user_id]).first).each do |receipt| %>
