@@ -20,14 +20,14 @@
         
         <%= form_tag(search_path, :id =>'searchform', method: :get) do %>
           <div class="form-group" id="searching">
-            <div class="col-md-3 ">
+            <div class="col-md-1 "id="select">
               <%= collection_select :category, :id, Category.order(:name), :id, :name, 
               :prompt => true, class: "form-select"%>
           </div>
-        <div class="col-lg-4 ">
+        <div class="col-lg-6 " id="placeholder">
         <%= text_field_tag :name, "",class: "form-control", placeholder: "Search for Products" %>
         </div>
-        <div class="col-md-2 col-3 no-padding">
+        <div class="col-md-2 col-3 " >
           <%= submit_tag "Search", class: "btn btn-default"  ,id: 'searchbutton'%>
         </div>
         </div>

@@ -89,10 +89,25 @@ body{
    color:#0F9BBA !important;
 }
 #searchform{
-  
+  margin-right: 10% !important;
   display: inline;
  
 }
 #searching{
    display: inline;
+}
+
+#select{
+   margin-top: .2%;
+   padding-top:1.2%;
+   padding-right: 10%;
+}
+#placeholder{
+   margin-top: .2%;
+   padding-top:.8%;
+   padding-right: 0%;
+}
+#searchbutton{
+   margin-left: 0%;
+  
 }
