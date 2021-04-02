@@ -7,12 +7,10 @@
    <img class="card-img-top" src="..." alt="My profile picture">
 <% end %>
     <div class="card-body">
-        <div class = "col-md-6 nopadding">
-        <%= User.where(id: session[:user_id]).first.first %>
+        <div class = "col-md-12 nopadding">
+        <%= User.where(id: session[:user_id]).first.first + " "+User.where(id: session[:user_id]).first.last%>
         </div>
-        <div class = "col-md-6 nopadding" id="lastName">
-        <%= User.where(id: session[:user_id]).first.last %>
-        </div>
+       
         <p class="card-text"> @<%= User.where(id: session[:user_id]).first.username %></p>
     </div>
 </div>

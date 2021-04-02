@@ -88,3 +88,11 @@ body{
 .navbutt:hover{
    color:#0F9BBA !important;
 }
+#searchform{
+  
+  display: inline;
+ 
+}
+#searching{
+   display: inline;
+}
