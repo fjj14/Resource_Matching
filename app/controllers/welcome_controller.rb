@@ -4,11 +4,11 @@ class WelcomeController < ApplicationController
         if (params[:name].blank? || params[:name] =="") && @category == nil
             @products = Product.all
         else 
-            if params[:category].present? && (!params[:name].blank? || params[:name] !="")
+            if @category!=nil && (!params[:name].blank? || params[:name] !="")
                 
                 @category =Category.find_by(id: params[:category][:id])
                 @products = @category.products.where("LOWER(name) LIKE LOWER(?)", "%#{params[:name]}%")    
-            elsif params[:category].present? && ( params[:name].blank?|| params[:name] =="")
+            elsif @category!=nil && ( params[:name].blank?|| params[:name] =="")
                 @category =Category.find_by(id: params[:category][:id])
                 @products = @category.products
             else
