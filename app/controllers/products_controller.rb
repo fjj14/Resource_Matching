@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  before_action :set_product, only: %i[ show edit update destroy ]
     def index
         @products = Product.all.order('created_at ASC')
     end
@@ -7,7 +8,7 @@ class ProductsController < ApplicationController
       @product = Product.new
     end
     def edit 
-     @product = Product.find_by(id: params[:id])
+    
     end
     def create
       @product = Product.new(product_params)
@@ -26,6 +27,18 @@ class ProductsController < ApplicationController
       end
     end
 
+    def update
+      respond_to do |format|
+        if @product.update(product_params)
+          format.html { redirect_to mypage_path, notice: "Product was successfully updated." }
+         # format.json { render :show, status: :ok, location: @user }
+        else
+          format.html { render :edit, status: :unprocessable_entity }
+          format.json { render json: @product.errors, status: :unprocessable_entity }
+        end
+      end
+    end
+    
     def destroy
       @product.destroy
       respond_to do |format|
@@ -41,7 +54,7 @@ class ProductsController < ApplicationController
      
       # Only allow a list of trusted parameters through.
       def product_params
-        params.require(:product).permit( :name, :price, :image, :description)
+        params.require(:product).permit( :name, :price, :image, :description, :category_id)
       end
 
 end

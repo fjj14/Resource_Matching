@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :categories
   resources :sessions
   resources :products
   resources :users
@@ -9,7 +10,7 @@ Rails.application.routes.draw do
   root 'users#new'
   get    '/signup',  to: 'users#new'
   post   '/signup', to:  'users#create'
-  
+  get '/search', to: 'welcome#search'
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete 'logout', to: "sessions#destroy"

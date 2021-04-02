@@ -5,7 +5,7 @@
         <div class="card">
             <h5 class="card-title">
              <div class ="col-md-6 nopadding" >
-               <%= product.name %>
+               <%= product.name + " " +Category.where(id: product.category_id).first.name%>
                </div>
                <div class ="col-md-6 nopadding" id="pri">
                 @<%= User.where(id: product.user_id).first.username %>
