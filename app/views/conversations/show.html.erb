@@ -2,94 +2,64 @@
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 
 
-<div class="col-xl-8 col-lg-8 col-md-8 col-sm-9 col-9">
-                            <div class="selected-user">
 
-   
-<span>To: <span class="name">
 
-<% if @conversation.participants[0].id == session[:user_id]  %> 
-<%= @conversation.participants[1].username %>
-<%else%>
-<%= @conversation.participants[0].username %>
-<%end%>
-</span></span>
 
+
+
+<div class="row no-gutters">
+<div class="col-xl-4 col-lg-4 col-md-4 col-sm-3 col-3">
+    <div class="users-container">
+        <div class="chat-search-box">
+            <div class="input-group">
+           
+            <div class="input-group-btn">
+            <% #  <input class="form-control" placeholder="Search">  %>
+            <% #        <button type="button" class="btn btn-info"> %>
+            
+              
+            <% #   <i class="fa fa-search"></i>  %>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <ul class="users">
+            <li class="person" data-chat="person1">
+                <div class="user">
+                    <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin">
+                   
+                </div>
+                <p class="name-time">
+                    <span class="name">Steve Bangalter</span>
+                    <span class="time"></span>
+                </p>
+            </li>
+          
+            <li class="person" data-chat="person3">
+                <div class="user">
+                    <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin">
+                   
+                </div>
+                <p class="name-time">
+                    <span class="name">Jessica Larson</span>
+                    <span class="time"></span>
+                </p>
+            </li>
+
+            <li class="person" data-chat="person4">
+                <div class="user">
+                    <img src="https://www.bootdey.com/img/Content/avatar/avatar4.png" alt="Retail Admin">
+                  
+                </div>
+                <p class="name-time">
+                    <span class="name">Lisa Guerrero</span>
+                    <span class="time">    </span>
+                </p>
+            </li>
+           
+        </ul>
+    </div>
 </div>
 
-<h1> <% @conversation.subject %> </h1>
-<% @conversation.receipts_for(User.where(id: session[:user_id]).first).each do |receipt| %>
-    <div >
 
-   
-
-
-
-
-
-
-        
-        <div class="row no-gutters"> 
-
-        <div class="col-xl-8 col-lg-8 col-md-8 col-sm-9 col-9">
-        
-        <div class="selected-user">
-        
-    
-
-       
-        
-        </span></span>
-        </div>
-
-    <div class="chat-container">
-    <ul class="chat-box chatContainerScroll">
-    
-
-    <% if User.where(id: session[:user_id]).first.username ==  receipt.message.sender.username %>
-   
-    <li class="chat-right">
-    <div class="chat-text">  <%= receipt.message.body %> </div>
-    <div class="chat-avatar">
-    <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin">
-    <div class="chat-name">
-    you   </div>
-    </div>
-    
-   
-    </li>
-
-
-
-    
-    <%else%>
-    <li class="chat-left">
-
-    <div class="chat-avatar">
-    <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin">
-   
-   
-    <div class="chat-name">
-    <%= receipt.message.sender.username %>   </div>
-    </div>
-    
-    <div class="chat-text">  <%= receipt.message.body %> </div>
-    </li>
-    
-    <%end%>
-   
-
-    </div>
-    </div>
-    </div>  </ul>
-
-
-
-<% end %>
-
-<%= form_tag conversation_messages_path(@conversation), method: :post do %>
-    <div>
-    <%= text_area_tag :body %>
-    </div>
-    <%= submit_tag %>
-<% end %>
+<%= render "indmessage" %>

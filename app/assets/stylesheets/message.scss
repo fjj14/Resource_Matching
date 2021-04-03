@@ -89,27 +89,17 @@
 }
 
 .users .person:hover {
-    background-color: #ffffff;
-    /* Fallback Color */
-    background-image: -webkit-gradient(linear, left top, left bottom, from(#e9eff5), to(#ffffff));
-    /* Saf4+, Chrome */
-    background-image: -webkit-linear-gradient(right, #e9eff5, #ffffff);
-    /* Chrome 10+, Saf5.1+, iOS 5+ */
-    background-image: -moz-linear-gradient(right, #e9eff5, #ffffff);
-    /* FF3.6 */
-    background-image: -ms-linear-gradient(right, #e9eff5, #ffffff);
-    /* IE10 */
-    background-image: -o-linear-gradient(right, #e9eff5, #ffffff);
-    /* Opera 11.10+ */
-    background-image: linear-gradient(right, #e9eff5, #ffffff);
+    background-color: #90E6FF;
+  
+  
 }
 
 .users .person.active-user {
-    background-color: #ffffff;
+   background-color: #90E6FF;
     /* Fallback Color */
     background-image: -webkit-gradient(linear, left top, left bottom, from(#f7f9fb), to(#ffffff));
     /* Saf4+, Chrome */
-    background-image: -webkit-linear-gradient(right, #f7f9fb, #ffffff);
+    background-image: -webkit-linear-gradient(right, #95c1ec, #95c1ec);
     /* Chrome 10+, Saf5.1+, iOS 5+ */
     background-image: -moz-linear-gradient(right, #f7f9fb, #ffffff);
     /* FF3.6 */
@@ -228,7 +218,7 @@
     display: flex;
     flex: 1;
     flex-direction: row;
-    margin-bottom: 40px;
+    margin-bottom: 0px;
 }
 
 .chat-container li img {
@@ -268,6 +258,13 @@
     line-height: 150%;
     position: relative;
 }
+.chat-left .chat-text {
+    background: #90E6FF !important;
+}
+.chat-right .chat-text {
+    background: #22B1DA !important;
+}
+
 
 .chat-container li .chat-text:before {
     content: '';
@@ -277,7 +274,7 @@
     top: 10px;
     left: -20px;
     border: 10px solid;
-    border-color: transparent #ffffff transparent transparent;
+    border-color: transparent #90E6FF transparent transparent;
 }
 
 .chat-container li.chat-right > .chat-text {
@@ -286,7 +283,7 @@
 
 .chat-container li.chat-right > .chat-text:before {
     right: -20px;
-    border-color: transparent transparent transparent #ffffff;
+    border-color: transparent transparent transparent #22B1DA ;
     left: inherit;
 }
 
