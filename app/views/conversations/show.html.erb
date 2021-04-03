@@ -6,7 +6,14 @@
                             <div class="selected-user">
 
    
-<span>To: <span class="name">  name  </span></span>
+<span>To: <span class="name">
+
+<% if @conversation.participants[0].id == session[:user_id]  %> 
+<%= @conversation.participants[1].username %>
+<%else%>
+<%= @conversation.participants[0].username %>
+<%end%>
+</span></span>
 
 </div>
 
@@ -46,7 +53,7 @@
     <div class="chat-avatar">
     <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin">
     <div class="chat-name">
-    you:   </div>
+    you   </div>
     </div>
     
    
@@ -57,10 +64,13 @@
     
     <%else%>
     <li class="chat-left">
+
     <div class="chat-avatar">
     <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin">
+   
+   
     <div class="chat-name">
-    <%= receipt.message.sender.username %>:   </div>
+    <%= receipt.message.sender.username %>   </div>
     </div>
     
     <div class="chat-text">  <%= receipt.message.body %> </div>
