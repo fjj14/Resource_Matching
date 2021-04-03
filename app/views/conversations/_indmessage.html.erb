@@ -1,91 +1,76 @@
-<div class="col-xl-8 col-lg-8 col-md-8 col-sm-9 col-9">
-                            <div class="selected-user">
 
-   
-<span>To: <span class="name">
+
+
+
+           
+<div class="col-xl-8 col-lg-8 col-md-8 col-sm-9 col-9">
+    <div class="selected-user"> 
+<span> To: <span class="name">
 
 <% if @conversation.participants[0].id == session[:user_id]  %> 
 <%= @conversation.participants[1].username %>
 <%else%>
 <%= @conversation.participants[0].username %>
 <%end%>
+
+<div style="border-bottom: 1px solid #e6ecf3;" ></div>
 </span></span>
 
-</div>
 
+
+</div>
 <h1> <% @conversation.subject %> </h1>
 <% @conversation.receipts_for(User.where(id: session[:user_id]).first).each do |receipt| %>
-    <div >
-
-   
-
-
-
-
-
-
+	<div>
+		<div class="row no-gutters">
+			<div class="col-xl-8 col-lg-8 col-md-8 col-sm-9 col-9">
+				<div class="selected-user">
+					</span>
+					</span>
+				</div>
+				<div class="chat-container">
+					<ul class="chat-box chatContainerScroll">
+						<% if User.where(id: session[:user_id]).first.username ==  receipt.message.sender.username %>
+							<li class="chat-right">
+								<div class="chat-text">
+									<%= receipt.message.body %>
+								</div>
+								<div class="chat-avatar"> <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin">
+									
+                                    
+                                    
+                                    
+                                    <div class="chat-name"> you </div>
+								</div>
+							</li>
+							<%else%>
+								<li class="chat-left">
+									<div class="chat-avatar"> <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin">
+										<div class="chat-name">
+											<%= receipt.message.sender.username %>
+										</div>
+									</div>
+									<div class="chat-text">
+										<%= receipt.message.body %>
+									</div>
+								</li>
+								<%end%>
+				</div>
+			</div>
+		</div>
         
-        <div class="row no-gutters"> 
-
-        <div class="col-xl-8 col-lg-8 col-md-8 col-sm-9 col-9">
-        
-        <div class="selected-user">
-        
+	</div>
     
-
-       
-        
-        </span></span>
-        </div>
-
-    <div class="chat-container">
-    <ul class="chat-box chatContainerScroll">
+	</ul>
     
+	<% end %>
+		<%= form_tag conversation_messages_path(@conversation), method: :post do %>
+			<div>
+            
+				<%= text_area_tag :body %>
+			</div>
+            
+			<%= submit_tag %>
+				<% end %>
 
-    <% if User.where(id: session[:user_id]).first.username ==  receipt.message.sender.username %>
-   
-    <li class="chat-right">
-    <div class="chat-text">  <%= receipt.message.body %> </div>
-    <div class="chat-avatar">
-    <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin">
-    <div class="chat-name">
-    you   </div>
-    </div>
-    
-   
-    </li>
-
-
-
-    
-    <%else%>
-    <li class="chat-left">
-
-    <div class="chat-avatar">
-    <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin">
-   
-   
-    <div class="chat-name">
-    <%= receipt.message.sender.username %>    </div>
-    </div>
-    
-    <div class="chat-text" >  <%= receipt.message.body %> </div>
-    </li>
-    
-    <%end%>
-   
-
-    </div>
-    </div>
-    </div>  </ul>
-
-
-
-<% end %>
-
-<%= form_tag conversation_messages_path(@conversation), method: :post do %>
-    <div>
-    <%= text_area_tag :body %>
-    </div>
-    <%= submit_tag %>
-<% end %>
+                

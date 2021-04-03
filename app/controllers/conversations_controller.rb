@@ -4,6 +4,7 @@ class ConversationsController < ApplicationController
     end
     def show 
         @conversation = User.where(id: session[:user_id]).first.mailbox.conversations.find(params[:id])
+        @conversations = User.where(id: session[:user_id]).first.mailbox.conversations
     end 
     def new
         @recipients = User.all - [User.where(id: session[:user_id]).first]
