@@ -5,9 +5,11 @@
 
 
 
-&nbsp  &nbsp&nbsp&nbsp
+&nbsp&nbsp&nbsp&nbsp
 <%= link_to " New Conversation", new_conversation_path %>
    <br/>
+
+   
 
 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-3 col-3">
 <% @conversations.each do |conversation| %>
@@ -35,24 +37,23 @@
     
     
          <% if conversation.participants[0].id == session[:user_id]  %> 
-            <% if User.where(id: session[:user_id]).first.image.present? %>
-           
-
-             <%= image_tag(User.where(id: session[:user_id]).first.image, class:"card-img-top")%>
-             <% else %>
-          <img class='card-img-top' src='...' alt=''>
-            <%end%>
-               
-        <%else%>
-
-                <% if conversation.participants[1].image.present? %>
+              <% if conversation.participants[1].image.present? %>
             
               <%= image_tag(conversation.participants[1].first.image, class:"card-img-top")%>
                 <% else %>
                  <img class="card-img-top" src="..." alt="">
                  <%end%>
 
-            <%end%>
+        <%else%>
+
+                <% if conversation.participants[0].image.present? %>
+            
+              <%= image_tag(conversation.participants[0].first.image, class:"card-img-top")%>
+                <% else %>
+                 <img class="card-img-top" src="..." alt="">
+                 <%end%>
+
+        <%end%>
 
 
 
@@ -83,25 +84,24 @@
             
 
     
-         <% if conversation.participants[0].id == session[:user_id]  %> 
-            <% if User.where(id: session[:user_id]).first.image.present? %>
-           
-
-            <%= image_tag(User.where(id: session[:user_id]).first.image, class:"card-img-top")%>
-             <% else %>
-          <img class='card-img-top' src='...' alt=''>
-            <%end%>
-               
-        <%else%>
-
-                <% if conversation.participants[1].image.present? %>
+        <% if conversation.participants[0].id == session[:user_id]  %> 
+              <% if conversation.participants[1].image.present? %>
             
-               <%= image_tag(conversation.participants[1].image, class:"card-img-top")%> 
+              <%= image_tag(conversation.participants[1].first.image, class:"card-img-top")%>
                 <% else %>
                  <img class="card-img-top" src="..." alt="">
                  <%end%>
 
-            <%end%>
+        <%else%>
+
+                <% if conversation.participants[0].image.present? %>
+            
+              <%= image_tag(conversation.participants[0].first.image, class:"card-img-top")%>
+                <% else %>
+                 <img class="card-img-top" src="..." alt="">
+                 <%end%>
+
+        <%end%>
 
 
             

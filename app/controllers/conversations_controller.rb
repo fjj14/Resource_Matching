@@ -1,6 +1,7 @@
 class ConversationsController < ApplicationController
     def index
         @conversations = User.where(id: session[:user_id]).first.mailbox.conversations
+        
     end
     def show 
         @conversation = User.where(id: session[:user_id]).first.mailbox.conversations.find(params[:id])
