@@ -35,17 +35,47 @@
 								<div class="chat-text">
 									<%= receipt.message.body %>
 								</div>
-								<div class="chat-avatar"> <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin">
-									
-                                    
-                                    
-                                    
+								<div class="chat-avatar"> 
+
+
+                            
+									  
+            <% if User.where(id: session[:user_id]).first.image.present? %>
+           
+
+             <img src="<%= image_tag(User.where(id: session[:user_id]).first.image, class:"card-img-top")%>" /> 
+             <% else %>
+          <img class='card-img-top' src='...' alt=''>
+            <%end%>
+               
+
+       
+
+          
+
+        
                                     <div class="chat-name"> you </div>
 								</div>
 							</li>
+
+
+
+
+                            
 							<%else%>
 								<li class="chat-left">
-									<div class="chat-avatar"> <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin">
+									<div class="chat-avatar"> 
+
+
+
+                                             <% if @conversation.participants[1].image.present? %>
+            
+                <img src="   <%= image_tag(@conversation.participants[1].image, class:"card-img-top")%> " /> 
+                <% else %>
+                 <img class="card-img-top" src="..." alt="">
+                 <%end%>
+
+                 
 										<div class="chat-name">
 											<%= receipt.message.sender.username %>
 										</div>
