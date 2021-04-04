@@ -25,10 +25,6 @@
    <a href="<%= conversation_path(conversation)%>">
 
 
-
-
-
-
    <% if conversation == @conversation  %> 
 
 
@@ -42,7 +38,7 @@
             <% if User.where(id: session[:user_id]).first.image.present? %>
            
 
-             <img src="<%= image_tag(User.where(id: session[:user_id]).first.image, class:"card-img-top")%>" /> 
+             <%= image_tag(User.where(id: session[:user_id]).first.image, class:"card-img-top")%>
              <% else %>
           <img class='card-img-top' src='...' alt=''>
             <%end%>
@@ -51,7 +47,7 @@
 
                 <% if conversation.participants[1].image.present? %>
             
-                <img src="   <%= image_tag(conversation.participants[1].first.image, class:"card-img-top")%> " /> 
+              <%= image_tag(conversation.participants[1].first.image, class:"card-img-top")%>
                 <% else %>
                  <img class="card-img-top" src="..." alt="">
                  <%end%>
@@ -91,7 +87,7 @@
             <% if User.where(id: session[:user_id]).first.image.present? %>
            
 
-             <img src="<%= image_tag(User.where(id: session[:user_id]).first.image, class:"card-img-top")%>" /> 
+            <%= image_tag(User.where(id: session[:user_id]).first.image, class:"card-img-top")%>
              <% else %>
           <img class='card-img-top' src='...' alt=''>
             <%end%>
@@ -100,7 +96,7 @@
 
                 <% if conversation.participants[1].image.present? %>
             
-                <img src="   <%= image_tag(conversation.participants[1].image, class:"card-img-top")%> " /> 
+               <%= image_tag(conversation.participants[1].image, class:"card-img-top")%> 
                 <% else %>
                  <img class="card-img-top" src="..." alt="">
                  <%end%>
