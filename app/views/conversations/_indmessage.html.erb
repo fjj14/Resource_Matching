@@ -68,12 +68,14 @@
 
 
 
-                                             <% if @conversation.participants[1].image.present? %>
+                                             <% if receipt.message.sender.image.present? %>
             
-              <%= image_tag(@conversation.participants[1].image, class:"card-img-top")%> 
+              <%= image_tag(receipt.message.sender.image, class:"card-img-top")%> 
                 <% else %>
                  <img class="card-img-top" src="..." alt="">
                  <%end%>
+
+                 
 
 
 										<div class="chat-name">
