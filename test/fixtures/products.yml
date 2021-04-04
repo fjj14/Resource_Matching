@@ -8,6 +8,7 @@ one:
   category_id: 1
   status: false
   quantity: 1
+  user: valid
 
 two:
   name: MyString
@@ -17,3 +18,5 @@ two:
   category_id: 1
   status: false
   quantity: 1
+  user: valid
+
