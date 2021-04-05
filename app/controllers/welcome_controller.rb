@@ -1,4 +1,5 @@
 class WelcomeController < ApplicationController
+    before_action :set_product
     def search
         @category =Category.find_by(id: params[:category][:id])
         if (params[:name].blank? || params[:name] =="") && @category == nil
@@ -19,5 +20,10 @@ class WelcomeController < ApplicationController
         end
         render 'index'
          
-      end
+    end
+    private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_product
+      @products = Product.all
+    end
 end
