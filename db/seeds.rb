@@ -23,5 +23,6 @@ Category.create(name: "Art and Crafts", description:Faker::Lorem.paragraphs(numb
     Product.create(name: Faker::Commerce.product_name, description: Faker::Lorem.paragraphs(number: 1), price: rand(100), user_id: User.all.ids[rand(0 .. 19)], status: [true, false].sample, quantity: rand(3), category_id: Category.all.ids[rand(0..7)]) 
 end
 
+User.create(first: "jane", last:"doe", email:"admin@email.com",username:"adminuser", password: "abcdefghi", admin: 'true')
 
 # img:Faker::LoremFlickr.image(size: "50x60")

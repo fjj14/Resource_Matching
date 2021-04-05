@@ -25,7 +25,8 @@ gem 'font-awesome-rails'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
-
+#gem 'devise'
+gem 'cancancan'
 gem 'rails_admin', '~> 2.0'
 gem 'google-cloud-storage', '~>1.8', require: false
 gem 'bcrypt', '~> 3.1.7'
