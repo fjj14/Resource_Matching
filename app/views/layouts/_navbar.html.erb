@@ -34,7 +34,7 @@
        <% end %>
         <ul class="nav navbar-nav navbar-right">
         
-        <% if session[:user_id] %>
+        <% if current_user %>
           <li><a class="navbutt" href="/messages"><i class="fa fa-comment fa-lg"></i></a></li>
           <li><a class="navbutt" href="/createProduct"><i class="fa fa-plus-square fa-lg"></i></a></li>
           <li class="dropdown">

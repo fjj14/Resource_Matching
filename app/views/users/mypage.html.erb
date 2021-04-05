@@ -1,17 +1,17 @@
 <%= stylesheet_link_tag 'users', media: 'all'%>
 <div class= "container" id="me">
 <div class="card"  id="userIcon" >
- <% if User.where(id: session[:user_id]).first.image.present? %>
+ <% if current_user.image.present? %>
     <%= image_tag(User.where(id: session[:user_id]).first.image, class:"card-img-top")%> 
  <% else %>
    <img class="card-img-top" src="..." alt="My profile picture">
 <% end %>
     <div class="card-body">
         <div class = "col-md-12 nopadding">
-        <%= User.where(id: session[:user_id]).first.first + " "+User.where(id: session[:user_id]).first.last%>
+        <%= current_user.first + " "+current_user.last%>
         </div>
        
-        <p class="card-text"> @<%= User.where(id: session[:user_id]).first.username %></p>
+        <p class="card-text"> @<%= current_user.username %></p>
     </div>
 </div>
 </div>

@@ -36,7 +36,7 @@
             <div class="user">
     
     
-         <% if conversation.participants[0].id == session[:user_id]  %> 
+         <% if conversation.participants[0] == current_user  %> 
               <% if conversation.participants[1].image.present? %>
             
               <%= image_tag(conversation.participants[1].image, class:"card-img-top")%>
@@ -61,7 +61,7 @@
             </div>
             <p class="name-time">
                <span class="name"> 
-               <% if conversation.participants[0].id == session[:user_id]  %> 
+               <% if conversation.participants[0] == current_user  %> 
                <%= conversation.participants[1].username %>
                <%else%>
                <%= conversation.participants[0].username %>
@@ -84,7 +84,7 @@
             
 
     
-        <% if conversation.participants[0].id == session[:user_id]  %> 
+        <% if conversation.participants[0]== current_user  %> 
               <% if conversation.participants[1].image.present? %>
             
               <%= image_tag(conversation.participants[1].image, class:"card-img-top")%>
@@ -108,7 +108,7 @@
             </div>
             <p class="name-time">
                <span class="name"> 
-               <% if conversation.participants[0].id == session[:user_id]  %> 
+               <% if conversation.participants[0] == current_user  %> 
                <%= conversation.participants[1].username %>
                <%else%>
                <%= conversation.participants[0].username %>

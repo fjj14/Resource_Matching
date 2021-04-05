@@ -7,7 +7,7 @@
     <div class="selected-user"> 
 <span> To: <span class="name">
 
-<% if @conversation.participants[0].id == session[:user_id]  %> 
+<% if @conversation.participants[0] == current_user  %> 
 <%= @conversation.participants[1].username %>
 <%else%>
 <%= @conversation.participants[0].username %>
@@ -20,7 +20,7 @@
 
 </div>
 <h1> <% @conversation.subject %> </h1>
-<% @conversation.receipts_for(User.where(id: session[:user_id]).first).each do |receipt| %>
+<% @conversation.receipts_for(current_user).each do |receipt| %>
 	<div>
 		<div class="row no-gutters">
 			<div class="col-xl-8 col-lg-8 col-md-8 col-sm-9 col-9">
@@ -30,7 +30,7 @@
 				</div>
 				<div class="chat-container">
 					<ul class="chat-box chatContainerScroll">
-						<% if User.where(id: session[:user_id]).first.username ==  receipt.message.sender.username %>
+						<% if current_user.username ==  receipt.message.sender.username %>
 							<li class="chat-right">
 								<div class="chat-text">
 									<%= receipt.message.body %>
@@ -40,7 +40,7 @@
 
                             
 									  
-            <% if User.where(id: session[:user_id]).first.image.present? %>
+            <% if current_user.image.present? %>
            
 
      <%= image_tag(User.where(id: session[:user_id]).first.image, class:"card-img-top")%>
