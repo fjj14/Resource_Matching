@@ -26,7 +26,7 @@ gem 'font-awesome-rails'
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 
-
+gem 'rails_admin', '~> 2.0'
 gem 'google-cloud-storage', '~>1.8', require: false
 gem 'bcrypt', '~> 3.1.7'
 gem 'mailboxer', github: 'mailboxer/mailboxer'
