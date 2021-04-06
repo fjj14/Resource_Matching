@@ -117,7 +117,7 @@ Show examples of usage:
 * Reviews and Ratings
 
 ## Screenshots
-![Figma Prototypes](./prototypes-figma.pdf)
+[Figma Prototypes](./prototypes-figma.pdf)
 ![Screenshot](./screenshot.png)
 
 ## Inspiration
