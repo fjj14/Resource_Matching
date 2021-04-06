@@ -35,6 +35,7 @@
                    <div class ="col-md-12">
                     <p class="card-text"><%= product.description %></p>
                     </div>
+                    <%= link_to "Purchase","https://venmo.com/#{product.user.venmo_id}?txn=pay&amount=#{product.price}", class: 'btn btn-primary' %>
                 </div>
                 
             </div>
