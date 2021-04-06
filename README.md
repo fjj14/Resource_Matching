@@ -12,7 +12,7 @@
 * [APIs, Gems, Libraries](#dependencies)
 * [Code Examples](#code-examples)
 * [To-do list](#to-do-list)
-* [Screenshots](#screenshots)
+* [Prototypes and Screenshots](#screenshots)
 * [Inspiration](#inspiration)
 * [Setup](#setup)
 * [Contact](#contact)
@@ -117,7 +117,8 @@ Show examples of usage:
 * Reviews and Ratings
 
 ## Screenshots
-![Example screenshot](./prototypes-figma.pdf)
+![Figma Prototypes](./prototypes-figma.pdf)
+![Screenshot](./screenshot.png)
 
 ## Inspiration
 [Depop](https://www.depop.com/),
