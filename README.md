@@ -117,7 +117,7 @@ Show examples of usage:
 * Reviews and Ratings
 
 ## Screenshots
-![Example screenshot](./screenshot.png)
+![Example screenshot](./prototypes-figma.pdf)
 
 ## Inspiration
 [Depop](https://www.depop.com/),
