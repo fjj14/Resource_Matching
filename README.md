@@ -116,9 +116,9 @@ Show examples of usage:
 * Transactions
 * Reviews and Ratings
 
-## Screenshots
-[Figma Prototypes](./prototypes-figma.pdf)
-![Screenshot](./screenshot.png)
+## Prototype and Screenshots
+[View Figma Prototypes Here](./prototypes-figma.pdf)
+![Screenshot of our product](./screenshot.png)
 
 ## Inspiration
 [Depop](https://www.depop.com/),
