@@ -12,7 +12,7 @@
 * [APIs, Gems, Libraries](#dependencies)
 * [Code Examples](#code-examples)
 * [To-do list](#to-do-list)
-* [Prototypes and Screenshots](#screenshots)
+* [Prototypes and Screenshots](#Prototypes-and-Screenshot)
 * [Inspiration](#inspiration)
 * [Setup](#setup)
 * [Contact](#contact)
