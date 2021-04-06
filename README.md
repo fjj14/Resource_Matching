@@ -116,7 +116,7 @@ Show examples of usage:
 * Transactions
 * Reviews and Ratings
 
-## Prototype and Screenshots
+## Prototypes and Screenshot
 [View Figma Prototypes Here](./prototypes-figma.pdf)
 ![Screenshot of our product](./screenshot.png)
 
