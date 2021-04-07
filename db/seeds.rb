@@ -9,7 +9,7 @@ User.destroy_all
 Product.destroy_all
 Category.destroy_all
 20.times do
-    User.create(first: Faker::Name.first_name, last:Faker::Name.last_name, email: Faker::Internet.username+"@gmail.com", username: Faker::Internet.username, password: Faker::Internet.password) #password: Faker::Internet.password
+    User.create(first: Faker::Name.first_name, last:Faker::Name.last_name, email: Faker::Internet.username+"@gmail.com", username: Faker::Internet.username, password: Faker::Internet.password, venmo_id: Faker::Internet.username) #password: Faker::Internet.password
 end
 Category.create(name: "Books", description:Faker::Lorem.paragraphs(number: 1))
 Category.create(name: "Shoes", description:Faker::Lorem.paragraphs(number: 1))
