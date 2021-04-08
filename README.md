@@ -9,7 +9,7 @@
 * [URL Patterns](#url-patterns)
 * [DB Schema](#db-schema)
 * [Views](#views)
-* [APIs, Gems, Libraries](#dependencies)
+* [APIs, Gems, Libraries](#APIs, Gems, Libraries)
 * [Code Examples](#code-examples)
 * [To-do list](#to-do-list)
 * [Prototypes and Screenshots](#Prototypes-and-Screenshot)
