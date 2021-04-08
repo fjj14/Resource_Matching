@@ -112,25 +112,25 @@ gems used in schema.rb
     * Allows us to encrypt user passwords and ensures all user password created are correct
 
 Other gems used
-*faker 
-*rubocop-faker
-*puma 
-*sass-rails for stylesheets
-*webpacker
-*turbolinks
-*jbuilder
-*jquery-rails
-*font-awesome-rails
-*bootsnap - Reduces boot times through caching; required in config/boot.rb
-*byebug
-*web-console
-*rack-mini-profiler
-*listen
-*spring
-*capybara
-*selenium-webdriver
-*webdrivers
-*pg
+* faker 
+* rubocop-faker
+* puma 
+* sass-rails for stylesheets
+* webpacker
+* turbolinks
+* jbuilder
+* jquery-rails
+* font-awesome-rails
+* bootsnap - Reduces boot times through caching; required in config/boot.rb
+* byebug
+* web-console
+* rack-mini-profiler
+* listen
+* spring
+* capybara
+* selenium-webdriver
+* webdrivers
+* pg
 
 
 ## Code Examples
