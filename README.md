@@ -15,8 +15,7 @@
 * [To-do list](#to-do-list)
 * [Prototypes and Screenshots](#Prototypes-and-Screenshot)
 * [Inspiration](#inspiration)
-* [Setup](#setup)
-* [Contact](#contact)
+* [Creators](#creators)
 
 
 ## General info
