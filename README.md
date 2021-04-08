@@ -36,6 +36,22 @@ Our Features Include...
 
 
 ## URL Patterns
+* Home page page: /welcome
+* Display the user registration page:  /signup
+* Display user login prompt, and check for correct password: /login
+* Display user logout prompt and allow user to end a session : /logout
+* Display Full Text Search results: /search
+* Create a product to post: /createProduct
+* See all the conversations: /messages
+* View one of the conversations: /conversations/conversationid
+* View own user profile when logged in: /mypage
+* Search form: /welcome/search
+* Delete a product that was created: /delete 
+* Users urls: /users, /users/new, /users/create, /users/delete, /users/1, /users/1/change, /users/1/update
+* Categories urls: /categories,  /categories/1, /categories/new, /categories/1/edit
+* Products urls:  /products,  /products/1, /products/new, /products/1/edit
+* Sessions urls: /sessions/new, /sessions
+
 
 ## DB Schema
 * Users - first name(str), last name(str), email(str), password(str), username(str) 
