@@ -135,15 +135,10 @@ gems used for development and testing
 * webdrivers
 * pg
 
-APIs
-
-## Code Examples
-Show examples of usage:
-`put-your-code-here`
-
 ## To-do list:
-* Transactions - use Stripe API to implement transactions
-* Reviews and Ratings - create a rating form for users to rate sellers for credibility
+* Transactions - use Stripe API to implement transactions 
+* Reviews and Ratings - create a rating form for users to rate sellers for credibility - [see resource here](https://medium.com/@toodimes/how-to-implement-a-simple-5-star-rating-system-in-rails-using-native-bootstrap-48d5be205fdc)
+
 
 ## Prototypes and Screenshot
 [View Figma Prototypes Here](./prototypes-figma.pdf)
