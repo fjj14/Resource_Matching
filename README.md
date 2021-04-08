@@ -50,7 +50,7 @@ Our Features Include...
 * Users urls: /users, /users/new, /users/create, /users/delete, /users/1, /users/1/change, /users/1/update
 * Categories urls: /categories,  /categories/1, /categories/new, /categories/1/edit
 * Products urls:  /products,  /products/1, /products/new, /products/1/edit
-* Sessions urls: /sessions/new, /sessions
+* GIT Sessions urls: /sessions/new, /sessions
 
 
 ## DB Schema
