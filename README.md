@@ -121,6 +121,7 @@ Other gems used
 * jquery-rails
 * font-awesome-rails
 * bootsnap - Reduces boot times through caching; required in config/boot.rb
+gems used for development and testing
 * byebug
 * web-console
 * rack-mini-profiler
@@ -131,6 +132,9 @@ Other gems used
 * webdrivers
 * pg
 
+APIs
+
+Libraries
 
 ## Code Examples
 Show examples of usage:
