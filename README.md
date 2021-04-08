@@ -9,7 +9,7 @@
 * [URL Patterns](#url-patterns)
 * [DB Schema](#db-schema)
 * [Views](#views)
-* [APIs, Gems, Libraries](#APIs\,-Gems\,-Libraries)
+* [APIs, Gems, Libraries](#APIs-Gems-Libraries)
 * [Code Examples](#code-examples)
 * [To-do list](#to-do-list)
 * [Prototypes and Screenshots](#Prototypes-and-Screenshot)
@@ -99,7 +99,7 @@ gems used in schema.rb
     * views/transactions
     view for when transaction of a product occurs
 
-## APIs\,-Gems\,-Libraries
+## APIs-Gems-Libraries
 * Mailboxer 
     * Allows any object created with a acts_as_messageable property to have a mailbox. This means they can send and receive messages. The can also have conversations with other users. This is implemented with the messages and conversations controllers and views
 * Active Storage 
