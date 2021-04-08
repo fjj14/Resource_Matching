@@ -86,9 +86,8 @@ gems used in schema.rb
     index - Where users are directed, shows all products posted with partial _listAll in products, <%= render '/products/listAll' %>
 
     * views/categories
-    _form - 
-    index -
-    new, show, edit 
+    category filter for our search bar in navbar
+    _form, index,new, show, edit 
 
 * Planned Views
     * views/reviews
