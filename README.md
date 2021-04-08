@@ -141,8 +141,8 @@ Show examples of usage:
 `put-your-code-here`
 
 ## To-do list:
-* Transactions
-* Reviews and Ratings
+* Transactions - use Stripe API to implement transactions
+* Reviews and Ratings - create a rating form for users to rate sellers for credibility
 
 ## Prototypes and Screenshot
 [View Figma Prototypes Here](./prototypes-figma.pdf)
