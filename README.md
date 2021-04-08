@@ -98,7 +98,29 @@ gems used in schema.rb
     * views/transactions
     view for when transaction of a product occurs
 
-## Key Models 
+## Key Models
+* User
+    * Fields: email, password_digest, username, first, last, admin, uid, provider, accesss_code, publishable_key, stripe_user_id, venmo_id
+    * Associations:
+        * Has_many products ( each user can post many products for sale/exchange)
+        * Has_secure_password 
+        * Has_one_attached image (profile picture)
+        * Acts_as_messageable (each user can messenge other users)
+
+* Product
+    * Fields: name, image, description, price, user_id(the user who created it), category_id(the category it fits into).
+    * Associations:
+        * belongs_to User (he user who created it)
+        * belongs_to Category ( the category it belongs to. For Example, Math textbook, would be in the books category)
+        * Has_one_attached image (product picture)
+
+* Categories
+    * Fields:name, description 
+    * Associations: 
+        * Has_many products (Each category has many products that fit into the category)
+
+
+
 
 ## APIs, Gems, Libraries
 * Mailboxer 
