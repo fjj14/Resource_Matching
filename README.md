@@ -93,19 +93,44 @@ gems used in schema.rb
 * Planned Views
     * views/reviews
     new - fill out review form
+    _form - form to be rendered in new
     index - displays a review card
 
     * views/transactions
+    view for when transaction of a product occurs
 
 ## Dependencies
 * Mailboxer 
     * Allows any object created with a acts_as_messageable property to have a mailbox. This means they can send and receive messages. The can also have conversations with other users. This is implemented with the messages and conversations controllers and views
 * Active Storage 
     * Allows us to upload files, in our case images, and store the data of the files. By default, it stores the data locally, which why we used google cloud to  store it on the cloud.
+*Image_processing
+    * Active storage variant
 * Google Cloud Storage 
     * Used Google Cloud Storage and created a bucket to store all images uploaded on the site. Added this to our storage.yml file with the specific encryption data given by google so all images stored in the site are saved.
 * Bcrypt 
     * Allows us to encrypt user passwords and ensures all user password created are correct
+
+Other gems used
+*faker 
+*rubocop-faker
+*puma 
+*sass-rails for stylesheets
+*webpacker
+*turbolinks
+*jbuilder
+*jquery-rails
+*font-awesome-rails
+*bootsnap - Reduces boot times through caching; required in config/boot.rb
+*byebug
+*web-console
+*rack-mini-profiler
+*listen
+*spring
+*capybara
+*selenium-webdriver
+*webdrivers
+*pg
 
 
 ## Code Examples
