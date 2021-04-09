@@ -16,6 +16,13 @@
 </div>
 </div>
 <br>
+
+
+
+
+
+
+
 <% Product.where(user_id: session[:user_id]).order('created_at DESC').each_slice(3)  do |products| %>
     <div class="row no-gutters" id="pro">
         <% products.each do |product| %> 
