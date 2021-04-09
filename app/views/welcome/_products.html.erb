@@ -12,7 +12,7 @@
                    <%= product.name %>
                    </div>
                    <div class ="col-md-6 nopadding" id="pri">
-                    @<%= User.where(id: product.user_id).first.username %>
+                   <%= link_to(User.where(id: product.user_id).first.username, user_path(product.user_id)) if user = User.where(id: product.user_id) %>
                    </div>
                  </h5>
                  <br>

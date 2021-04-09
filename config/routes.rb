@@ -25,4 +25,5 @@ Rails.application.routes.draw do
   get    '/createProduct',  to: 'products#new'
   post   '/createProduct', to:  'products#create'
   delete 'deleteProduct', to: "products#destroy"
+  get 'user/:id', to: 'users#show'
 end
