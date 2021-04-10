@@ -30,7 +30,7 @@
                 <div class ="col-md-6 nopadding">
                 <%if current_user &&  product.user != current_user%>
                 <%= link_to "Message", conversations_path(user_id: product.user_id, body: "I want to buy your product", subject: product.name ), method: 'post', class: 'btn btn-primary' %>
-                   </div>
+                </div>
                    <div class ="col-md-6 nopadding" id="pri">
                      $<%= number_with_precision(product.price, :precision => 2)%>
                    </div>
@@ -38,11 +38,11 @@
                    <div class ="col-md-12">
                     <p class="card-text"><%= product.description %></p>
                     </div> 
-                           </div> 
+                          
                   <%= link_to "Purchase","https://venmo.com/#{product.user.venmo_id}?txn=pay&amount=#{product.price}", class: 'btn btn-primary' %>
                 
-                 <% else %> 
-                   </div>
+                <% else %> 
+                </div>
                    <p class ="col-md-6 nopadding" id="pri" style="float:right">
                      $<%= number_with_precision(product.price, :precision => 2)%>
                
@@ -54,7 +54,7 @@
                     
                    <% end %> 
                 </p>
-                
+               </div> 
             </div>
         </div>
     <% end %>
