@@ -40,10 +40,23 @@
                
             </div>
             <div class="modal-body">
-           <% @rating.user_id = @user.id %>
-           <% @rating.reviewer_id = current_user.id%>
-            <%= User.where(id: @rating.reviewer_id ).first.username%>
-            <%= render 'ratings/form'%>
+            <%= form_tag(:controller => "ratings", :action => "create") do%>
+            <%= hidden_field_tag(:user_id, @user.id) %>
+            <%= hidden_field_tag(:reviewer_id, current_user.id) %>
+            <div class="form-group ">
+                    <%= label_tag(:rating_number, "Rating", class: "control-label") %> 
+                    <%= text_field_tag(:rating_number, "",class: "form-control") %>
+                </div>
+                <div class="form-group ">
+                    <%= label_tag(:comment, "comment", class: "control-label" ) %> 
+
+                    <%= text_field_tag(:comment,"", class: "form-control" )%>    
+                </div>
+                <div class = "actions">
+                <%= submit_tag :submit, class: 'btn btn-primary' %>
+               
+                </div>
+                <%end%>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

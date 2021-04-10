@@ -16,11 +16,12 @@
   <tbody>
     <% @ratings.each do |rating| %>
       <tr>
-        <td><%= User.where(id: rating.reviewer_id ).first%></td>
+   
+        <td><%= User.where(id: rating.reviewer_id ).first.username%></td>
         <td><%= User.where(id: rating.user_id ).first.username%></td>
         <td><%= rating.rating_number%></td>
         <td><%= rating.comment%></td>
-       
+      
       </tr>
     <% end %>
   </tbody>

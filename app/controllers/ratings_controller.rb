@@ -1,15 +1,22 @@
 class RatingsController < ApplicationController
-    before_action :new
+   # before_action :set_user
     def new 
-        @rating = @user.ratings.last
+        @rating = Rating.new
     end
+
     def create
-        @rating.comment = params[:rating][:comment]
-        @rating.rating_number = params[:rating][:rating_number]
+        @rating = Rating.new
+        @rating.user_id =params[:user_id]
+        @rating.reviewer_id =params[:reviewer_id]
+        @rating.comment = params[:comment]
+        @rating.rating_number =params[:rating_number]
+
         respond_to do |format|
             if @rating.save
-               
-                redirect_to user_path(@user)
+                format.html do
+                    redirect_to users_path(@user) 
+                end
+                
             else
                 format.html { redirect_to welcome_path, notice: "error with rating" }
                 format.json { render json: @rating.errors, status: :unprocessable_entity }
@@ -17,6 +24,13 @@ class RatingsController < ApplicationController
         end
     end
 
+    def show
+        if @rating.reviewer_id == current_user.id
+            render 'show'
+        else
+            redirect_to @user 
+        end
+    end
     def index
         @ratings = Rating.all
     end
@@ -31,10 +45,17 @@ class RatingsController < ApplicationController
             format.json { render json: @rating.errors, status: :unprocessable_entity }
           end
         end
-      end
+    end
     private
     def rating_params
         params.require(:rating).permit( :comment, :rating_number, :user_id, :reviewer_id)
     end
-   
+
+    def set_rating
+        @rating = Rating.find(params[:id])
+    end
+
+    def set_user
+        @user = User.find(params[:user_id])
+    end
 end
