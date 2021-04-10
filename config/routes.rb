@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     resources :messages
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  root 'users#new'
+  root 'users#new'  #  root 'front#frontpage'
   get    '/signup',  to: 'users#new'
   post   '/signup', to:  'users#create'
   get '/search', to: 'welcome#search'

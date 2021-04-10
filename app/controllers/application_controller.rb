@@ -12,5 +12,9 @@ class ApplicationController < ActionController::Base
         else 
             return nil
         end
-      end  
+      end
+      
+      
+    
 end
+
