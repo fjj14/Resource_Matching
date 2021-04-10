@@ -7,7 +7,10 @@ class ApplicationController < ActionController::Base
     include SessionsHelper
 
     def current_user  
-        return unless session[:user_id]  
-        @current_user ||= User.find(session[:user_id])  
+        if User.where(id: session[:user_id])  != []
+          User.find(session[:user_id])  
+        else 
+            return nil
+        end
       end  
 end
