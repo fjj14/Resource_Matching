@@ -372,7 +372,7 @@ DEPENDENCIES
   activerecord-import
   bcrypt (~> 3.1.7)
   bootsnap (>= 1.4.4)
-  bootstrap-sass (= 3.4.1)
+  bootstrap-sass
   byebug
   cancancan
   capybara (>= 3.26)

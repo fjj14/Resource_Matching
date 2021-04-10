@@ -1,0 +1,14 @@
+
+<%= form_for @rating do |form| %>
+<div class="form-group ">
+    <%= form.label :"Rating", class: "control-label" %> 
+    <%= form.text_field :rating_number, class: "form-control" %>
+</div>
+<div class="form-group ">
+    <%= form.label :comment, class: "control-label" %> 
+    <%= form.text_field :comment, class: "form-control" %>    
+</div>
+<div class = "actions">
+    <%= form.submit :submit, class: 'btn btn-primary' %>
+</div>
+<%end%>

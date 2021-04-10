@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[ show edit update destroy ]
-
+  before_action :rating, only: %i[show]
+  def rating
+    @rating = Rating.new
+  end
   # GET /users or /users.json
   def index
     @users = User.all
