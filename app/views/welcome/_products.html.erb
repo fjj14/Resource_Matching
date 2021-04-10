@@ -11,9 +11,13 @@
                  <div class ="col-md-6 nopadding" >
                    <%= product.name %>
                    </div>
+                    <%if current_user &&  product.user != current_user%>
                    <div class ="col-md-6 nopadding" id="pri">
                    <%= link_to(User.where(id: product.user_id).first.username, user_path(product.user_id)) if user = User.where(id: product.user_id) %>
                    </div>
+           <%else%>
+                    <span style="float:right"> you </span>
+              <% end %>
                  </h5>
                  <br>
                   <% if product.image.present? %>
@@ -26,7 +30,6 @@
                 <div class ="col-md-6 nopadding">
                 <%if current_user &&  product.user != current_user%>
                 <%= link_to "Message", conversations_path(user_id: product.user_id, body: "I want to buy your product", subject: product.name ), method: 'post', class: 'btn btn-primary' %>
-                 <% end %> 
                    </div>
                    <div class ="col-md-6 nopadding" id="pri">
                      $<%= number_with_precision(product.price, :precision => 2)%>
@@ -34,9 +37,22 @@
                    <br>
                    <div class ="col-md-12">
                     <p class="card-text"><%= product.description %></p>
-                    </div>
-                    <%= link_to "Purchase","https://venmo.com/#{product.user.venmo_id}?txn=pay&amount=#{product.price}", class: 'btn btn-primary' %>
-                </div>
+                    </div> 
+                  <%= link_to "Purchase","https://venmo.com/#{product.user.venmo_id}?txn=pay&amount=#{product.price}", class: 'btn btn-primary' %>
+                
+                 <% else %> 
+                   </div>
+                   <p class ="col-md-6 nopadding" id="pri" style="float:right">
+                     $<%= number_with_precision(product.price, :precision => 2)%>
+               
+       
+                   <span class ="col-md-12" style="float:left">
+                    <p class="card-text"><%= product.description %></p>
+                    </span>
+
+                    
+                   <% end %> 
+                </p>
                 
             </div>
         </div>
