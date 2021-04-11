@@ -3,13 +3,18 @@
 
 
 .left{
-    padding-left: 12rem;
+    justify-content: center;
+    align-content: center;
+    padding-left: 14rem;
    padding-right: 1rem;
 }
 
 .right{
+    
+ justify-content: center;
+ display: flex;
     padding-left: 1rem;
-    padding-right: 12rem;  
+    padding-right: 10rem;  
 }
 p{
    
@@ -28,7 +33,8 @@ line-height: 2.5rem;
 
 
 .row{
-    background-color: white ;
+    margin-top: 0% !important;
+   
 }
 
 body{
@@ -41,7 +47,7 @@ button{
 }
 #one{
 
-    background-color: #F6FDFF;
+    background-color: #F0F4FF;
     
 }
 

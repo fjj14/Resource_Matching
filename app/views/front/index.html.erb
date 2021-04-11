@@ -25,24 +25,23 @@ h1{
 <body>
 
 <%= render '/layouts/navbar' %>
+ <div style=" padding-top:5%; background-color:#F0F4FF"></div>
 
 <div class="container-fluid" >
     <div class="row" id="one">
         <div class="col-lg-6">
             
-<h1 class="left">
+<h1 class="left" style="font-size:5.8rem">
 Buy, trade, and sell @ Brandeis.
 
 </h1>
         </div>
 
         <div class="col-lg-6">
-        <h1>
-           
-
-
-</h1>
-<div style=" padding-top:20%; ">
+<div class="right">
+<%= image_tag "humans1.png",  style: 'height:auto;width:60%;'%>
+</div>
+<div style=" margin-top:12%; ">
 
         </div>
         
@@ -55,7 +54,7 @@ Buy, trade, and sell @ Brandeis.
 
 
  <div class="container-fluid" >
- 
+ <div style=" padding-top:8%; background-color:white"></div>
    <div class="row" id="two">
         <div class="col-lg-6 left">
             
@@ -76,9 +75,9 @@ buyDeis is an application designed to provide the Brandeis student body with a s
         <div class="col-lg-6">
      
 <div class="right">
-<%= image_tag ("humans.png")%>
+   <%= image_tag "product.png",  style: 'height:auto;width:70%;'%>
 </div>
-     <div style=" padding-top:20%; "></div>
+     <div style=" margin-top:20%; "></div>
         </div>
        
     </div>
@@ -94,27 +93,23 @@ buyDeis is an application designed to provide the Brandeis student body with a s
    <div class="row " id="two">
         <div class="col-lg-6 left">
             
-
-            <%= image_tag ("product.png")%>
+<%= image_tag "humans2.png",  style: 'height:auto;width:90%;'%>
+         
 
         </div>
         
-        <div class="col-lg-6">
-       
-
-            <div class="right" >
+        <div class="col-lg-6 right" style="display:block;">
+    
                 <h1>
                 Find the products you love.
 
-                </h1>       
+                </h1>     
                 <p>
                 Looking to buy something you need here at Brandeis? Buy a product quickly and hassle-free locally from your peers at university.
                 </p>
 <br/>
            <button type="button" href="google.com" class="btn btn-primary"> Shop Now  </button>
-</div>
 
-            <div style=" padding-top:20%; "></div >
         </div>
        
     </div>
@@ -147,7 +142,7 @@ Create a product posting and share it with the people at your university.
         <div class="col-lg-6">
      
 <div class="right">
-<%= image_tag ("brandeis.png")%>
+<%= image_tag "brandeis.png", style: 'height:auto;width:85%;'%>
 </div>
      <div style=" padding-top:20%; "></div>
         </div>
@@ -174,7 +169,7 @@ Create a product posting and share it with the people at your university.
         <div class="col-lg-6">
        
 
-            <div class="right" >
+            <div class="right" style="display:block;">
                 <h1 >
                Network with other Brandeis creatives
 
@@ -186,31 +181,66 @@ Create a product posting and share it with the people at your university.
            <button type="button" href="/signup" class="btn btn-primary"> Sign up  </button>
 </div>
 
-            <div style=" padding-top:20%; "></div>
+       
         </div>
        
     </div>
-
+ <div style=" padding-top:10%; background-color:white"></div>
 </div>
 
 
-<div class="container-fluid" >
+<div class="container-fluid" style="background-color:#F0F4FF" >
 
 <h1 style="text-align:center">
 Our Team
 </h1>
+<br/><br/><br/>
 
-   <div class="row " >
+   <div class="row " style="text-align:center;background-color:#F0F4FF" >
+        <div class="col-lg-4 " >
+            
+
+            <%= image_tag "fatumata.png",  style: 'height:auto;max-width:60%;' %>
+            <h1 style="font-size:3rem;font-weight:400;text-align:center;margin-bottom:1.2%">Fatumata Jalloh</h1>
+            <p style="text-align:center;font-size:1.4rem">  CS & Math, Brandeis University 2022   </p>
 
 
+            </div>
+         <div class="col-lg-4 ">
+            
+
+            <%= image_tag "yalda.png",  style: 'height:auto;max-width:60%;' %>
+          <h1 style="font-size:3rem;font-weight:400;text-align:center;margin-bottom:1.2%">Yalda Mauj</h1>
+           <p style="text-align:center;font-size:1.4rem"> CS & Econ, Brandeis University 2023      </p>
+
+
+
+        </div>
+         <div class="col-lg-4 ">
+            
+
+            <%= image_tag "sophia.png",  style: 'height:auto;max-width:60%;' %>
+<h1 style="font-size:3rem;font-weight:400;text-align:center;margin-bottom:1.2%">Sophia Wang</h1>
+ <p style="text-align:center;font-size:1.4rem"> CS & Studio Art, Brandeis University 2023      </p>
+
+        </div>
+ <div style=" margin-top:38%;"></div>
    </div>
 
+</div>
+
+<div class="container-fluid" id="four">
+
+<h1 style="text-align:center" >Contact Us</h1>
+
+<p style="text-align:center"> Questions? Concerns? Email us at  <u><a href="mailto:buydeisco@gmail.com">buydeisco@gmail.com<a></u> to get in touch.</p>
 
 
 
 </div>
-
-
+<div style=" padding-top:10%; background-color:white;"></div>
+<div style=" padding-top:3%;"></div>
+	<p style="text-align:center;font-size:1.6rem;font-family: serif;font-weight:bold"> © buyDeis 2021 </p>
 
 
 </body>
