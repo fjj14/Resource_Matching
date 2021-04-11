@@ -20,10 +20,38 @@
     </div>
 </div>
 
+<h5 > Average Rating </h5>
 
+<% @user.average_rating.to_i.times do  %>
+    <span class="glyphicon glyphicon-star"></span>
+<% end %>
+<% (5- @user.average_rating).to_i.times do  %>
+    <span class="glyphicon glyphicon-star-empty"></span>
+<% end %>
+<button id="btnview" type="button" class="btn btn-primary" data-bs-toggle="modal"  style="margin-left:30%" data-toggle="modal" data-target="#myModal">
+  <%= Rating.where(user_id: @user.id).length %>
+</button>
 
-
-
+<div class="modal" id="myModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Reviews</h5>
+      </div>
+      <div class="modal-body">
+        <% Rating.where(user_id: @user.id).each do |rate| %>
+            <%= User.where(id: rate.reviewer_id).first.username %>
+            <%= rate.rating_number %>
+            <%= rate.comment %>
+            <br>
+        <%end%>
+      </div>
+      <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <%if current_user %>
 <button id="btnStart" type="button" class="btn btn-primary" data-bs-toggle="modal" data-target="#formModal" style="margin-left:30%" data-toggle="modal" data-target="#formModal">
@@ -32,6 +60,7 @@
 
 
 <div class="modal" id="formModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel"  aria-hidden="true">
+
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -41,6 +70,7 @@
             </div>
             <div class="modal-body">
             <%= form_tag(:controller => "ratings", :action => "create") do%>
+               
             <%= hidden_field_tag(:user_id, @user.id) %>
             <%= hidden_field_tag(:reviewer_id, current_user.id) %>
             <div class="form-group ">

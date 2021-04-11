@@ -1,9 +1,8 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[ show edit update destroy ]
-  before_action :rating, only: %i[show]
-  def rating
-    @rating = Rating.new
-  end
+ 
+  before_action :average_rating, only: %i[show]
+  
   # GET /users or /users.json
   def index
     @users = User.all
@@ -54,6 +53,21 @@ class UsersController < ApplicationController
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def average_rating
+    total =0
+    @current_ratings =Rating.where(user_id: @user.id)
+    @current_ratings.each do |rate|
+      total = total + rate.rating_number
+    end
+
+    if @current_ratings != []
+      @user.average_rating = total /@current_ratings.length
+    else 
+      @user.average_rating = 0
+    end 
+
   end
 
   # DELETE /users/1 or /users/1.json
