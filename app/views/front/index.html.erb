@@ -16,15 +16,20 @@ h1{
    
     
 }
+body{
+        margin-bottom: 5%;
+        background-color:  #F0F4FF ;
+}
 </style>
 
 
 </head>
 
 
-<body>
+<div class="bod">
 
 <%= render '/layouts/navbar' %>
+
  <div style=" padding-top:5%; background-color:#F0F4FF"></div>
 
 <div class="container-fluid" >
@@ -41,7 +46,7 @@ Buy, trade, and sell @ Brandeis.
 <div class="right">
 <%= image_tag "humans1.png",  style: 'height:auto;width:60%;'%>
 </div>
-<div style=" margin-top:12%; ">
+<div style=" margin-top:15%; ">
 
         </div>
         
@@ -68,14 +73,17 @@ buyDeis is an application designed to provide the Brandeis student body with a s
 </p>
 <br/>
 
- <button type="button" href="google.com" class="btn btn-primary"> Get Started  </button>
 
+<%= button_tag onclick: "location.href='/signup'",
+  type: :button, class: "btn btn-primary" do %> Get Started 
+  <%end%>
+  
       </div>
         
         <div class="col-lg-6">
      
 <div class="right">
-   <%= image_tag "product.png",  style: 'height:auto;width:70%;'%>
+   <%= image_tag "product.png",  style: 'height:auto;width:80%;'%>
 </div>
      <div style=" margin-top:20%; "></div>
         </div>
@@ -108,7 +116,11 @@ buyDeis is an application designed to provide the Brandeis student body with a s
                 Looking to buy something you need here at Brandeis? Buy a product quickly and hassle-free locally from your peers at university.
                 </p>
 <br/>
-           <button type="button" href="google.com" class="btn btn-primary"> Shop Now  </button>
+          
+<%= button_tag onclick: "location.href='/welcome'",
+  type: :button, class: "btn btn-primary" do %> Shop Now
+  <%end%>
+
 
         </div>
        
@@ -136,7 +148,12 @@ Create a product posting and share it with the people at your university.
 <br/>
 
 
- <button type="button" href="google.com" class="btn btn-primary"> Post Your Product </button>
+
+<%= button_tag onclick: "location.href='/welcome'",
+  type: :button, class: "btn btn-primary" do %> Post Your Product 
+  <%end%>
+
+
       </div>
         
         <div class="col-lg-6">
@@ -178,7 +195,15 @@ Create a product posting and share it with the people at your university.
      Chat with students about a product, or find and connect with Brandeis creatives on the platform. 
                 </p>
 <br/>
-           <button type="button" href="/signup" class="btn btn-primary"> Sign up  </button>
+
+
+<%= button_tag onclick: "location.href='/signup'",
+  type: :button, class: "btn btn-primary" do %>Sign up   
+  <%end%>
+
+
+
+
 </div>
 
        
@@ -243,5 +268,6 @@ Our Team
 	<p style="text-align:center;font-size:1.6rem;font-family: serif;font-weight:bold"> © buyDeis 2021 </p>
 
 
-</body>
 
+
+</div>
