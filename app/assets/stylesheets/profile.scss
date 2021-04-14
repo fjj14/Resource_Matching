@@ -1,66 +1,41 @@
-#EditProd{
-    color:  #2F3F5F;
-    font-family: serif;
-    font-weight: bold;
-    font-size: xxx-large;
-    font-size: 400%;
-    margin-top: 5%;
-    text-align: left;
-    margin-left: 0;
-    margin-right: 0;
-  }
+body{
+    margin:0px;
+    margin-bottom:5%;
+    background-color: #F6FDFF;
+ }
+ 
 
-
-
-
-
-
-#del{
-    text-align: left;
-    margin-left: 10%;
+.emp-profile{
+    padding: 0%;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    border-radius: 0.5rem;
+ 
 }
-#cancel{
-    text-align: right;
-    margin-left:65% ;
+.profile-img{
+    text-align: center;
 }
-
-#fo{
-    background-color: white;
-    width: 80%;
-    margin-left: 10%;
-   form{
-       margin-top: 0%;
-       padding-top: 5%;
-       margin-bottom: 3%;
-      
-   }
-}
-
-#pro{
-    margin-top: 5%;
-     width:80%;
-     margin-left: 10%;
-     border: none;
-     background-color: #F6FDFF;
-}
-#edi{
-    margin-right: 0%;
-
+.profile-img img{
     width: 70%;
-    margin-left: 30%;
+    height: 70%;
 }
-#wa {
 
-    padding-right: 0% !important;
-    margin-right: 0% !important;
+.profile-head h5{
+    font-size: 35px;
 }
-#me{
-    margin-left: 40%;
-    width: 20%;
-    margin-right: 40;
-    background-color: none;
-    #lastName{
-        padding-right: 0%;
-        text-align: right;
-    }
-} 
+.profile-head h6{
+    font-size: 15px;
+}
+
+
+.profile-edit-btn{
+    border: none;
+    border-radius: 1.9rem;
+    width: 70%;
+    padding: 7%;
+    font-weight: 900;
+    color: #6c757d;
+    cursor: pointer;
+}
+
+

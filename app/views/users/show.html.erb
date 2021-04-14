@@ -1,140 +1,145 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/js/bootstrap.bundle.js'></script>
-
-
 <%= stylesheet_link_tag 'profile', media: 'all'%>
-<div class= "container" id="me">
-    <div class="card"  id="userIcon" >
-        <% if @user.image.present? %>
-            <%= image_tag(@user.image, class:"card-img-top")%> 
-        <% else %>
-            <%= link_to image_tag('default.png', class:"card-img-top") %> 
-        <% end %>
-        <div class="card-body">
-            <div class = "col-md-12 nopadding">
-                <%= @user.first + " "+ @user.last%>
-            </div>
-        </div>
-        <p class="card-text"> @<%= @user.username %></p>
-    </div>
-</div>
+<%= stylesheet_link_tag 'users', media: 'all'%>
 
-<h5 > Average Rating </h5>
-
-<% @user.average_rating.to_i.times do  %>
-    <span class="glyphicon glyphicon-star"></span>
-<% end %>
-<% (5- @user.average_rating).to_i.times do  %>
-    <span class="glyphicon glyphicon-star-empty"></span>
-<% end %>
-<button id="btnview" type="button" class="btn btn-primary" data-bs-toggle="modal"  style="margin-left:30%" data-toggle="modal" data-target="#myModal">
-  <%= Rating.where(user_id: @user.id).length %>
-</button>
-
-<div class="modal" id="myModal" tabindex="-1">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Reviews</h5>
-      </div>
-      <div class="modal-body">
-        <% Rating.where(user_id: @user.id).each do |rate| %>
-            <%= User.where(id: rate.reviewer_id).first.username %>
-            <%= rate.rating_number %>
-            <%= rate.comment %>
-            <br>
-        <%end%>
-      </div>
-      <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<%if current_user %>
-<button id="btnStart" type="button" class="btn btn-primary" data-bs-toggle="modal" data-target="#formModal" style="margin-left:30%" data-toggle="modal" data-target="#formModal">
-  Leave Review
-</button>
-
-
-<div class="modal" id="formModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel"  aria-hidden="true">
-
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-          
-                <h3 class="modal-title" id="formModalLabel">Review this seller</h3>
-               
-            </div>
-            <div class="modal-body">
-            <%= form_tag(:controller => "ratings", :action => "create") do%>
-               
-            <%= hidden_field_tag(:user_id, @user.id) %>
-            <%= hidden_field_tag(:reviewer_id, current_user.id) %>
-            <div class="form-group ">
-                    <%= label_tag(:rating_number, "Rating", class: "control-label") %> 
-                    <%= text_field_tag(:rating_number, "",class: "form-control") %>
-                </div>
-                <div class="form-group ">
-                    <%= label_tag(:comment, "comment", class: "control-label" ) %> 
-
-                    <%= text_field_tag(:comment,"", class: "form-control" )%>    
-                </div>
-                <div class = "actions">
-                <%= submit_tag :submit, class: 'btn btn-primary' %>
-               
-                </div>
-                <%end%>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-<%end%>
-
-<br>
-<% Product.where(user_id: @user.id).order('created_at DESC').each_slice(3)  do |products| %>
-    <div class="row no-gutters" id="pro">
-        <% products.each do |product| %> 
-        <div class="col-md-4 ">
-            <div class="card">
-                <h5 class="card-title">
-                    <div class ="col-md-6 nopadding" >
-                        <%= product.name %>
+<div class="container emp-profile">
+            
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="profile-img">
+                        <% if @user.image.present? %>
+                        <%= image_tag(@user.image, class:"card-img-top")%> 
+                        <% else %>
+                        <%= link_to image_tag('default.png', class:"card-img-top") %> 
+                        <% end %>
+                        </div>
                     </div>
-                </h5>
-                    <br>
-                    <% if product.image.present? %>
-                    <%= image_tag(product.image, class:"card-img-top")%> 
-                    <% else %>
-                    <%= image_tag( '/loginImage.jpg', class:"card-img-top") %> 
-                     <% end %>
-                     <br>
-                    <div class="card-body">
-                    <br>
+                    <div class="col-md-6">
+                        <div class="profile-head">
+                            <h5>
+                            <%= @user.first + " "+ @user.last%>
+                            </h5>
+                            <br>
+                            <h6>
+                            @<%= @user.username %>
+                            </h6>
+                            <% @user.average_rating.to_i.times do  %>
+                                <span class="glyphicon glyphicon-star"></span>
+                            <% end %>
+                            <% (5- @user.average_rating).to_i.times do  %>
+                                <span class="glyphicon glyphicon-star-empty"></span>
+                            <% end %>
+                            <button id="btnview" type="button" class="btn btn-primary" data-bs-toggle="modal"  style="margin-left:20%" data-toggle="modal" data-target="#myModal">
+                            <%= Rating.where(user_id: @user.id).length%>
+                            </button>
+
+                            <div class="modal" id="myModal" tabindex="-1">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Reviews</h5>
+                                </div>
+                                <div class="modal-body">
+                                    <% Rating.where(user_id: @user.id).each do |rate| %>
+                                        <%= User.where(id: rate.reviewer_id).first.username %>
+                                        <%= rate.rating_number %>
+                                        <%= rate.comment %>
+                                        <br>
+                                    <%end%>
+                                </div>
+                                
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                <br>
+                <%if current_user %>
+                <button id="btnStart" type="button" class="btn btn-primary" data-bs-toggle="modal" data-target="#formModal" style="margin-left:90%" data-toggle="modal" data-target="#formModal">
+                  Leave Review
+                </button>
                 
-                    <div class ="col-md-6 nopadding" >
-                        $<%= number_with_precision(product.price, :precision => 2)%>
+                
+                <div class="modal" id="formModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel"  aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                          
+                                <h3 class="modal-title" id="formModalLabel">Review this seller</h3>
+                               
+                            </div>
+                            <div class="modal-body">
+                            <%= form_tag(:controller => "ratings", :action => "create") do%>
+                            <%= hidden_field_tag(:user_id, @user.id) %>
+                            <%= hidden_field_tag(:reviewer_id, current_user.id) %>
+                            <div class="form-group ">
+                                    <%= label_tag(:rating_number, "Rating", class: "control-label") %> 
+                                    <%= text_field_tag(:rating_number, "",class: "form-control") %>
+                                </div>
+                                <div class="form-group ">
+                                    <%= label_tag(:comment, "comment", class: "control-label" ) %> 
+                
+                                    <%= text_field_tag(:comment,"", class: "form-control" )%>    
+                                </div>
+                                <div class = "actions">
+                                <%= submit_tag :submit, class: 'btn btn-primary' %>
+                               
+                                </div>
+                                <%end%>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
                     </div>
-                    
-                    <div class ="col-md-6 nopadding" id="wa" >
-                   
-             
-                    </div>
-                    <br>
-                    <div class ="col-md-12">
-                        <p class="card-text"><%= product.description %></p>
-                    </div>
-                </div>   
-            </div>
+                </div>
+            <%end%>
+ 
         </div>
-        <% end %>
-    </div>
-<% end %>
+        <br><br>
+            <% Product.where(user_id: @user.id).order('created_at DESC').each_slice(3)  do |products| %>
+                <div class="row no-gutters" id="pro">
+                    <% products.each do |product| %> 
+                    <div class="col-md-4 ">
+                        <div class="card">
+                            <h5 class="card-title">
+                                <div class ="col-md-6 nopadding" >
+                                    <%= product.name %>
+                                </div>
+                            </h5>
+                                <br>
+                                <% if product.image.present? %>
+                                <%= image_tag(product.image, class:"card-img-top")%> 
+                                <% else %>
+                                <%= image_tag( '/loginImage.jpg', class:"card-img-top") %> 
+                                <% end %>
+                                <br>
+                                <div class="card-body">
+                                <br>
+                            
+                                <div class ="col-md-6 nopadding" >
+                                    $<%= number_with_precision(product.price, :precision => 2)%>
+                                </div>
+                                
+                                <div class ="col-md-6 nopadding" id="wa" >
+                            
+                        
+                                </div>
+                                <br>
+                                <div class ="col-md-12">
+                                    <p class="card-text"><%= product.description %></p>
+                                </div>
+                            </div>   
+                        </div>
+                    </div>
+                    <% end %>
+                </div>
+            <% end %>
+
+
+
+       
