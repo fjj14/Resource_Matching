@@ -67,8 +67,8 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.default_url_options = { host: "http://buydeis.herokuapp.com" }
   config.action_mailer.smtp_settings = {
-  :user_name => ENV["SENDGRID_USERNAME"],
-  :password => ENV["SENDGRID_PASSWORD"],
+  :user_name => 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,
+  :password => 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,
   :address => 'smtp.sendgrid.net',
   :domain => 'buydeis.herokuapp.com',
   :port => 587,
