@@ -1,4 +1,4 @@
-ActionMailer::Base.smtp_settings = {
+UserMailer::Base.smtp_settings = {
   address: 'smtp.sendgrid.net',
   port: 587,
   domain: 'buydeis.heroku.com',
