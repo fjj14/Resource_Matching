@@ -3,6 +3,7 @@
 
 <head>
 <%= stylesheet_link_tag 'frontpage', media: 'all'%>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
 
 
@@ -20,6 +21,55 @@ body{
         margin-bottom: 5%;
         background-color:  #F0F4FF ;
 }
+
+@media (max-width: 1200px) {
+  p{
+    margin-left:6%;
+    margin-right:6%;
+  }
+  .im{
+    height:auto;
+    max-width:60%;
+
+  }
+.right{
+  
+  text-align:center;
+padding-right:0rem;
+padding-left:0rem;
+     margin-right: 4rem; 
+   margin-left: 4rem;  
+}
+h1{
+  text-align:center;
+   padding-right: 1rem; 
+   padding-left: 1rem;   
+
+}
+p{
+  text-align:center;
+   padding-right: 1rem; 
+   padding-left: 1rem;   
+}
+.left{
+      padding-left: 1rem;
+}
+
+
+.btn-primary {
+  text-align:center;
+ margin-right: 1rem; 
+   margin-left: 1rem;   
+    justify-content: center;
+    align-content: center;
+}
+.col-lg-6{
+  text-align:center;
+}
+
+}
+
+
 </style>
 
 
@@ -44,7 +94,7 @@ Buy, trade, and sell @ Brandeis.
 
         <div class="col-lg-6">
 <div class="right">
-<%= image_tag "humans1.png",  style: 'height:auto;width:60%;'%>
+<%= image_tag "humans1.png",  class: "im",style: 'height:auto;width:60%;'%>
 </div>
 <div style=" margin-top:15%; ">
 
@@ -79,11 +129,11 @@ buyDeis is an application designed to provide the Brandeis student body with a s
   <%end%>
   
       </div>
-        
+        <br/>
         <div class="col-lg-6">
      
 <div class="right">
-   <%= image_tag "product.png",  style: 'height:auto;width:80%;'%>
+   <%= image_tag "product.png",  class: "im", style: 'height:auto;width:80%;'%>
 </div>
      <div style=" margin-top:20%; "></div>
         </div>
@@ -101,7 +151,7 @@ buyDeis is an application designed to provide the Brandeis student body with a s
    <div class="row " id="two">
         <div class="col-lg-6 left">
             
-<%= image_tag "humans2.png",  style: 'height:auto;width:90%;'%>
+<%= image_tag "humans2.png", class: "im", style: 'height:auto;width:90%;'%>
          
 
         </div>
@@ -148,18 +198,17 @@ Create a product posting and share it with the people at your university.
 <br/>
 
 
-
 <%= button_tag onclick: "location.href='/welcome'",
   type: :button, class: "btn btn-primary" do %> Post Your Product 
   <%end%>
 
 
       </div>
-        
+      <br/> 
         <div class="col-lg-6">
      
 <div class="right">
-<%= image_tag "brandeis.png", style: 'height:auto;width:85%;'%>
+<%= image_tag "brandeis.png", class: "im", style: 'height:auto;width:85%;'%>
 </div>
      <div style=" padding-top:20%; "></div>
         </div>
@@ -179,7 +228,7 @@ Create a product posting and share it with the people at your university.
         <div class="col-lg-6 left">
             
 
-            <%= image_tag "message.png",  style: 'height:auto;max-width:93%;' %>
+            <%= image_tag "message.png",  class: "im", style: 'height:auto;max-width:93%;' %>
 
         </div>
         
@@ -225,8 +274,8 @@ Our Team
         <div class="col-lg-4 " >
             
 
-            <%= image_tag "fatumata.png",  style: 'height:auto;max-width:60%;' %>
-            <h1 style="font-size:3rem;font-weight:400;text-align:center;margin-bottom:1.2%">Fatumata Jalloh</h1>
+            <%= image_tag "fatumata.png",  class:"im", style: 'height:auto;max-width:60%;' %>
+            <h1 style="font-size:3rem;font-weight:400;text-align:center;margin-bottom:1%;margin-top:1%">Fatumata Jalloh</h1>
             <p style="text-align:center;font-size:1.4rem">  CS & Math, Brandeis University 2022   </p>
 
 
@@ -234,8 +283,8 @@ Our Team
          <div class="col-lg-4 ">
             
 
-            <%= image_tag "yalda.png",  style: 'height:auto;max-width:60%;' %>
-          <h1 style="font-size:3rem;font-weight:400;text-align:center;margin-bottom:1.2%">Yalda Mauj</h1>
+            <%= image_tag "yalda.png",  class:"im", style: 'height:auto;max-width:60%;' %>
+          <h1 style="font-size:3rem;font-weight:400;text-align:center;margin-bottom:1%;margin-top:1%">Yalda Mauj</h1>
            <p style="text-align:center;font-size:1.4rem"> CS & Econ, Brandeis University 2023      </p>
 
 
@@ -244,8 +293,8 @@ Our Team
          <div class="col-lg-4 ">
             
 
-            <%= image_tag "sophia.png",  style: 'height:auto;max-width:60%;' %>
-<h1 style="font-size:3rem;font-weight:400;text-align:center;margin-bottom:1.2%">Sophia Wang</h1>
+            <%= image_tag "sophia.png",  class:"im", style: 'height:auto;width:60%;' %>
+<h1 style="font-size:3rem;font-weight:400;text-align:center;margin-bottom:1%;margin-top:1%">Sophia Wang</h1>
  <p style="text-align:center;font-size:1.4rem"> CS & Studio Art, Brandeis University 2023      </p>
 
         </div>
