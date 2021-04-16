@@ -21,6 +21,10 @@ class UsersController < ApplicationController
   end
   def mailboxer_email(object)
     self.email
+    if object.class == Mailboxer::Notification
+      email
+    end
+
   end
   # GET /users/1/edit
   def edit
