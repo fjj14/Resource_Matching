@@ -41,7 +41,7 @@
             
               <%= image_tag(conversation.participants[1].image, class:"card-img-top")%>
                 <% else %>
-                 <img class="card-img-top" src="..." alt="">
+                  <%= image_tag('default.png', class:"card-img-top") %> 
                  <%end%>
 
         <%else%>
@@ -50,7 +50,7 @@
             
               <%= image_tag(conversation.participants[0].image, class:"card-img-top")%>
                 <% else %>
-                 <img class="card-img-top" src="..." alt="">
+                 <%= image_tag('default.png', class:"card-img-top") %> 
                  <%end%>
 
         <%end%>
@@ -89,7 +89,7 @@
             
               <%= image_tag(conversation.participants[1].image, class:"card-img-top")%>
                 <% else %>
-                 <img class="card-img-top" src="..." alt="">
+                 <%= image_tag('default.png', class:"card-img-top") %> 
                  <%end%>
 
         <%else%>
@@ -98,7 +98,9 @@
             
               <%= image_tag(conversation.participants[0].image, class:"card-img-top")%>
                 <% else %>
-                 <img class="card-img-top" src="..." alt="">
+                
+
+                  <%= image_tag('default.png', class:"card-img-top") %> 
                  <%end%>
 
         <%end%>

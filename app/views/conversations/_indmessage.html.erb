@@ -45,7 +45,7 @@
 
      <%= image_tag(User.where(id: session[:user_id]).first.image, class:"card-img-top")%>
              <% else %>
-          <img class='card-img-top' src='...' alt=''>
+            <%= image_tag('default.png', class:"card-img-top") %> 
             <%end%>
                
 
@@ -72,7 +72,7 @@
             
               <%= image_tag(receipt.message.sender.image, class:"card-img-top")%> 
                 <% else %>
-                 <img class="card-img-top" src="..." alt="">
+                 <%= image_tag('default.png', class:"card-img-top") %> 
                  <%end%>
 
                  

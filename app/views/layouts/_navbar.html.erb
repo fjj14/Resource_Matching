@@ -28,8 +28,10 @@
         <%= text_field_tag :name, "",class: "form-control", placeholder: "Search for Products" %>
         </div>
         <div class="col-md-2 col-3 " >
-          <%= submit_tag "Search", class: "btn btn-default"  ,id: 'searchbutton'%>
-        </div>
+
+        <%= button_tag(type: "submit", style:"border:none") do %>
+ <i class="fa fa-search"  style="font-size:2.4rem;color:white" id="seee" aria-hidden="true"></i>
+<% end %>        </div>
         </div>
        <% end %>
         <ul class="nav navbar-nav navbar-right">
