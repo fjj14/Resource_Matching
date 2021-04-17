@@ -41,7 +41,7 @@
                     <p class="card-text"><%= product.description %></p>
                     </div> 
                           
-                  <%= link_to "Purchase","https://venmo.com/#{product.user.venmo_id}?txn=pay&amount=#{product.price}", class: 'btn btn-primary' %>
+                  <%= button_to 'buy now', checkout_create_path, method: :post, params: {id: product.id},remote: true %>
                 
                 <% else %> 
                 </div>

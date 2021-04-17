@@ -9,6 +9,7 @@ class UsersController < ApplicationController
   end
 
   # GET /users/1 or /users/1.json
+  #@rating = rating.show
   def show
   end
 

@@ -1,0 +1,4 @@
+
+<h5> Congrats! You just bought <%= @product.name %>!</h5>
+<% @products = Product.all %>
+<%= render 'welcome/products', products: @products %>
