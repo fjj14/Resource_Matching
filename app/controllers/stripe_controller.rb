@@ -1,5 +1,17 @@
 class StripeController < ApplicationController
     def connect
+        account = Stripe::Account.create({
+            country: 'US',
+            type: 'express',
+            capabilities: {
+                card_payments: {
+                    'requested': true,
+                },
+                transfers: {
+                    'requested': true,
+                },
+            },
+        })
         response = Stripe::Account.token({
             grant_type: 'authorization_code',
             code: params[:code],
