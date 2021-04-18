@@ -1,6 +1,6 @@
 class StripeController < ApplicationController
     def connect
-        response = Stripe::OAuth.token({
+        response = Stripe::Account.token({
             grant_type: 'authorization_code',
             code: params[:code],
            
