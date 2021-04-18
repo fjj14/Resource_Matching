@@ -27,6 +27,7 @@ gem 'client_side_validations'
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 #gem 'devise'
+gem 'oauth2'
 gem 'cancancan'
 gem 'rails_admin', '~> 2.0'
 gem 'google-cloud-storage', '~>1.8', require: false

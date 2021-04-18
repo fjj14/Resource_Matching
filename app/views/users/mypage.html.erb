@@ -1,22 +1,26 @@
 <%= stylesheet_link_tag 'users', media: 'all'%>
 <div class= "container" id="me">
-<div class="card"  id="userIcon" >
- <% if current_user.image.present? %>
-    <%= image_tag(User.where(id: session[:user_id]).first.image, class:"card-img-top")%> 
- <% else %>
-   <img class="card-img-top" src="..." alt="My profile picture">
-<% end %>
-    <div class="card-body">
-        <div class = "col-md-12 nopadding">
-        <%= current_user.first + " "+current_user.last%>
+    <div class="card"  id="userIcon" >
+        <% if current_user.image.present? %>
+            <%= image_tag(User.where(id: session[:user_id]).first.image, class:"card-img-top")%> 
+        <% else %>
+            <img class="card-img-top" src="..." alt="My profile picture">
+        <% end %>
+        <div class="card-body">
+            <div class = "col-md-12 nopadding">
+                <%= current_user.first + " "+current_user.last%>
+            </div>
+            <p class="card-text"> @<%= current_user.username %></p>
         </div>
-       
-        <p class="card-text"> @<%= current_user.username %></p>
     </div>
 </div>
-</div>
 <br>
-
+<% if current_user.stripe_user_id %>
+<%= link_to "Go to Stripe Dashboard", stripe_dashboard_path(@user.id) %>
+<% else %>
+    <%= link_to image_tag("stripe_button.png", width:"50px", height:"50px"), stripe_button_link %>
+<% end %>
+<br>
 <% Product.where(user_id: session[:user_id]).order('created_at DESC').each_slice(3)  do |products| %>
     <div class="row no-gutters" id="pro">
         <% products.each do |product| %> 
