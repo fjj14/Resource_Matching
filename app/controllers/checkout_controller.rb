@@ -5,6 +5,7 @@ class CheckoutController < ApplicationController
     end
     def create 
         @product = Product.find(params[:id])
+        @product.buyer_id = current_user.id
         if @product.nil?
             redirect_to welcome_path
             return
@@ -20,7 +21,7 @@ class CheckoutController < ApplicationController
                 quantity: 1
             }],
             success_url: checkout_success_url(product: @product.id) ,
-            cancel_url: checkout_cancel_url
+            cancel_url: checkout_cancel_url(product: @product.id)
         )
 
         respond_to do |format|
@@ -28,13 +29,16 @@ class CheckoutController < ApplicationController
         end 
     end 
     def success 
-       
+       #call account transfer
        # @session = Stripe::Checkout::Session.retrieve(params[:session_id])
        # @payment_intent = Stripe::PaymentIntent.retrieve(@session.payment_intent)
         @product = Product.where(id: params[:product]).first
-        @product.buyer_id = current_user.id
+       
     end
     def cancel 
+        @product = Product.where(id: params[:product]).first
+        @product.buyer_id = nil
         redirect_to welcome_path
+        
     end 
 end

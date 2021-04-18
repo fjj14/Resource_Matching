@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
     rescue_from CanCan::AccessDenied do |exception|
         redirect_to main_app.login_path, alert: exception.message
     end
-
+#idea add account transfer here by passing in product param and user id and making the transfer
     include SessionsHelper
 
     def current_user  
