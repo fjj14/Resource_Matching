@@ -2,7 +2,7 @@
 <%= flash[:alert] = "Sorry we couldn't find the product you were looking for" %>
   <% @products =Product.all %>
 <%end%>
-<% @products.order('created_at DESC').each_slice(3)  do |products| %>
+<% @products.where(buyer_id: nil).order('created_at DESC').each_slice(3)  do |products| %>
     <div class="row " >
      <% products.each do |product| %> 
       <div class="col-md-4 " >
