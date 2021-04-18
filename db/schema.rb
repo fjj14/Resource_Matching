@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_17_172620) do
+ActiveRecord::Schema.define(version: 2021_04_18_021545) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -153,9 +153,9 @@ ActiveRecord::Schema.define(version: 2021_04_17_172620) do
     t.string "provider"
     t.string "access_code"
     t.string "publishable_key"
-    t.string "stripe_user_id"
     t.string "venmo_id"
     t.float "average_rating"
+    t.string "stripe_user_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
