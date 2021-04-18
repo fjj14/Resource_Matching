@@ -68,8 +68,7 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.default_url_options = { host: "http://buydeis.herokuapp.com" }
   config.action_mailer.smtp_settings = {
-  :from   => 'buydeisco@gmail.com',
-  :user_name => ENV["SENDGRID_USERNAME"],
+  :user_name => 'apikey',
   :password => ENV["SENDGRID_PASSWORD"],
   :address => 'smtp.sendgrid.net',
   :domain => 'buydeis.herokuapp.com',
