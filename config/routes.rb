@@ -2,7 +2,10 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :categories
   resources :sessions
-  resources :products
+  resources :products do
+    post 'like', to: 'products#like'
+  end
+ 
   resources :users 
   resources :ratings
   resources :conversations do

@@ -42,7 +42,8 @@
                     </div> 
                           
                   <%= button_to 'buy now', checkout_create_path, method: :post, params: {id: product.id},remote: true %>
-                
+                  <%= button_to 'Like', product_like_path(product), params: {id: product.id },  remote: true %>
+                  <%= product.votes_for.size %>
                 <% else %> 
                 </div>
                    <p class ="col-md-6 nopadding" id="pri" style="float:right">

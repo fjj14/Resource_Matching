@@ -27,6 +27,7 @@ gem 'client_side_validations'
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 #gem 'devise'
+gem 'acts_as_votable'
 gem 'oauth2'
 gem 'cancancan'
 gem 'rails_admin', '~> 2.0'
@@ -61,7 +62,7 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
-  gem 'pg'
+  
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

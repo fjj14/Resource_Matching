@@ -7,9 +7,20 @@ class ProductsController < ApplicationController
     def new 
       @product = Product.new
     end
+
     def edit 
-    
     end
+
+    def like
+      @product = Product.find(params[:id])
+      if current_user.voted_for? @product 
+        @product.unliked_by current_user
+      else
+        @product.liked_by current_user
+      end
+      redirect_to welcome_path
+    end
+    
     def create
       @product = Product.new(product_params)
       if !@product[:user_id]

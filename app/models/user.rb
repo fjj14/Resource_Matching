@@ -16,4 +16,5 @@ class User < ApplicationRecord
     has_secure_password
     has_one_attached :image
     acts_as_messageable
+    acts_as_voter
 end
