@@ -16,9 +16,9 @@
 </div>
 <br>
 <% if current_user.stripe_user_id %>
-<%= link_to "Go to Stripe Dashboard", stripe_dashboard_path(current_user.id) %>
+<%= link_to "Go to Stripe Dashboard", stripe_dashboard_path %>
 <% else %>
-    <%= link_to image_tag("ConnectwithStripe.png", width:"120px", height:"40px"), stripe_button_link %>
+    <%= link_to image_tag("ConnectwithStripe.png", width:"120px", height:"40px"), stripe_create_path %>
 <% end %>
 <br>
 <% Product.where(user_id: session[:user_id]).order('created_at DESC').each_slice(3)  do |products| %>
