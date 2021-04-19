@@ -5,7 +5,7 @@ class CheckoutController < ApplicationController
     end
     def create 
         @product = Product.find(params[:id])
-        @product.buyer_id = current_user.id
+        @product.update_column(:buyer_id, current_user.id)
         if @product.nil?
             redirect_to welcome_path
             return
@@ -37,7 +37,7 @@ class CheckoutController < ApplicationController
     end
     def cancel 
         @product = Product.where(id: params[:product]).first
-        @product.buyer_id = nil
+        @product.update_column(:buyer_id, nil)
         redirect_to welcome_path
         
     end 
