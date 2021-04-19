@@ -2,8 +2,8 @@ class StripeController < ApplicationController
     def connect
         response = HTTParty.post("https://connect.stripe.com/oauth/token",
         query: {
-          client_secret: Stripe.api_key,
-          code: params[:code],
+          client_secret: ENV["STRIPE_SECRET_KEY"],
+          code: {AUTHORIZATION_CODE},
           grant_type: "authorization_code"
         }
       )
