@@ -7,7 +7,7 @@ class StripeController < ApplicationController
           account = Stripe::Account.create({
                                              type: 'express',
                                              country: 'US',
-                                             email: `#{current_user.email}`,
+                                           
                                              capabilities: {
                                                card_payments: {
                                                  'requested': true
@@ -16,13 +16,13 @@ class StripeController < ApplicationController
                                              }
                                            })
         # Store current users stripe id in user database
-        current_user.update_column(:stripe_user_id, account.id)
+        current_user.stripe_user_id= account.id
   
         # Create temporary account link and redirect to express onboarding
         account_link = Stripe::AccountLink.create({
                                                     account: account.id,
-                                                    refresh_url: 'https://buydeis.herokuapp.com?/account/refresh/',
-                                                    return_url: 'https://buydeis.herokuapp.com?/account/returns/',
+                                                    refresh_url: 'https://buydeis.herokuapp.com/stripe/refresh/',
+                                                    return_url: 'https://buydeis.herokuapp.com/stripe/returns/',
                                                     type: 'account_onboarding'
                                                   })
         redirect_to account_link.url
@@ -30,8 +30,8 @@ class StripeController < ApplicationController
         # Create temporary account link and redirect to express onboarding
         account_link = Stripe::AccountLink.create({
                                                     account: current_user.stripe_user_id,
-                                                    refresh_url: 'https://product-marketplace-mh001v.herokuapp.com/account/refresh/',
-                                                    return_url: 'https://product-marketplace-mh001v.herokuapp.com/account/returns/',
+                                                    refresh_url: 'https://buydeis.herokuapp.com/stripe/refresh/',
+                                                    return_url: 'https://buydeis.herokuapp.com/stripe/returns/',
                                                     type: 'account_onboarding'
                                                   })
         redirect_to account_link.url
@@ -51,23 +51,5 @@ class StripeController < ApplicationController
     end
  
     
-    def connect
-        response = HTTParty.get("https://connect.stripe.com/oauth/token",
-        query: {
-          client_secret: ENV["STRIPE_SECRET_KEY"],
-          code: params[:code],
-          grant_type: "authorization_code"
-        }
-      )
-       
-        if response.parsed_response.key?("error")
-            redirect_to welcome_path,
-            notice: response.parsed_response["error_description"]
-        else
-            stripe_user_id = response.stripe_user_id
-            current_user.stripe_user_id = stripe_user_id
-            redirect_to mypage_path,
-            notice: 'User successfully connected with Stripe!'
-        end
-    end
+   
 end

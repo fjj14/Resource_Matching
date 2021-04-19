@@ -5,13 +5,18 @@ Rails.application.routes.draw do
   resources :products do
     post 'like', to: 'products#like'
   end
- 
+  resources :stripe
   resources :users 
   resources :ratings
   resources :conversations do
     resources :messages
   end
-  get "stripe/connect", to: "stripe#connect", as: :stripe_connect
+  scope '/stripe' do
+    post 'create', to: 'stripe#create', as: 'stripe_create'
+    get 'refresh', to: 'stripe#refresh', as: 'stripe_refresh'
+    get 'returns', to: 'stripe#returns', as: 'stripe_returns'
+    post 'dashboard', to: 'stripe#stripe_dashboard', as: 'stripe_dashboard'
+  end
   scope '/checkout' do 
     post 'create', to: 'checkout#create', as: 'checkout_create'
     get 'cancel', to: 'checkout#cancel', as: 'checkout_cancel'
