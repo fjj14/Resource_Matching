@@ -16,7 +16,7 @@ class StripeController < ApplicationController
                                              }
                                            })
         # Store current users stripe id in user database
-        current_user.stripe_user_id= account.id
+        current_user.update!(stripe_user_id, account.id)
   
         # Create temporary account link and redirect to express onboarding
         account_link = Stripe::AccountLink.create({
