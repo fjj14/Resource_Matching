@@ -22,7 +22,7 @@ class StripeController < ApplicationController
         account_link = Stripe::AccountLink.create({
                                                     account: account.id,
                                                     refresh_url: 'https://buydeis.herokuapp.com/stripe/refresh/',
-                                                    return_url: 'https://buydeis.herokuapp.com/mypage',
+                                                    return_url: 'https://buydeis.herokuapp.com/mypage/',
                                                     type: 'account_onboarding'
                                                   })
         redirect_to account_link.url
