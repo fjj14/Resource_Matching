@@ -46,7 +46,7 @@ class StripeController < ApplicationController
   
     # If current user stripe account token stored on platform, create a link to the express dashboard
     def dashboard
-      account = Stripe::Account.retrieve(@user.stripe_user_id)
+      account = Stripe::Account.retrieve(current_user.stripe_user_id)
       login_links = account.login_links.create
   
       redirect_to login_links.url
