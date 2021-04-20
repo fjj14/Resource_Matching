@@ -7,7 +7,7 @@ class StripeController < ApplicationController
           account = Stripe::Account.create({
                                              type: 'express',
                                              country: 'US',
-                                           
+                                             business_type: 'individual',
                                              capabilities: {
                                                card_payments: {
                                                  'requested': true
