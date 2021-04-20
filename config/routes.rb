@@ -15,7 +15,8 @@ Rails.application.routes.draw do
     post 'create', to: 'stripe#create', as: 'stripe_create'
     get 'refresh', to: 'stripe#refresh', as: 'stripe_refresh'
     get 'returns', to: 'stripe#returns', as: 'stripe_returns'
-    post 'dashboard', to: 'stripe#stripe_dashboard', as: 'stripe_dashboard'
+    get "stripe/dashboard/:user_id", to: "stripe#dashboard", as: :stripe_dashboard
+  #  post 'dashboard', to: 'stripe#stripe_dashboard', as: 'stripe_dashboard'
   end
   scope '/checkout' do 
     post 'create', to: 'checkout#create', as: 'checkout_create'
