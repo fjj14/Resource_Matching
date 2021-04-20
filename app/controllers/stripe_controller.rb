@@ -31,7 +31,7 @@ class StripeController < ApplicationController
         account_link = Stripe::AccountLink.create({
                                                     account: current_user.stripe_user_id,
                                                     refresh_url: 'https://buydeis.herokuapp.com/stripe/refresh/',
-                                                    return_url: 'https://buydeis.herokuapp.com/stripe/returns/',
+                                                    return_url: 'https://buydeis.herokuapp.com/mypage/',
                                                     type: 'account_onboarding'
                                                   })
         redirect_to account_link.url
@@ -46,18 +46,10 @@ class StripeController < ApplicationController
   
     # If current user stripe account token stored on platform, create a link to the express dashboard
     def dashboard
-      account = Stripe::Account.retrieve(current_user.stripe_user_id)
-    login_links = account.login_links.create
-
-    redirect_to login_links.url
-    #  account = Stripe::Account.retrieve(current_user.stripe_user_id)
-   # login_links = account.login_links.create
-
-   # redirect_to login_links.url
-   #  dashboard_link = Stripe::Account.create_login_link(current_user.stripe_user_id)
-   #   redirect_to dashboard_link.url
+      account = Stripe::Account.retrieve(@user.stripe_user_id)
+      login_links = account.login_links.create
+  
+      redirect_to login_links.url
     end
- 
-    
    
 end
