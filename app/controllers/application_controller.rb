@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
     include SessionsHelper
     def currently_due
         account = Stripe::Account.retrieve(current_user.stripe_user_id)
-        if account.currently_due == []
+        if account.requirements.currently_due.length ==0
           return false
         else
           return true
