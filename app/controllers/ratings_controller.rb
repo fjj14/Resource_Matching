@@ -5,23 +5,19 @@ class RatingsController < ApplicationController
     end
 
     def create
-        @rating = Rating.new
-        @rating.user_id =params[:user_id]
-        @rating.reviewer_id =params[:reviewer_id]
-        @rating.comment = params[:comment]
-        @rating.rating_number =params[:rating_number]
-
+    
+      @rating = Rating.new(rating_params)
+     
         respond_to do |format|
             if @rating.save
-                format.html do
-                    redirect_to users_path(@user) 
-                end
-                
+                format.html { redirect_to user_path(@rating.user_id), notice: "Rating was successfully created." }
             else
-                format.html { redirect_to welcome_path, notice: "error with rating" }
-                format.json { render json: @rating.errors, status: :unprocessable_entity }
+                
+                format.json { render json: @rating.errors.full_messages, status: :unprocessable_entity }
+                format.js
+               
             end
-        end
+        end  
     end
 
     def show

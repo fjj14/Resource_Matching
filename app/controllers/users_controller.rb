@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[ show edit update destroy ]
- 
+  before_action :set_rating, only: %i[ show ]
   before_action :average_rating, only: %i[show]
   
   # GET /users or /users.json
@@ -9,8 +9,9 @@ class UsersController < ApplicationController
   end
 
   # GET /users/1 or /users/1.json
-  #@rating = rating.show
+  #
   def show
+    @rating = set_rating
   end
 
   # GET /users/new
@@ -90,6 +91,11 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
     end
 
+    def set_rating
+      @rating = Rating.new
+      @rating.user_id = @user.id
+      return @rating
+    end
     # Only allow a list of trusted parameters through.
     def user_params
       params.require(:user).permit( :first, :last, :email, :password, :password_confirmation, :image, :username, :admin, :venmo_id)
