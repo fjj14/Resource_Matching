@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
+  resources :line_items
+  resources :carts
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :categories
   resources :sessions
   resources :products do
     post 'like', to: 'products#like'
+    
   end
   resources :stripe
   resources :users 
@@ -25,6 +28,7 @@ Rails.application.routes.draw do
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root 'front#index'
+  post 'add_to_cart', to: 'products#add_to_cart', as: 'product_add_to_cart'
   get    '/frontp',  to: 'front#index'
   get    '/signup',  to: 'users#new'
   post   '/signup', to:  'users#create'

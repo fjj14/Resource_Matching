@@ -1,0 +1,8 @@
+<h1> Cart </h1>
+<% current_cart.line_items.each do |item| %>
+  <p>
+    <%= item.product.name %>
+    <%= item.quantity %>
+    <%= link_to "remove item", item, :method => :delete, :confirm => "Are you sure?",:remote => true %>
+    
+<% end %>

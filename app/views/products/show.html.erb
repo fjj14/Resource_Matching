@@ -1,0 +1,13 @@
+<div class="col-md-4">
+<div class="card">
+  <img class="card-img-top" src="/loginImage.jpg" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title"><%= @product.name %></h5>
+    <p class="card-text"><%= @product.description %></p>
+  </div>
+  <div class="card-footer">
+  <%= button_to 'Add to Cart', line_items_path(product_id: @product.id) %>
+    <small class="text-muted"><%= User.find_by(id: @product.user_id).username %> <%= @product.price %></small>
+  </div>
+</div>
+</div>

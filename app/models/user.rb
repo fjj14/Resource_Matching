@@ -1,6 +1,7 @@
 class User < ApplicationRecord
     has_many :products
     has_many :ratings
+    belongs_to :cart, optional: true 
     validates :first, length: { minimum: 2 }, 
     presence: true
     validates :last, length: { minimum: 2 }, 

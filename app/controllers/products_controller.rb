@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: %i[ show edit update destroy ]
+  before_action :current_cart, only: %i[add_to_cart]
     def index
         @products = Product.all.order('created_at ASC')
     end
@@ -10,7 +11,12 @@ class ProductsController < ApplicationController
 
     def edit 
     end
-
+    def show
+    end
+    def add_to_cart
+      @product = Product.find(params[:id])
+      current_cart.add_item(@product.id, current_cart) 
+    end
     def like
       @product = Product.find(params[:id])
       if current_user.voted_for? @product 

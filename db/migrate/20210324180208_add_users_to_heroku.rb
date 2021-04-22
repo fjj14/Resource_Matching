@@ -6,7 +6,7 @@ class AddUsersToHeroku < ActiveRecord::Migration[6.1]
       t.string :username
       t.string :first
       t.string :last
-
+      t.integer :cart_id
       t.timestamps
     end
   end
