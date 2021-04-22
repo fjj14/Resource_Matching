@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     if user.present? && user.authenticate(params[:password])      
       session[:user_id] = user.id
       if user.cart_id
-        session[:cart_id] = user.cart
+        session[:cart_id] = user.cart_id
       else
         cart = Cart.create
         user.cart = cart
