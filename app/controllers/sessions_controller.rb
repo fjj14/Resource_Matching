@@ -8,14 +8,15 @@ class SessionsController < ApplicationController
     if user.present? && user.authenticate(params[:password])      
       session[:user_id] = user.id
       if user.cart_id
-        session[:cart_id] = user.cart_id
+        session[:cart_id] =Cart.find(user.cart_id).id
       else
         cart = Cart.create
         user.cart = cart
-        session[:cart_id] = cart
+        session[:cart_id] = cart.id
+        current_cart.user = current_user
+        current_user
       end
-      current_cart.user = current_user
-      current_cart.save!
+     
       
       redirect_to welcome_path, notice: "Logged in succesfully"
     else
