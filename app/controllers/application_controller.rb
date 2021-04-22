@@ -14,17 +14,12 @@ class ApplicationController < ActionController::Base
           return true
         end
     end
-    def current_user  
-        if User.where(id: session[:user_id])  != nil
-          if User.where(id: session[:user_id])  != []
-            User.find(session[:user_id])  
-          else
-            nil
-          end
-        else 
-            return nil
-        end
-    end
+    
+      def current_user
+        return unless session[:user_id]
+        @current_user ||= User.find(session[:user_id])
+      end
+    
     
 
      

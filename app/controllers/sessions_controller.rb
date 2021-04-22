@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
         session[:cart_id] = cart
       end
       current_cart.user = current_user
-     current_cart.save!
+      current_cart.save!
       
       redirect_to welcome_path, notice: "Logged in succesfully"
     else
