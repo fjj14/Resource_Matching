@@ -25,11 +25,13 @@
 
  .navbar{
    background-color: #2F3F5F;
-
+  
+   
  }
-
-
-
+ 
+ #nav-cont{
+   padding: 0 ;
+ }
  .navbutt{
    color:white !important;
 
