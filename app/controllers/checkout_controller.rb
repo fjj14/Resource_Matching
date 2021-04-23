@@ -3,6 +3,7 @@ class CheckoutController < ApplicationController
     def set_product
         @product = Product.new
     end
+
     def create 
         if Product.where(id: params[:id]) == []
             self.create_from_cart
@@ -30,7 +31,6 @@ class CheckoutController < ApplicationController
             success_url: checkout_success_url+"?session_id={CHECKOUT_SESSION_ID}&product=#{@product.id}",
             cancel_url: checkout_cancel_url(product: @product.id)
         )
-
         respond_to do |format|
             format.js 
         end 
@@ -60,6 +60,7 @@ class CheckoutController < ApplicationController
             cancel_url: checkout_cancel_url(product: nil, products: @allProducts)
         )
     end
+
     def success 
        #call account transfer
         @session = Stripe::Checkout::Session.retrieve(params[:session_id])
@@ -67,8 +68,9 @@ class CheckoutController < ApplicationController
        
         if Product.where(id: params[:product]) == []
             @products = params[:products]
-            @products.tr('[]', '').split(',').map(&:to_i).each do |i|
-                @product = Product.find(i)
+            if @products.index(',') == nil
+                product= (@products.from(1).to(-2)).to_i
+                @product = Product.find(product)
                 seller = User.find(@product.user_id)
                 if seller.stripe_user_id
                     transfer = Stripe::Transfer.create({
@@ -84,6 +86,25 @@ class CheckoutController < ApplicationController
                     end
                     seller.update_column(:balance, bal)
                 end
+            else
+                @products.tr('[]', '').split(',').map(&:to_i).each do |i|
+                    @product = Product.find(i)
+                    seller = User.find(@product.user_id)
+                    if seller.stripe_user_id
+                        transfer = Stripe::Transfer.create({
+                        amount: (((@product.price) *100).to_i),
+                        currency: 'usd',
+                        destination: seller.stripe_user_id,
+                        })
+                    else 
+                        if seller.balance
+                            bal = seller.balance + @product.price
+                        else 
+                            bal =  @product.price
+                        end
+                        seller.update_column(:balance, bal)
+                    end
+                end
             end
         else
             @product = Product.find(params[:product])
@@ -95,19 +116,24 @@ class CheckoutController < ApplicationController
             })
         end
     end
-    def cancel 
-       
+
+    def cancel  
         if Product.where(id: params[:product]) == []
             @products = params[:products]
-            @products.tr('[]', '').split(',').map(&:to_i).each do |i|
-                @product = Product.find(i)
+            if @products.index(',') == nil
+                product= (@products.from(1).to(-2)).to_i
+                @product = Product.find(product)
                 @product.update_column(:buyer_id, nil)
+            else
+                @products.tr('[]', '').split(',').map(&:to_i).each do |i|
+                    @product = Product.find(i)
+                    @product.update_column(:buyer_id, nil)
+                end
             end
         else
             @product = Product.find(params[:product])
             @product.update_column(:buyer_id, nil)
         end
-        redirect_to welcome_path
-        
+        redirect_to welcome_path  
     end 
 end
