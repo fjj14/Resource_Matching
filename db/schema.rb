@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_22_181009) do
+ActiveRecord::Schema.define(version: 2021_04_23_014008) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -155,6 +155,7 @@ ActiveRecord::Schema.define(version: 2021_04_22_181009) do
     t.string "venmo_id"
     t.float "average_rating"
     t.string "stripe_user_id"
+    t.integer "balance"
   end
 
   create_table "votes", force: :cascade do |t|

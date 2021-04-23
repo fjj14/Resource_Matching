@@ -23,5 +23,20 @@ class Cart < ApplicationRecord
         end
     current_item
      end
+     def totalPrice
+        total =0
+       line_items.each do |item|
+           total= total + (item.product.price * item.quantity)
+        end
+        total
+    end
+
+    def getProducts
+        allProducts =[]
+        line_items.each do |item|
+            allProducts[allProducts.length]= item.product.id
+        end
+        allProducts
+    end
     
 end
