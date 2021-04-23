@@ -37,7 +37,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     respond_to do |format|
       if @user.save
-        UserMailer.welcome_email(@user).deliver_now
+        self.send_welcome
         #redirect_to welcome_path, notice: "Succesfully Created Account" 
         format.html { redirect_to welcome_path, notice: "User was successfully created." }
         #format.json { render :show, status: :created, location: @user }

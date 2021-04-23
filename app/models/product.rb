@@ -8,7 +8,7 @@ class Product < ApplicationRecord
     presence: true
     belongs_to :user
     belongs_to :category
-    has_one_attached :image
+    has_many_attached :images
     acts_as_votable
     has_many :line_items
     private

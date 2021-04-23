@@ -15,6 +15,7 @@ Rails.application.routes.draw do
       get :following, :followers
     end
   end
+  resources :mailers
   resources :ratings
   resources :conversations do
     resources :messages
