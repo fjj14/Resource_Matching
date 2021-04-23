@@ -38,7 +38,8 @@ Rails.application.routes.draw do
   delete 'logout', to: "sessions#destroy"
   get    '/welcome', to: "welcome#index"
   post   '/welcome', to: "welcome#index"
-  
+  get    '/cart', to: "carts#show"
+  post   '/cart', to: "carts#show"
   get '/messages', to: 'conversations#index'
   post  '/messages', to: 'conversations#index'
   get    '/mypage', to: 'users#mypage'
