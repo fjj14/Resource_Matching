@@ -3,76 +3,79 @@
 <%= stylesheet_link_tag 'profile', media: 'all'%>
 
 
-<div class="container emp-profile">
-            
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="profile-img">
-                        <% if @user.image.present? %>
-                        <%= image_tag(@user.image, class:"card-img-top")%> 
-                        <% else %>
-                        <%= link_to image_tag('default.png', class:"card-img-top") %> 
-                        <% end %>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="profile-head">
-                            <h5>
-                            <%= @user.first + " "+ @user.last%>
-                            </h5>
-                            <br>
-                            <h6>
-                            @<%= @user.username %>
-                            </h6>
-                            <% @user.average_rating.to_i.times do  %>
-                                <span class="glyphicon glyphicon-star"></span>
-                            <% end %>
-                            <% (5- @user.average_rating).to_i.times do  %>
-                                <span class="glyphicon glyphicon-star-empty"></span>
-                            <% end %>
-                            <button id="btnview" type="button" class="btn btn-primary" data-bs-toggle="modal"  style="margin-left:20%" data-toggle="modal" data-target="#myModal">
-                            <%= Rating.where(user_id: @user.id).length%>
-                            </button>
-
-                            <div class="modal" id="myModal" tabindex="-1">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title">Reviews</h5>
-                                </div>
-                                <div class="modal-body">
-                               
-                                    <% Rating.where(user_id: @user.id).each do |rate| %>
-                                        <%= User.where(id: rate.reviewer_id).first.username %>
-                                        <%= rate.rating_number %>
-                                        <%= rate.comment %>
-                                        <br>
-                                    <%end%>
-                                </div>
-                                
-                            </div>
-                            </div>
-                        </div>
-                    </div>
+<div class="container emp-profile">        
+    <div class="row">
+        <div class="col-md-4">
+            <div class="profile-img">
+                <% if @user.image.present? %>
+                    <%= image_tag(@user.image, class:"card-img-top")%> 
+                <% else %>
+                    <%= link_to image_tag('default.png', class:"card-img-top") %> 
+                <% end %>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="profile-head">
+                <h5><%= @user.first + " "+ @user.last%></h5>
                 <br>
-                <%if current_user %>
+                <div class="stats">
+                    <a href="<%= following_user_path(@user) %>">
+                        <strong id="following" class="stat">
+                            <%= @user.following.count %>
+                        </strong>
+                        following
+                    </a>
+                    <a href="<%= followers_user_path(@user) %>">
+                        <strong id="followers" class="stat">
+                            <%= @user.followers.count %>
+                        </strong>
+                        followers
+                    </a>
+                </div>
+                <% if current_user && current_user != @user%>
+                    <%= render 'follow_form'%>
+                <%end%>
+                <h6> @<%= @user.username %> </h6>
+                <% @user.average_rating.to_i.times do %>
+                    <span class="glyphicon glyphicon-star"></span>
+                <% end %>
+                <% (5- @user.average_rating).to_i.times do  %>
+                    <span class="glyphicon glyphicon-star-empty"></span>
+                <% end %>
+                <button id="btnview" type="button" class="btn btn-primary" data-bs-toggle="modal"  style="margin-left:20%" data-toggle="modal" data-target="#myModal">
+                    <%= Rating.where(user_id: @user.id).length%>
+                </button>
+                <div class="modal" id="myModal" tabindex="-1">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Reviews</h5>
+                            </div>
+                            <div class="modal-body">
+                                <% Rating.where(user_id: @user.id).each do |rate| %>
+                                    <%= User.where(id: rate.reviewer_id).first.username %>
+                                    <%= rate.rating_number %>
+                                    <%= rate.comment %>
+                                    <br>
+                                <%end%>
+                            </div>    
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <%if current_user %>
                 <button id="btnStart" type="button" class="btn btn-primary" data-bs-toggle="modal" data-target="#formModal" style="margin-left:90%" data-toggle="modal" data-target="#formModal">
                   Leave Review
-                </button>
-                
-                
+                </button>  
                 <div class="modal" id="formModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel"  aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                          
-                                <h3 class="modal-title" id="formModalLabel">Review this seller</h3>
-                               
+                                <h3 class="modal-title" id="formModalLabel">Review this seller</h3>  
                             </div>
                             <div class="modal-body">
-                           
-                            <%= render '/ratings/form', rating: @rating%>
-                           
+                                <%= render '/ratings/form', rating: @rating%>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -81,12 +84,12 @@
                     </div>
                 </div>
             <%end%>
-            </div>
         </div>
-        <br><br>
-            <% Product.where(user_id: @user.id).order('created_at DESC').each_slice(3)  do |products| %>
-                <div class="row no-gutters" id="pro">
-                    <% products.each do |product| %> 
+    </div>
+    <br><br>
+        <% Product.where(user_id: @user.id).order('created_at DESC').each_slice(3)  do |products| %>
+            <div class="row no-gutters" id="pro">
+                <% products.each do |product| %> 
                     <div class="col-md-4 ">
                         <div class="card">
                             <h5 class="card-title">
@@ -94,34 +97,28 @@
                                     <%= product.name %>
                                 </div>
                             </h5>
-                                <br>
-                                <% if product.image.present? %>
+                            <br>
+                            <% if product.image.present? %>
                                 <%= image_tag(product.image, class:"card-img-top")%> 
-                                <% else %>
+                            <% else %>
                                 <%= image_tag( '/loginImage.jpg', class:"card-img-top") %> 
-                                <% end %>
-                                <br>
-                                <div class="card-body">
-                                <br>
-                            
-                                <div class ="col-md-6 nopadding" >
-                                    $<%= number_with_precision(product.price, :precision => 2)%>
-                                </div>
-                                
-                                <div class ="col-md-6 nopadding" id="wa" >
-                            
-                        
-                                </div>
-                                <br>
-                                <div class ="col-md-12">
-                                    <p class="card-text"><%= product.description %></p>
-                                </div>
+                            <% end %>
+                            <br>
+                            <div class="card-body">
+                            <br>
+                            <div class ="col-md-6 nopadding" >
+                                $<%= number_with_precision(product.price, :precision => 2)%>
                             </div>   
-                        </div>
+                            <br>
+                            <div class ="col-md-12">
+                                <p class="card-text"><%= product.description %></p>
+                            </div>
+                        </div>   
                     </div>
-                    <% end %>
                 </div>
             <% end %>
+        </div>
+    <% end %>
 
 
 

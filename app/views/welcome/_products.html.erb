@@ -13,7 +13,7 @@
                    </div>
                     <%if current_user &&  product.user != current_user || !current_user%>
                    <div class ="col-md-6 nopadding" id="pri">
-                   <%= link_to(User.where(id: product.user_id).first.username, user_path(product.user_id)) if user = User.where(id: product.user_id) %>
+                   <%= link_to "#{(User.find(product.user_id)).username}", user_path(product.user_id)  %>
                    </div>
                   <%else%>
                   <%if current_user &&  product.user == current_user %>

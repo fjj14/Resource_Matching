@@ -4,12 +4,17 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :categories
   resources :sessions
+  resources :relationships,       only: [:create, :destroy]
   resources :products do
     post 'like', to: 'products#like'
     
   end
   resources :stripe
-  resources :users 
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
   resources :ratings
   resources :conversations do
     resources :messages
