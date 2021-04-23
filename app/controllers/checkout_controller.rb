@@ -120,16 +120,10 @@ class CheckoutController < ApplicationController
     def cancel  
         if Product.where(id: params[:product]) == []
             @products = params[:products]
-            if @products.index(',') == nil
-                product= (@products.from(1).to(-2)).to_i
-                @product = Product.find(product)
+            @products.each do |i|
+                @product = Product.find(i)
                 @product.update_column(:buyer_id, nil)
-            else
-                @products.tr('[]', '').split(',').map(&:to_i).each do |i|
-                    @product = Product.find(i)
-                    @product.update_column(:buyer_id, nil)
-                end
-            end
+            end    
         else
             @product = Product.find(params[:product])
             @product.update_column(:buyer_id, nil)
