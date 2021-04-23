@@ -19,18 +19,20 @@
                 <h5><%= @user.first + " "+ @user.last%></h5>
                 <br>
                 <div class="stats">
-                    <a href="<%= following_user_path(@user) %>">
-                        <strong id="following" class="stat">
-                            <%= @user.following.count %>
-                        </strong>
+                    <h5>
+                         <button id="btnFollowing" type="button" class="btn btn-primary" data-bs-toggle="modal"  style="margin-left:20%" data-toggle="modal" data-target="#followingModal">
+                            <%= @user.following.count%>
+                        </button>
+                      
                         following
-                    </a>
-                    <a href="<%= followers_user_path(@user) %>">
-                        <strong id="followers" class="stat">
-                            <%= @user.followers.count %>
-                        </strong>
+                    </h5>
+                    <h5>
+                     <button id="btnFollowers" type="button" class="btn btn-primary" data-bs-toggle="modal"  style="margin-left:20%" data-toggle="modal" data-target="#followersModal">
+                            <%= @user.followers.count%>
+                        </button>
+                       
                         followers
-                    </a>
+                    </h5>
                 </div>
                 <% if current_user && current_user != @user%>
                     <%= render 'follow_form'%>
@@ -121,5 +123,38 @@
     <% end %>
 
 
-
+ <div class="modal" id="followingModal" tabindex="-1">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">following</h5>
+                            </div>
+                            <div class="modal-body">
+                                <% @user.following.each do |user| %>
+                                    <%= user.first %> <%= user.last %>
+                                    Learn more: <%=link_to "#{user.username}",user %>
+                                   
+                                    <br>
+                                <%end%>
+                            </div>    
+                        </div>
+                    </div>
+                </div>
+                <div class="modal" id="followersModal" tabindex="-1">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">followers</h5>
+                            </div>
+                            <div class="modal-body">
+                                <% @user.followers.each do |user| %>
+                                    <%= user.first %> <%= user.last %>
+                                    Learn more: <%=link_to  "#{user.username}",user %>
+                                   
+                                    <br>
+                                <%end%>
+                            </div>    
+                        </div>
+                    </div>
+                </div>
        
