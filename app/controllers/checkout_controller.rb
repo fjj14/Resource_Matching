@@ -65,12 +65,14 @@ class CheckoutController < ApplicationController
        #call account transfer
         @session = Stripe::Checkout::Session.retrieve(params[:session_id])
         @payment_intent = Stripe::PaymentIntent.retrieve(@session.payment_intent).application_fee_amount.to_f
-       
+       #buying a list of products from checkout
         if Product.where(id: params[:product]) == []
             @products = params[:products]
+            @all = []
             if @products.index(',') == nil
                 product= (@products.from(1).to(-2)).to_i
                 @product = Product.find(product)
+                @all[@all.length]= @product
                 seller = User.find(@product.user_id)
                 if seller.stripe_user_id
                     transfer = Stripe::Transfer.create({
@@ -87,8 +89,10 @@ class CheckoutController < ApplicationController
                     seller.update_column(:balance, bal)
                 end
             else
+                @all =[]
                 @products.tr('[]', '').split(',').map(&:to_i).each do |i|
                     @product = Product.find(i)
+                    @all[@all.length] = @product
                     seller = User.find(@product.user_id)
                     if seller.stripe_user_id
                         transfer = Stripe::Transfer.create({
@@ -109,15 +113,25 @@ class CheckoutController < ApplicationController
         else
             @product = Product.find(params[:product])
             seller = User.find(@product.user_id)
-            transfer = Stripe::Transfer.create({
-            amount: (((@product.price) *100).to_i)-((@payment_intent*100).to_i),
-            currency: 'usd',
-            destination: seller.stripe_user_id,
-            })
+            if seller.stripe_user_id
+                transfer = Stripe::Transfer.create({
+                amount: (((@product.price) *100).to_i),
+                currency: 'usd',
+                destination: seller.stripe_user_id,
+                })
+            else 
+                if seller.balance
+                    bal = seller.balance + @product.price
+                else 
+                    bal =  @product.price
+                end
+                seller.update_column(:balance, bal)
+            end
         end
     end
 
     def cancel  
+        #buying from checkout
         if Product.where(id: params[:product]) == []
             @products = params[:products]
             @products.each do |i|
@@ -125,6 +139,7 @@ class CheckoutController < ApplicationController
                 @product.update_column(:buyer_id, nil)
             end    
         else
+            #buying from buy now
             @product = Product.find(params[:product])
             @product.update_column(:buyer_id, nil)
         end

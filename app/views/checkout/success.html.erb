@@ -1,5 +1,15 @@
+<% if !@all %>
+    <h5> Congrats! You just bought <%= @product.name %>!</h5>
+    <% @products = Product.all %>
+<% else %>
+    <h5> Congratulations! You Just bought the following products! <h5>
+    <% current_cart.line_items.each do |item| %>
+      <p>  <%= item.product.name %></p>
+      <p> Quantity:<%= item.quantity %></p> 
+        <br>
+    <% end %>
+    <% current_user.update_column(:cart_id, nil) %>
+    <% @products = Product.all %>
+<%end%>
 
-<h5> Congrats! You just bought <%= @product.name %>!</h5>
-<% @products = Product.all %>
-<%= @payment_intent %>
 <%= render 'welcome/products', products: @products %>
