@@ -44,7 +44,8 @@ class CheckoutController < ApplicationController
 
         current_cart.line_items.each do |item|
             @name = @name + "#{item.product.name}" + "\tquantity: #{item.quantity}\n"
-            item.product.update!(buyer_id: current_user.id)
+            @product = item.product
+            @product.update!(buyer_id: current_user.id)
         end
         @session = Stripe::Checkout::Session.create(
             payment_method_types: ['card'],
