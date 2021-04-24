@@ -1,13 +1,36 @@
-<div class="col-md-4">
-<div class="card">
-  <img class="card-img-top" src="/loginImage.jpg" alt="Card image cap">
-  <div class="card-body">
-    <h5 class="card-title"><%= @product.name %></h5>
-    <p class="card-text"><%= @product.description %></p>
-  </div>
-  <div class="card-footer">
-  <%= button_to 'Add to Cart', line_items_path(product_id: @product.id) %>
-    <small class="text-muted"><%= User.find_by(id: @product.user_id).username %> <%= @product.price %></small>
+<%= stylesheet_link_tag 'product_detail', media: 'all' %>
+  
+<div class="container" id="individualProduct">
+  <div class ="card" id="productcard">
+    <div class = "images">
+      <div class = "slider">
+      </div>
+      <div class="img-slider">
+        <% @product.images.each do |image|%>
+          <div class ="imgs"></div>
+        <%end%>
+      </div>
+    </div>
+    <div class = "infos">
+      <h1><%= @product.name%></h1>
+      <div class = "likes"><%=@product.votes_for.size%></div>
+      <div class ="tags"></div>
+      <div class ="price"><h3><%=@product.price%>$</h3> </div>
+    </div>
+    <div class ="more-infos">
+      <h5>Description</h5>
+      <h5>Owner</h5>
+      <h5>Stats</h5>
+    </div>
+    <div class ="info-content">
+      <p><%=@product.description%></p>
+    </div>
+    <div class = "buttons">
+     <%= link_to raw("<i class=\"fa fa-shopping-cart \"></i> ADD TO CART"), line_items_path(product_id: @product.id), method: :post, class: 'btn' %>
+      <%= button_to 'buy now', checkout_create_path,params: {id: @product.id }, class: 'btn' , remote: true %>
+    </div>
   </div>
 </div>
-</div>
+
+
+
