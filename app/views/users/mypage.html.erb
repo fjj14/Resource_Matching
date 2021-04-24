@@ -35,8 +35,8 @@ You still have some things due before you are finish setting up
                     </div>
                 </h5>
                     <br>
-                    <% if product.image.present? %>
-                    <%= image_tag(product.image, class:"card-img-top")%> 
+                    <% if product.images.present? %>
+                    <%= image_tag(product.images.first, class:"card-img-top")%> 
                     <% else %>
                     <%= image_tag( '/loginImage.jpg', class:"card-img-top") %> 
                      <% end %>
