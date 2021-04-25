@@ -72,4 +72,3 @@ end
 #gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 
-gem 'searchkick', '~> 0.9.1'
