@@ -1,7 +1,6 @@
-<<<<<<< HEAD
 <%if @message  %>
 <%= flash[:alert] = @message %> 
-=======
+<%end%>
 <%= stylesheet_link_tag 'likes', media: 'all'%>
 
 <style>
@@ -27,7 +26,6 @@ $(document).ready(function(){
 <%if !@products || @products.length == 0 %>
 <%= flash[:alert] = "Sorry we couldn't find the product you were looking for" %>
   <% @products =Product.all %>
->>>>>>> likes
 <%end%>
 <% if current_user %>
 <%@products = current_user.feed(@products)%>
@@ -135,3 +133,4 @@ $(document).ready(function(){
     <% end %>
     </div>
 <% end %>
+
