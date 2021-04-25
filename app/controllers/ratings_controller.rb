@@ -11,6 +11,7 @@ class RatingsController < ApplicationController
         respond_to do |format|
             if @rating.save
                 format.html { redirect_to user_path(@rating.user_id), notice: "Rating was successfully created." }
+                Notification.create(recipient: current_user, actor: User.find(params[:reviewer_id]), action: "reviewed", notifiable: @rating)
             else
                 format.turbo_stream
                 #format.html { render :user_path(@rating.user_id), status: :unprocessable_entity }
