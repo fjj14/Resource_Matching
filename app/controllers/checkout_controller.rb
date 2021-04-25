@@ -5,11 +5,17 @@ class CheckoutController < ApplicationController
     end
 
     def create 
+        
         if Product.where(id: params[:id]) == []
             self.create_from_cart
             return
         end 
+        if !current_user
+            redirect_to Product.find( params[:id])
+            return
+        end
         @product = Product.find( params[:id])
+        
         @product.update!(buyer_id: current_user.id)
         
         if @product.nil?

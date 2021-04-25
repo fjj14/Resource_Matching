@@ -13,7 +13,7 @@
                    </div>
                     <%if current_user &&  product.user != current_user || !current_user%>
                    <div class ="col-md-6 nopadding" id="pri">
-                   <%= link_to "#{(User.find(product.user_id)).username}", user_path(product.user_id)  %>
+                   <%= link_to "#{(User.find(product.user_id)).username}", user_path(product.user_id) if User.where(id: product.id)!= [] %>
                    </div>
                   <%else%>
                   <%if current_user &&  product.user == current_user %>
@@ -52,6 +52,7 @@
        
                    <span class ="col-md-12" style="float:left">
                     <p class="card-text"><%= product.description %></p>
+                      <%= link_to 'learn_more', product_path(id: product.id ) %>  
                     </span>
 
                     

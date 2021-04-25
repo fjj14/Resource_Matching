@@ -2,33 +2,105 @@
     margin: 0px;
     padding: 0px;
 }
-.body{
-    margin: 0px! important;
-    padding: 0px! important;
-    font-family:'montserrat', sans-serif;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+html{
+    margin: 0px!important;
+    padding: 0px!important;
 }
-
-#individualProduct{
-    height: 90vh;
-    width: 75vw;
-    background-color: #5fdffc;
-    border-radius: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+#body{
+  
+   
+    .card .images,.card .infos {
+        width: 50%;
+       
+    }
     .card{
         background-color: white;
         width: 80%;
-        height: 70%;
+        height: 60%;
         border-radius: 8px;
         display: flex;
+       
+       box-shadow: 0px 0px 10px 1px rgba( 0, 0, 0, 0.2);
+     
+    } 
+    #individualProduct{
+        height: 90vh;
+        width: 85vw;
+        background-color: #5fdffc;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        
+        justify-content: center;
+      
+      
     }
-    .card .images, .card .infos{
-        width: 50%;
+    .infos {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 40px;
+    }
+   .infos .price{
+       display: flex;
+       width: 40%;
+       justify-content: space-between;
+   }
+   .infos .more-infos{
+    display: flex;
+    width: 80%;
+    justify-content: space-between;
+    }
+    .reviews{
 
+    }
+    .info-content{
+        font-size: 12px;
+    }
+    .buttons{
+        height: 40px;
+        display: flex;
+        justify-content: space-between;
+    }
+    .buttons button{
+        width: 45%;
+        font: inherit;
+        border: 2px solid #5fdffc;
+        border-radius: 25px;
+        background-color: white;
+    }
+    .buttons button:nth-child(1) i{
+        margin-right: 10px;
+    }
+    .buttons button:hover{
+        color: white;
+        background-color:#5fdffc ;
+    }
+    .slider{
+        padding:5% ;
+        height: 80%;
+        display: flex;
+        align-items: center;
+    }
+
+    .slider img{
+        width: 90%;
+        margin: auto;
+        height:100%;
+    }
+    .img-slider{
+        display: flex;
+        height: 50px;
+        justify-content: space-between;
+        margin: auto;
+        width: 60%;
+    }
+    .img-slider div{
+        width: 20%;
+        height: 100%;
+    }
+    .img-slider img{
+
+        height: 100%;
     }
 }
