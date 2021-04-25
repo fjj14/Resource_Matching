@@ -1,5 +1,12 @@
+<%= stylesheet_link_tag 'likes', media: 'all'%>
 
+<style>
+
+
+
+</style>
 <script>
+
 
 $(document).ready(function(){
   $("#heart").click(function(){
@@ -12,7 +19,6 @@ $(document).ready(function(){
     }
   });
 });
-
 </script>
 <%if !@products || @products.length == 0 %>
 <%= flash[:alert] = "Sorry we couldn't find the product you were looking for" %>
@@ -67,7 +73,8 @@ $(document).ready(function(){
                    <div class ="col-md-6 nopadding" id="lik" style="margin-top:-5%;margin-right:-5%">
                              
                <%= button_to product_like_path(product), params: {id: product.id },  remote: true do %>
-<span id = heart><i class='fa fa-heart-o' aria-hidden='true' style=" "></i>  <%= product.votes_for.size %> </span>
+               
+<span id = heart><i class='fa fa-heart-o' aria-hidden='true' style=" color: red; cursor:pointer"></i>  likes: <%= product.votes_for.size %> </span>
 <% end %>
 </div>
 
@@ -91,7 +98,7 @@ $(document).ready(function(){
 
 
 
-                <div style="float:left;width: 50%; display: inline-block;"> $<%= number_with_precision(product.price, :precision => 2)%> </div>
+                  <div style="float:left;width: 50%; display: inline-block;"> $<%= number_with_precision(product.price, :precision => 2)%> </div>
                          
                    <div class ="col-md-6 nopadding" id="lik" style="margin-right:-5%">
                              
