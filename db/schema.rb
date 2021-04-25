@@ -149,7 +149,10 @@ ActiveRecord::Schema.define(version: 2021_04_23_184408) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["followed_id"], name: "index_relationships_on_followed_id"
     t.index ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
+<<<<<<< Updated upstream
     t.index ["follower_id"], name: "index_relationships_on_follower_id"
+=======
+>>>>>>> Stashed changes
   end
 
   create_table "users", force: :cascade do |t|
