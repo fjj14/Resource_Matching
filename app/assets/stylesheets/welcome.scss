@@ -14,9 +14,12 @@
  }
 
 
-#pri {
-     text-align: right;
-   
+#lik {
+    display: inline-block;
+     float: right !important;
+  text-align:right;
+  font-size:1.5rem;
+   width: 50%;
  }
 
 .nopadding {

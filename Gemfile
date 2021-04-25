@@ -72,3 +72,6 @@ end
 #gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 
+
+gem "cable_ready", "~> 4.5"
+gem "stimulus_reflex", "~> 3.4"

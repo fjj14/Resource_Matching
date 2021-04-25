@@ -1,5 +1,33 @@
+<<<<<<< HEAD
 <%if @message  %>
 <%= flash[:alert] = @message %> 
+=======
+<%= stylesheet_link_tag 'likes', media: 'all'%>
+
+<style>
+
+
+
+</style>
+<script>
+
+
+$(document).ready(function(){
+  $("#heart").click(function(){
+    if($("#heart").hasClass("liked")){
+      $("#heart").html('<i class="fa fa-heart-o" aria-hidden="true"></i>');
+      $("#heart").removeClass("liked");
+    }else{
+      $("#heart").html('<i class="fa fa-heart" aria-hidden="true"></i>');
+      $("#heart").addClass("liked");
+    }
+  });
+});
+</script>
+<%if !@products || @products.length == 0 %>
+<%= flash[:alert] = "Sorry we couldn't find the product you were looking for" %>
+  <% @products =Product.all %>
+>>>>>>> likes
 <%end%>
 <% if current_user %>
 <%@products = current_user.feed(@products)%>
@@ -10,20 +38,7 @@
      <% products.each do |product| %> 
       <div class="col-md-4 " >
             <div class="card">
-                <h5 class="card-title">
-                 <div class ="col-md-6 nopadding" >
-                   <%= product.name %>
-                   </div>
-                    <%if current_user &&  product.user != current_user || !current_user%>
-                   <div class ="col-md-6 nopadding" id="pri">
-                   <%= link_to "#{(User.find(product.user_id)).username}", user_path(product.user_id) if User.where(id: product.id)!= [] %>
-                   </div>
-                  <%else%>
-                  <%if current_user &&  product.user == current_user %>
-                    <span style="float:right"> you </span>
-                  <% end %>
-              <% end %>
-                 </h5>
+               
                  <br>
                   <% if product.images.present? %>
                     <%= image_tag(product.images.first, class:"card-img-top")%> 
@@ -31,36 +46,89 @@
                     <%= image_tag( '/loginImage.jpg', class:"card-img-top") %> 
                   <% end %>
                 <div class="card-body">
-                <br>
-                <div class ="col-md-6 nopadding">
-                <%if current_user &&  product.user != current_user%>
-                <%= link_to "Message", conversations_path(user_id: product.user_id, body: "I want to buy your product", subject: product.name ), method: 'post', class: 'btn btn-primary' %>
-                </div>
-                   <div class ="col-md-6 nopadding" id="pri">
-                     $<%= number_with_precision(product.price, :precision => 2)%>
+             
+
+ <h5 class="card-title">
+                 <div class ="col-md-6 nopadding" >
+                   <%= product.name %>
                    </div>
-                   <br>
-                   <div class ="col-md-12">
-                    <p class="card-text"><%= product.description %></p>
-                    </div> 
-                    <%= link_to 'learn_more', product_path(id: product.id ) %>     
-                  <%= button_to 'buy now', checkout_create_path,params: {id: product.id }, remote: true %>
-                  <%= button_to 'Like', product_like_path(product), params: {id: product.id },  remote: true %>
-                  <%= product.votes_for.size %>
-                <% else %> 
+                    <%if current_user &&  product.user != current_user || !current_user%>
+                   <div class ="col-md-6 nopadding" id="lik">
+                   <%= link_to "@#{(User.find(product.user_id)).username}", user_path(product.user_id) if User.where(id: product.id)!= [] %>
+                   </div>
+                  <%else%>
+                  <%if current_user &&  product.user == current_user %>
+                    <span style="float:right"> @you </span>
+                  <% end %>
+              <% end %>
+                 </h5>
+
+
+
+
+                
+                <div class ="col-md-6 nopadding">
+                
+                <%if current_user &&  product.user != current_user%>
+         <%#       <%= link_to "Message", conversations_path(user_id: product.user_id, body: "I want to buy your product", subject: product.name ), method: 'post', class: 'btn btn-primary' %>
                 </div>
-                   <p class ="col-md-6 nopadding" id="pri" style="float:right">
-                     $<%= number_with_precision(product.price, :precision => 2)%>
+<br>
+
+
+
+
+                <div style="float:left;width: 50%; display: inline-block;"> $<%= number_with_precision(product.price, :precision => 2)%> </div>
+                         
+                   <div class ="col-md-6 nopadding" id="lik" style="margin-top:-5%;margin-right:-5%">
+                             
+               <%= button_to product_like_path(product), params: {id: product.id },  remote: true do %>
                
+<span id = heart><i class='fa fa-heart-o' aria-hidden='true' style=" color: red; cursor:pointer"></i>  likes: <%= product.votes_for.size %> </span>
+<% end %>
+</div>
+
+
+               
+              
+
+
+             
+                   <div class ="col-md-12" style="text-align:left;">
+                    <p class="card-text"><%= product.description %>   &nbsp<%= link_to 'learn_more', product_path(id: product.id ) %>    </p>
+                       <span style="margin-left:0%;> <%= button_to 'buy now', checkout_create_path,params: {id: product.id }, remote: true %></span>
+                    </div> 
+                    
+              
+     
+                <% else %> 
+                  </div>
+<br>
+
+
+
+
+                  <div style="float:left;width: 50%; display: inline-block;"> $<%= number_with_precision(product.price, :precision => 2)%> </div>
+                         
+                   <div class ="col-md-6 nopadding" id="lik" style="margin-right:-5%">
+                             
+               <%= button_to product_like_path(product), params: {id: product.id },  remote: true do %>
+<span id = heart><i class='fa fa-heart-o' aria-hidden='true' style=" "></i>  <%= product.votes_for.size %> </span>
+<% end %>
+</div>
+
+
+
        
-                   <span class ="col-md-12" style="float:left">
-                    <p class="card-text"><%= product.description %></p>
-                      <%= link_to 'learn_more', product_path(id: product.id ) %>  
-                    </span>
+                
+                   <div class ="col-md-12" style="text-align:left;">
+                    <p class="card-text"><%= product.description %>    </p>
+                    
+                    </div> 
+                    
 
                     
                    <% end %> 
-                </p>
+            
                </div> 
             </div>
         </div>
