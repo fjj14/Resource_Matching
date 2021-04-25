@@ -20,7 +20,9 @@ class WelcomeController < ApplicationController
         end
         if @products = []
             @message = "Sorry, we couldn't find the product you were looking for!"
-            @products = Product.all
+            @products = Product.all.where(buyer_id: nil).order('created_at DESC')
+        else
+            @products = @products.where(buyer_id: nil).order('created_at DESC')
         end
         render 'index'
          

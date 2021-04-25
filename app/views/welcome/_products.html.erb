@@ -2,7 +2,10 @@
 <%= flash[:alert] = @message %> 
 <%end%>
 <% if current_user %>
-<% current_user.feed(@products).each_slice(3)  do |products| %>
+<%@products = current_user.feed(@products)%>
+<%end%>
+
+<% @products.each_slice(3)  do |products| %>
     <div class="row " >
      <% products.each do |product| %> 
       <div class="col-md-4 " >
@@ -63,68 +66,4 @@
         </div>
     <% end %>
     </div>
-    <% end %>
-<%else%>
-<% @products.where(buyer_id: nil).order('created_at DESC').each_slice(3)  do |products| %>
-    <div class="row " >
-     <% products.each do |product| %> 
-      <div class="col-md-4 " >
-            <div class="card">
-                <h5 class="card-title">
-                 <div class ="col-md-6 nopadding" >
-                   <%= product.name %>
-                   </div>
-                    <%if current_user &&  product.user != current_user || !current_user%>
-                   <div class ="col-md-6 nopadding" id="pri">
-                   <%= link_to "#{(User.find(product.user_id)).username}", user_path(product.user_id) if User.where(id: product.id)!= [] %>
-                   </div>
-                  <%else%>
-                  <%if current_user &&  product.user == current_user %>
-                    <span style="float:right"> you </span>
-                  <% end %>
-              <% end %>
-                 </h5>
-                 <br>
-                  <% if product.images.present? %>
-                    <%= image_tag(product.images.first, class:"card-img-top")%> 
-                  <% else %>
-                    <%= image_tag( '/loginImage.jpg', class:"card-img-top") %> 
-                  <% end %>
-                <div class="card-body">
-                <br>
-                <div class ="col-md-6 nopadding">
-                <%if current_user &&  product.user != current_user%>
-                <%= link_to "Message", conversations_path(user_id: product.user_id, body: "I want to buy your product", subject: product.name ), method: 'post', class: 'btn btn-primary' %>
-                </div>
-                   <div class ="col-md-6 nopadding" id="pri">
-                     $<%= number_with_precision(product.price, :precision => 2)%>
-                   </div>
-                   <br>
-                   <div class ="col-md-12">
-                    <p class="card-text"><%= product.description %></p>
-                    </div> 
-                    <%= link_to 'learn_more', product_path(id: product.id ) %>     
-                  <%= button_to 'buy now', checkout_create_path,params: {id: product.id }, remote: true %>
-                  <%= button_to 'Like', product_like_path(product), params: {id: product.id },  remote: true %>
-                  <%= product.votes_for.size %>
-                <% else %> 
-                </div>
-                   <p class ="col-md-6 nopadding" id="pri" style="float:right">
-                     $<%= number_with_precision(product.price, :precision => 2)%>
-               
-       
-                   <span class ="col-md-12" style="float:left">
-                    <p class="card-text"><%= product.description %></p>
-                      <%= link_to 'learn_more', product_path(id: product.id ) %>  
-                    </span>
-
-                    
-                   <% end %> 
-                </p>
-               </div> 
-            </div>
-        </div>
-    <% end %>
-    </div>
-    <% end %>
-   <% end %> 
+<% end %>
