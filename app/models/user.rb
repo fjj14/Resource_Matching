@@ -61,4 +61,17 @@ class User < ApplicationRecord
         end
         return false
     end
+
+    def feed(products)
+        products = products.where(buyer_id: nil).order('created_at DESC')
+        @followingProducts =[]
+        products.each do |product|
+            if following.include?(product.user)
+                @followingProducts[@followingProducts.length] = product
+            end
+        end
+        @nonfollower = products - @followingProducts
+        finalList = @followingProducts + @nonfollower
+        return finalList
+    end
 end

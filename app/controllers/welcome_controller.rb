@@ -18,6 +18,10 @@ class WelcomeController < ApplicationController
                 #no category
             end
         end
+        if @products = []
+            @message = "Sorry, we couldn't find the product you were looking for!"
+            @products = Product.all
+        end
         render 'index'
          
     end
