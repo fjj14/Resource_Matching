@@ -43,4 +43,22 @@ class User < ApplicationRecord
     def send_welcome 
         NotificationMailer.welcome_email(self)
     end
+    def bought_from_me?(other_user)
+        @prods = self.products.where.not(buyer_id: nil)
+        @prods.each do |prod|
+            if User.find(prod.buyer_id) == other_user
+                return true
+            end
+        end
+        false
+    end
+    def rated_already(other_user)
+        @rat = self.ratings
+        @rat.each do |rating|
+            if User.find(rating.reviewer_id) == other_user
+                return true 
+            end
+        end
+        return false
+    end
 end

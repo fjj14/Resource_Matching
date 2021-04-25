@@ -66,7 +66,7 @@
                 </div>
             </div>
             <br>
-            <%if current_user %>
+            <%if current_user && @user.bought_from_me?(current_user)&& !@user.rated_already(current_user)%>
                 <button id="btnStart" type="button" class="btn btn-primary" data-bs-toggle="modal" data-target="#formModal" style="margin-left:90%" data-toggle="modal" data-target="#formModal">
                   Leave Review
                 </button>  

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :categories
   resources :sessions
+  
   resources :relationships,       only: [:create, :destroy]
   resources :products do
     post 'like', to: 'products#like'

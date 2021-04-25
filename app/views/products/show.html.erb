@@ -36,7 +36,7 @@
       <div class = "buttons">
         <button> <%= link_to raw("<i class=\"fa fa-shopping-cart \"></i>ADD TO CART"), line_items_path(product_id: @product.id), method: :post, type:"button"%></button>
      
-   <button>  <%= link_to 'Buy Now',  checkout_create_path(id: @product.id ), method: :post %></button>
+    <%= button_to 'buy now', checkout_create_path,params: {id: @product.id }, remote: true %>
       </div>
     </div>
   </div>
