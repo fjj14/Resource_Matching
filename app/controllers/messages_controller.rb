@@ -6,8 +6,12 @@ class MessagesController < ApplicationController
         users_mes = @conversation.participants
         if users_mes[0].id == session[:user_id]
             users_mes[1].notify("hi", "#{users_mes[0].first} #{users_mes[0].last} sent you a message")
+            #notification
+            Notification.create(recipient: current_user, actor: users_mes[0], action: "messaged", notifiable: @message)
+
         else 
             users_mes[0].notify("hi"," #{users_mes[1].first} #{users_mes[1].last} sent you a message")
+            Notification.create(recipient: current_user, actor: users_mes[1], action: "messaged", notifiable: @message)
         end
     end
     private 

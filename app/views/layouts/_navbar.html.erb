@@ -4,63 +4,55 @@
 
 
 
- <div class="container-fluid" id="nav-cont" >
+<div class="container-fluid" id="nav-cont" >
   <nav class="navbar navbar-inverse navbar-default" role="navigation">
-   <div class="container-fluid">
-     <!-- Brand and toggle get grouped for better mobile display -->
-     <div class="navbar-header">
-       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-         <span class="sr-only">Toggle navigation</span>
-         <span class="icon-bar"></span>
-         <span class="icon-bar"></span>
-         <span class="icon-bar"></span>
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
        </button>
        <a class="navbar-brand" href="/welcome" id="brand">buyDeis</a>
-     </div>
+      </div>
 
-   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <%= form_tag(search_path, :id =>'navBarSearchForm', class: "navbar-form navbar-left", method: :get) do %>
+          <div class="form-group" >
+            <%= text_field_tag :name, nil,class: "form-control", placeholder: "Search for Products" %>
+          </div>
+          <%= button_tag(type: "submit", style:"border:none") do %>
+            <button type="submit" class="btn btn-default navbutt" style="color:white">Submit</button>
+          <% end %>  
+        <% end %>
+        <ul class="nav navbar-nav navbar-right">
 
-  <%= form_tag(search_path, :id =>'navBarSearchForm', class: "navbar-form navbar-left", method: :get) do %>
-           <div class="form-group" >
-
-              
-               <%= text_field_tag :name, nil,class: "form-control", placeholder: "Search for Products" %>
-               </div>
-               <%= button_tag(type: "submit", style:"border:none") do %>
-                <button type="submit" class="btn btn-default navbutt" style="color:white">Submit</button>
-                <% end %>  
-                <% end %>
-
-
-
-       <ul class="nav navbar-nav navbar-right">
-       <% if current_user %>
-       <li><a class="navbutt" href="/cart"><i class="fa fa-shopping-cart fa-lg"></i></a></li>
-
-<li><a class="navbutt" href="/messages"><i class="fa fa-comment fa-lg"></i></a></li>
-
-
-       <li><a class="navbutt" href="/createProduct"><i class="fa fa-plus-square fa-lg"></i>
-
-      </a></li>
-      <li class="dropdown">
-        <a href="#" class="dropdown-toggle navbutt" data-toggle="dropdown"  role="button" aria-expanded="false"><i class="fa fa-user fa-2x"></i><span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><a href="/mypage" class="dropdownbutt">Mypage</a></li>
-
-
-          <li class="divider"></li>
-            <li><a  class="dropdownbutt"><%= button_to "Log out", logout_path, class: "nostyle", :method => :delete  %></a></li>
+        <% if current_user %>
+        <li class="nav-item btn-group" data-behavior="notifications" data-notifications='<%= render template: "notifications/index", formats: [:json] %>'>
+            <a class="dropdown-toggle nav-link" type="button" data-behavior="notifications-link" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <%= fa_icon "bell" %> <span data-behavior="unread-count"></span>
+            </a>
+          </li>
+          <li><a class="dropdown-toggle nav-link"  href="/cart"><i class="fa fa-shopping-cart fa-lg"></i></a></li>
+          <li><a class="dropdown-toggle nav-link"  href="/messages"><i class="fa fa-comment fa-lg"></i></a></li>
+          <li><a class="dropdown-toggle nav-link"  href="/createProduct"><i class="fa fa-plus-square fa-lg"></i></a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle navbutt" data-toggle="dropdown"  role="button" aria-expanded="false"><i class="fa fa-user fa-2x"></i><span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="/mypage" class="dropdownbutt">Mypage</a></li>  
+              <li class="divider"></li>
+              <li><a  class="dropdownbutt"><%= button_to "Log out", logout_path, class: "nostyle", :method => :delete  %></a></li>
+            </ul>
+          </li>
+        <% else %>
+          <li><a class="navbutt" href="/login">Sign in</a></li>
+          <li><a class="navbutt" href="/signup">Sign up</a></li>
+        <% end %>
         </ul>
-      </li>
-      <% else %>
-      <li><a class="navbutt" href="/login">Sign in</a></li>
-             <li><a class="navbutt" href="/signup">Sign up</a></li>
-         <% end %>
-
-       </ul>
-       </div><!-- /.navbar-collapse -->
-     </div><!-- /.container-fluid -->
-   </nav>
-   </div><!-- end container --> 
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+</div><!-- end container --> 
   

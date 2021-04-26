@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+    #notification
+    has_many :notifications, foreign_key: :recipient_id
+    
     has_many :products
     has_many :ratings
     has_many :active_relationships, class_name:  "Relationship",

@@ -3,7 +3,7 @@
 one:
   recipient_id: 1
   actor_id: 1
-  read_at: 2021-04-25 09:38:37
+  read_at: 2021-04-26 02:30:52
   action: MyString
   notifiable_id: 1
   notifiable_type: MyString
@@ -11,7 +11,7 @@ one:
 two:
   recipient_id: 1
   actor_id: 1
-  read_at: 2021-04-25 09:38:37
+  read_at: 2021-04-26 02:30:52
   action: MyString
   notifiable_id: 1
   notifiable_type: MyString
