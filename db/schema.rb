@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_25_133837) do
+ActiveRecord::Schema.define(version: 2021_04_23_184408) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -120,17 +120,6 @@ ActiveRecord::Schema.define(version: 2021_04_25_133837) do
     t.index ["receiver_id", "receiver_type"], name: "index_mailboxer_receipts_on_receiver_id_and_receiver_type"
   end
 
-  create_table "notifications", force: :cascade do |t|
-    t.integer "recipient_id"
-    t.integer "actor_id"
-    t.datetime "read_at"
-    t.string "action"
-    t.integer "notifiable_id"
-    t.string "notifiable_type"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "products", force: :cascade do |t|
     t.string "name"
     t.string "description"
@@ -159,7 +148,6 @@ ActiveRecord::Schema.define(version: 2021_04_25_133837) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
-<<<<<<< HEAD
   end
 
   create_table "taggings", id: :serial, force: :cascade do |t|
@@ -187,12 +175,6 @@ ActiveRecord::Schema.define(version: 2021_04_25_133837) do
     t.datetime "updated_at"
     t.integer "taggings_count", default: 0
     t.index ["name"], name: "index_tags_on_name", unique: true
-=======
-<<<<<<< Updated upstream
-    t.index ["follower_id"], name: "index_relationships_on_follower_id"
-=======
->>>>>>> Stashed changes
->>>>>>> likes
   end
 
   create_table "users", force: :cascade do |t|
