@@ -25,15 +25,23 @@ More than just your ordinary platform for buying, trading and selling, buyDeis i
 When entering buyDeis, users are allowed to create posts to sell/trade and see the feed for items that are available for purchase or exchange. The platform allows users to message each other for products and socializing, and gives users the option to search for specific items or users. On top of that, users can perform transactions on products(in progress) and leave reviews for them so they can build credibility(in progress).
 
 Our Features Include...
-* Sign up 
-* Sign in
-* Homepage with feed of products
-* Create Product
-* Profile page
-* Message
-* Search 
-* Log out 
-
+* The basic features
+    * Sign up 
+    * Sign in
+    * Log out 
+    * Profile page
+* Specific to our project 
+    * Homepage with feed of products
+    * Create Product
+    * Message
+    * Search 
+    * Stripe for transactions
+    * like a product 
+    * follow users
+    * Shopping cart
+    * Filtered search
+    * In app notification
+    * Email notification 
 
 ## URL Patterns
 * Home page page: /welcome
@@ -51,6 +59,7 @@ Our Features Include...
 * Categories urls: /categories,  /categories/1, /categories/new, /categories/1/edit
 * Products urls:  /products,  /products/1, /products/new, /products/1/edit
 * GIT Sessions urls: /sessions/new, /sessions
+
 
 
 ## DB Schema

@@ -159,7 +159,6 @@ ActiveRecord::Schema.define(version: 2021_04_25_133837) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
-<<<<<<< HEAD
   end
 
   create_table "taggings", id: :serial, force: :cascade do |t|
@@ -187,12 +186,6 @@ ActiveRecord::Schema.define(version: 2021_04_25_133837) do
     t.datetime "updated_at"
     t.integer "taggings_count", default: 0
     t.index ["name"], name: "index_tags_on_name", unique: true
-=======
-<<<<<<< Updated upstream
-    t.index ["follower_id"], name: "index_relationships_on_follower_id"
-=======
->>>>>>> Stashed changes
->>>>>>> likes
   end
 
   create_table "users", force: :cascade do |t|

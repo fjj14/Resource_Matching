@@ -1,8 +1,9 @@
 json.array! @notifications do |notification|
-    json.recipient notification.recipient
-    json.actor notification.actor
+    json.actor notification.actor.username
     json.action notification.action
-    json.notifiable notification.notifiable
-    json.url ratings_path(notification.notifiable.rating, anchor: dom_id(notification.notifiable))
-end
+    json.notifiable do 
+        json.type "a #{notification.notifiable.class.to_s.underscore.humanize.downcase}"
+    end
 
+    json.url conversation_path(notification.notifiable.conversation, anchor: dom_id(notification.notifiable))
+end

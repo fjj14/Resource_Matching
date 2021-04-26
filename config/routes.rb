@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :notifications
   resources :line_items
   resources :carts
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
@@ -22,6 +21,12 @@ Rails.application.routes.draw do
   resources :conversations do
     resources :messages
   end
+
+  #Notification
+  resources :notifications do
+    
+  end
+
   scope '/stripe' do
     post 'create', to: 'stripe#create', as: 'stripe_create'
     get 'refresh', to: 'stripe#refresh', as: 'stripe_refresh'
