@@ -11,6 +11,7 @@ class Product < ApplicationRecord
     has_many_attached :images
     acts_as_votable
     has_many :line_items
+    searchkick
     private
     def not_referenced_by_any_line_items
         unless line_items.empty? 

@@ -121,6 +121,14 @@ GEM
     declarative-option (0.1.0)
     digest-crc (0.6.3)
       rake (>= 12.0.0, < 14.0.0)
+    elasticsearch (7.12.0)
+      elasticsearch-api (= 7.12.0)
+      elasticsearch-transport (= 7.12.0)
+    elasticsearch-api (7.12.0)
+      multi_json
+    elasticsearch-transport (7.12.0)
+      faraday (~> 1)
+      multi_json
     erubi (1.10.0)
     execjs (2.7.0)
     faker (2.16.0)
@@ -352,6 +360,10 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
+    searchkick (4.4.4)
+      activemodel (>= 5)
+      elasticsearch (>= 6)
+      hashie
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
@@ -448,6 +460,7 @@ DEPENDENCIES
   redis (~> 4.0)
   rubocop-faker
   sass-rails (>= 6)
+  searchkick
   selenium-webdriver
   spring
   stimulus_reflex (~> 3.4)
