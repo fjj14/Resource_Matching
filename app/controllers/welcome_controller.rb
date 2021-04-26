@@ -1,29 +1,20 @@
 class WelcomeController < ApplicationController
     before_action :set_product
     def search
-        @category =Category.find_by(id: params[:category][:id])
-        if (params[:name].blank? || params[:name] =="") && @category == nil
-            @products = Product.all
-        else 
-            if @category!=nil && (!params[:name].blank? || params[:name] !="")
-                
-                @category =Category.find_by(id: params[:category][:id])
-                @products = @category.products.where("LOWER(name) LIKE LOWER(?)", "%#{params[:name]}%")    
-            elsif @category!=nil && ( params[:name].blank?|| params[:name] =="")
-                @category =Category.find_by(id: params[:category][:id])
-                @products = @category.products
-            else
-              
-                @products = Product.where("LOWER(name) LIKE LOWER(?)", "%#{params[:name]}%")
-                #no category
-            end
+        @producs = Product.search(params.fetch(:name, "*")).to_a
+        @products =[]
+        @productsList =[]
+        @producs.each do |prod|
+            @productsList[@productsList.length] = Product.find(prod.id)
         end
-        if @products = []
+        if @productsList !=[]
+            @products =  Product.where(id: @productsList.map(&:id)).where(buyer_id: nil).order('created_at DESC')
+        end
+        if @products == []
             @message = "Sorry, we couldn't find the product you were looking for!"
             @products = Product.all.where(buyer_id: nil).order('created_at DESC')
-        else
-            @products = @products.where(buyer_id: nil).order('created_at DESC')
         end
+       
         render 'index'
          
     end

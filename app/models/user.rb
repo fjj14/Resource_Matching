@@ -62,7 +62,7 @@ class User < ApplicationRecord
     end
 
     def feed(products)
-        products = products.where(buyer_id: nil).order('created_at DESC')
+       
         @followingProducts =[]
         products.each do |product|
             if following.include?(product.user)

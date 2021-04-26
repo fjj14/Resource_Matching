@@ -28,7 +28,7 @@ $(document).ready(function(){
   <% @products =Product.all %>
 <%end%>
 <% if current_user %>
-<%@products = current_user.feed(@products)%>
+  <%@products = current_user.feed(@products)%>
 <%end%>
 
 <% @products.each_slice(3)  do |products| %>

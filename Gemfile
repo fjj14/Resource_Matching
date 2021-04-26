@@ -33,6 +33,7 @@ gem 'acts_as_votable'
 gem 'oauth2'
 gem 'cancancan'
 gem 'hotwire-rails'
+gem 'searchkick'
 gem 'rails_admin', '~> 2.0'
 gem 'google-cloud-storage', '~>1.8', require: false
 gem 'bcrypt', '~> 3.1.7'
