@@ -1,4 +1,5 @@
 class Product < ApplicationRecord
+    searchkick
     before_destroy :not_referenced_by_any_line_items
     validates :name, length: { minimum: 2 }, 
     presence: true
