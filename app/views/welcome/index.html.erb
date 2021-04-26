@@ -9,11 +9,7 @@
 
 
 <div class ="container">
-<%= @producs.aggs%>
-<% @producs.aggs["price"]["buckets"].each do |bucket| %>
-<%= bucket["key"]%>
-(<%= bucket["doc_count"]%>)
-<br>
+
 <%end%>
 <%= render 'products' %>
 </div >
