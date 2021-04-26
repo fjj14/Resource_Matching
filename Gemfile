@@ -76,5 +76,3 @@ end
 
 gem "cable_ready", "~> 4.5"
 gem "stimulus_reflex", "~> 3.4"
-gem 'elasticsearch-model'
-gem 'elasticsearch-rails'
