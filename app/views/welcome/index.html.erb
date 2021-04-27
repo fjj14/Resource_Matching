@@ -7,9 +7,11 @@
 <div class ="container">
     <h4>Price</h4>
     <% @producs.aggs["price"]["buckets"].each do |bucket|%>
-       
-        <%= bucket["key"]%>
-       
+       <% if params[:price] == bucket["key"].to_s %>
+          <strong><%= link_to bucket["key"], request.params.except(:price) %></strong>
+        <% else %>
+          <%= link_to bucket["key"], request.params.merge(price: bucket["key"].to_i) %>
+        <% end %>
          (<%= bucket["doc_count"]%>)
     <% end%>
     <h4>Condition</h4>

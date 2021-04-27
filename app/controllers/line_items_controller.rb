@@ -7,8 +7,7 @@ class LineItemsController < ApplicationController
   end
 
   # GET /line_items/1 or /line_items/1.json
-  def show
-  end
+  def show; end
 
   # GET /line_items/new
   def new
@@ -16,14 +15,12 @@ class LineItemsController < ApplicationController
   end
 
   # GET /line_items/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /line_items or /line_items.json
   def create
     @product = Product.find(params[:product_id])
     @line_item = @cart.add_product(@product)
-
     respond_to do |format|
       if @line_item.save
         format.html { redirect_to @cart, notice: "Line item was successfully created." }

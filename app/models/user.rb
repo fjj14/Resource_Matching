@@ -39,41 +39,44 @@ class User < ApplicationRecord
     def unfollow(other_user)
         following.delete(other_user)
     end
+
     def following?(other_user)
         following.include?(other_user)
     end
+
     def send_welcome 
         NotificationMailer.welcome_email(self)
     end
+
     def bought_from_me?(other_user)
-        @prods = self.products.where.not(buyer_id: nil)
-        @prods.each do |prod|
-            if User.find(prod.buyer_id) == other_user
+        sold_products = products.where.not(buyer_id: nil)
+        sold_products.each do |sold_product|
+            if User.find(sold_product.buyer_id) == other_user
                 return true
             end
         end
         false
     end
+
     def rated_already(other_user)
-        @rat = self.ratings
-        @rat.each do |rating|
+        @ratings_received = ratings
+        @ratings_received.each do |rating|
             if User.find(rating.reviewer_id) == other_user
                 return true 
             end
         end
-        return false
+       false
     end
 
-    def feed(products)
-       
+    def feed(allproducts)
         @followingProducts =[]
-        products.each do |product|
+        allproducts.each do |product|
             if following.include?(product.user)
                 @followingProducts[@followingProducts.length] = product
             end
         end
         @nonfollower = products - @followingProducts
-        finalList = @followingProducts + @nonfollower
-        return finalList
+        final_list = @followingProducts + @nonfollower
+        return final_list
     end
 end

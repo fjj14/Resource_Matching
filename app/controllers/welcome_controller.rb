@@ -17,14 +17,17 @@ class WelcomeController < ApplicationController
     end
 
     def index 
-       # args = []
-      #  args[:price] = params[:price] if params[:price]
-      #  args[:category_id] = params[:category_id] if params[:category_id].present?
-       # args[:condition] = params[:condition] if params[:condition].present?
-      #  args[:created_at] = params[:created_at] if params[:created_at].present?
-        @producs = Product.search "*",  aggs: {category_id: {}, price: {}, condition: {}, created_at: {}}
-       # @producs = Product.search "*", where: args,  aggs: {category_id: {}, price: {}, condition: {}, created_at: {}}
-
+        args = []
+        args[:price] = params[:price] if params[:price]
+        args[:category_id] = params[:category_id] if params[:category_id].present?
+        args[:condition] = params[:condition] if params[:condition].present?
+        args[:created_at] = params[:created_at] if params[:created_at].present?
+        if args !=[]
+      #  @producs = Product.search "*",  aggs: {category_id: {}, price: {}, condition: {}, created_at: {}}
+            @producs = Product.search "*", where: args,  aggs: {category_id: {}, price: {}, condition: {}, created_at: {}}
+        else
+            @producs = Product.search "*",  aggs: {category_id: {}, price: {}, condition: {}, created_at: {}}
+        end
     end
     private
     # Use callbacks to share common setup or constraints between actions.

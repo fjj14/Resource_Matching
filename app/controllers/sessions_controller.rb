@@ -1,7 +1,5 @@
 class SessionsController < ApplicationController
-  def new
-  end
-
+  def new; end
   
   def create 
     user = User.find_by(email: params[:email])
@@ -15,9 +13,7 @@ class SessionsController < ApplicationController
         session[:cart_id] = cart.id
         current_cart.user = current_user
         current_user
-      end
-     
-      
+      end 
       redirect_to welcome_path, notice: "Logged in succesfully"
     else
       flash[:error] = 'Invalid email/password combination'

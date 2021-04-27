@@ -4,8 +4,7 @@ class CheckoutController < ApplicationController
         @product = Product.new
     end
 
-    def create 
-        
+    def create  
         if Product.where(id: params[:id]) == []
             self.create_from_cart
             return
@@ -15,7 +14,6 @@ class CheckoutController < ApplicationController
             return
         end
         @product = Product.find( params[:id])
-        
         @product.update!(buyer_id: current_user.id)
         
         if @product.nil?
@@ -47,7 +45,6 @@ class CheckoutController < ApplicationController
         @allProducts = current_cart.getProducts
         @totalPrice = ((current_cart.totalPrice * 100)* 1.08)
         @name = ""
-
         current_cart.line_items.each do |item|
             @name = @name + "#{item.product.name}" + "\tquantity: #{item.quantity}\n"
             @product = item.product
