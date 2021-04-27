@@ -75,7 +75,7 @@ class User < ApplicationRecord
                 @followingProducts[@followingProducts.length] = product
             end
         end
-        @nonfollower = products - @followingProducts
+        @nonfollower = allproducts - @followingProducts
         final_list = @followingProducts + @nonfollower
         return final_list
     end
