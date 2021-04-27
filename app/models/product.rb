@@ -1,6 +1,6 @@
 class Product < ApplicationRecord
     searchkick
-    before_destroy :not_referenced_by_any_line_items
+   # before_destroy :not_referenced_by_any_line_items
     validates :name, length: { minimum: 2 }, 
     presence: true
     validates :description, length: { minimum: 20 }, 
@@ -11,10 +11,15 @@ class Product < ApplicationRecord
     belongs_to :category
     has_many_attached :images
     acts_as_votable
-    has_many :line_items
+    has_many :line_items, dependent: :destroy
     
     private
     def not_referenced_by_any_line_items
+        if !line_items.empty?
+            line_items.each do |item|
+                
+            end
+        end
         unless line_items.empty? 
             errors.add(:base, "line_items present")
             throw :abort

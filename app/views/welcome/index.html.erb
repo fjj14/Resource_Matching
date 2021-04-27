@@ -1,15 +1,36 @@
-<head>
+
 
 <%= stylesheet_link_tag 'welcome' %>
-<meta charset="utf-8">
-<%= csrf_meta_tags %>
-<%= csp_meta_tag %>
-
 
 
 
 <div class ="container">
-
-
+    <h4>Price</h4>
+    <% @producs.aggs["price"]["buckets"].each do |bucket|%>
+       
+        <%= bucket["key"]%>
+       
+         (<%= bucket["doc_count"]%>)
+    <% end%>
+    <h4>Condition</h4>
+    <% @producs.aggs["condition"]["buckets"].each do |bucket|%>
+        <% if params[:condition] == bucket["key"].to_s%>
+        (<%= bucket["doc_count"]%>)
+        <%end%>
+        <br>
+    <% end%>
+    <h4>Category</h4>
+    <%  @producs.aggs["category_id"]["buckets"].each do |bucket|%>
+        <% if params[:category_id] == bucket["key"].to_s%>
+             "<%=Category.find( bucket["key"]).name%>"   
+            (<%= bucket["doc_count"]%>)
+         <%end%>
+    <% end%>
+     <h4>Date Created</h4>
+    <% @producs.aggs["created_at"]["buckets"].each do |bucket|%>
+        "<%=bucket["key"]%>"   
+        (<%= bucket["doc_count"]%>)
+    <% end%>
+ 
 <%= render 'products' %>
 </div >

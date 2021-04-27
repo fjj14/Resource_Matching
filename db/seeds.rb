@@ -22,7 +22,7 @@ Category.create(name: "Jewelry", description:Faker::Lorem.paragraphs(number: 1))
 Category.create(name: "Sporting Goods", description:Faker::Lorem.paragraphs(number: 1))
 Category.create(name: "Art and Crafts", description:Faker::Lorem.paragraphs(number: 1))
 20.times do
-    Product.create(name: Faker::Commerce.product_name, description: (Faker::Lorem.paragraphs(number: 1)).join(" "), price: rand(100), user_id: User.all.ids[rand(0 .. 19)], status: [true, false].sample, quantity: rand(3), category_id: Category.all.ids[rand(0..7)], condition: conds.rand(0..3)) 
+    Product.create(name: Faker::Commerce.product_name, description: (Faker::Lorem.paragraphs(number: 1)).join(" "), price: rand(100), user_id: User.all.ids[rand(0 .. 19)], status: [true, false].sample, quantity: rand(3), category_id: Category.all.ids[rand(0..7)], condition: conds[rand(0..3)]) 
 end
 
 User.create(first: "jane", last:"doe", email:"admin@email.com",username:"adminuser", password: "abcdefghi", admin: 'true')
