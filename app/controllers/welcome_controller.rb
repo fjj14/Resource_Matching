@@ -14,17 +14,14 @@ class WelcomeController < ApplicationController
             @message = "Sorry, we couldn't find the product you were looking for!"
             @products = Product.all.where(buyer_id: nil).order('created_at DESC')
         end
-       
-        render 'index'
-         
     end
 
     def index 
-        args = []
-        args[:price] = params[:price] if params[:price]
-        args[:category_id] = params[:category_id] if params[:category_id].present?
-        args[:condition] = params[:condition] if params[:condition].present?
-        args[:created_at] = params[:created_at] if params[:created_at].present?
+       # args = []
+      #  args[:price] = params[:price] if params[:price]
+      #  args[:category_id] = params[:category_id] if params[:category_id].present?
+       # args[:condition] = params[:condition] if params[:condition].present?
+      #  args[:created_at] = params[:created_at] if params[:created_at].present?
         @producs = Product.search "*",  aggs: {category_id: {}, price: {}, condition: {}, created_at: {}}
        # @producs = Product.search "*", where: args,  aggs: {category_id: {}, price: {}, condition: {}, created_at: {}}
 
