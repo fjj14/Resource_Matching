@@ -5,34 +5,56 @@
 
 
 <div class ="container">
+<div class ="row">
+<h4> Filter by </h4>
+<div class ="col-md-3">
     <h4>Price</h4>
-    <% @producs.aggs["price"]["buckets"].each do |bucket|%>
-       <% if params[:price] == bucket["key"].to_s %>
-          <strong><%= link_to bucket["key"], request.params.except(:price) %></strong>
+    <% @producss.aggs["price"]["buckets"].sort_by{ |b| b["key"] }.each do |bucket|%>
+       <% if params[:price_from] == bucket["from"].to_s && params[:price_to] == bucket["to"].to_s%>
+          <strong><%= link_to price_range_name(bucket), request.params.except(:price) %></strong>
         <% else %>
-          <%= link_to bucket["key"], request.params.merge(price: bucket["key"].to_i) %>
+          <%= link_to price_range_name(bucket), request.params.merge(price_from: bucket["from"], price_to: bucket["to"]) %>
         <% end %>
          (<%= bucket["doc_count"]%>)
+         <br>
     <% end%>
+    </div>
+    <div class ="col-md-3">
     <h4>Condition</h4>
-    <% @producs.aggs["condition"]["buckets"].each do |bucket|%>
+    <% @producss.aggs["condition"]["buckets"].sort_by{ |b| b["key"] }.each do |bucket|%>
         <% if params[:condition] == bucket["key"].to_s%>
-        (<%= bucket["doc_count"]%>)
-        <%end%>
-        <br>
+         <strong><%= link_to bucket["key"], request.params.except(:condition) %></strong>
+        <% else %>
+          <%= link_to bucket["key"], request.params.merge(condition: bucket["key"]) %>
+        <% end %>
+         (<%= bucket["doc_count"]%>)
+         <br>
     <% end%>
+    </div>
+    <div class ="col-md-3">
     <h4>Category</h4>
-    <%  @producs.aggs["category_id"]["buckets"].each do |bucket|%>
-        <% if params[:category_id] == bucket["key"].to_s%>
-             "<%=Category.find( bucket["key"]).name%>"   
-            (<%= bucket["doc_count"]%>)
-         <%end%>
+    <%  @producss.aggs["category_id"]["buckets"].sort_by{ |b| Category.find(b["key"]).name }.each do |bucket|%>
+        <% if params[:category_id] == bucket["key"]%>
+             <strong><%= link_to bucket["key"], request.params.except(:category_id) %></strong>
+        <% else %>
+          <%= link_to Category.find(bucket["key"]).name, request.params.merge(category_id: bucket["key"]) %>
+        <% end %>
+         (<%= bucket["doc_count"]%>)
+         <br>    
     <% end%>
-     <h4>Date Created</h4>
-    <% @producs.aggs["created_at"]["buckets"].each do |bucket|%>
-        "<%=bucket["key"]%>"   
-        (<%= bucket["doc_count"]%>)
+    </div>
+    <div class ="col-md-3">
+    <h4>Date Created</h4>
+    <% @producss.aggs["created_at"]["buckets"].sort_by{ |b| b["key"] }.reverse.each do |bucket|%>
+      <% if params[:created_at] == bucket["key"]%>
+             <strong><%= link_to bucket["key"], request.params.except(:created_at) %></strong>
+        <% else %>
+          <%= link_to  bucket["key"], request.params.merge(created_at: bucket["key"]) %>
+        <% end %>
+         (<%= bucket["doc_count"]%>)
+         <br>    
     <% end%>
- 
+    </div>
+ </div >
+ </div>
 <%= render 'products' %>
-</div >
