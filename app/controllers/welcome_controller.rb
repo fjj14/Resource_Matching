@@ -1,5 +1,6 @@
 class WelcomeController < ApplicationController
     before_action :set_product
+
     def search
         @producs = Product.search(params.fetch(:name, "*")).to_a
         @products = []
@@ -12,9 +13,9 @@ class WelcomeController < ApplicationController
         end
         if @products.empty?
             @message = "Sorry, we couldn't find the product you were looking for!"
-            @products = Product.all.where(buyer_id: nil).order('created_at DESC')
+            @products = Product.where(buyer_id: nil).order('created_at DESC')
         end
-       # render 'index'
+       render 'index'
     end
 
     def index 
@@ -27,7 +28,7 @@ class WelcomeController < ApplicationController
         args[:created_at] = params[:created_at] if params[:created_at].present?
         price_ranges = [ {to: 10 }, {from: 10.01, to: 20 }, {from: 20.01, to: 30 }, {from: 30.01}]
         #  @producs = Product.search "*",  aggs: {category_id: {}, price: {}, condition: {}, created_at: {}}
-        @producss = Product.search "*", where: args,  aggs: {price: {ranges: price_ranges }, category_id: {}, condition: {}, created_at: {}}
+        @producss = @products.search "*", where: args,  aggs: {price: {ranges: price_ranges }, category_id: {}, condition: {}, created_at: {}}
         @FilterList = []
         @producss.each do |pro|
             @FilterList[@FilterList.length] = Product.find(pro.id)
@@ -40,6 +41,11 @@ class WelcomeController < ApplicationController
     private
     # Use callbacks to share common setup or constraints between actions.
     def set_product
-      @products = Product.all
+        if !@products
+            @products = Product.all
+        end
+      price_ranges = [ {to: 10 }, {from: 10.01, to: 20 }, {from: 20.01, to: 30 }, {from: 30.01}]
+      @producss = Product.search "*",   aggs: {price: {ranges: price_ranges}, category_id: {}, condition: {}, created_at: {}}
+      @producs = Product.search(params.fetch(:name, "*")).to_a
     end
 end
