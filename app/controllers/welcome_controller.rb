@@ -35,7 +35,7 @@ class WelcomeController < ApplicationController
         if @FilterList != []
             @pros =  Product.where(id: @FilterList.map(&:id)).where(buyer_id: nil).order('created_at DESC')
         end
-        @products = @pros & @products
+        @products = @pros
     end
     private
     # Use callbacks to share common setup or constraints between actions.
