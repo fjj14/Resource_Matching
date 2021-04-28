@@ -17,9 +17,7 @@
 <br>
 <% if current_user.stripe_user_id && !currently_due %>
 <%= link_to "Go to Stripe Dashboard", stripe_dashboard_path(current_user.id) %>
-<% elsif current_user.stripe_user_id && currently_due %>
-You still have some things due before you are finish setting up 
-<%= link_to image_tag("ConnectwithStripe.png", width:"120px", height:"40px"), stripe_create_path, method: :post, params: {current_user: current_user}, remote: true %>
+
 <% else %>
     <%= link_to image_tag("ConnectwithStripe.png", width:"120px", height:"40px"), stripe_create_path, method: :post, params: {current_user: current_user}, remote: true %>
 <% end %>
