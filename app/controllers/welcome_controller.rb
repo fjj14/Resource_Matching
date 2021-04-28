@@ -25,10 +25,9 @@ class WelcomeController < ApplicationController
         args[:price][:lte] = params[:price_to] if params[:price_to].present?
         args[:category_id] = params[:category_id] if params[:category_id].present?
         args[:condition] = params[:condition] if params[:condition].present?
-        args[:created_at] = params[:created_at] if params[:created_at].present?
+        args[:date] = params[:date] if params[:date].present?
         price_ranges = [ {to: 10 }, {from: 10.01, to: 20 }, {from: 20.01, to: 30 }, {from: 30.01}]
-        #  @producs = Product.search "*",  aggs: {category_id: {}, price: {}, condition: {}, created_at: {}}
-        @producss = @products.search "*", where: args,  aggs: {price: {ranges: price_ranges }, category_id: {}, condition: {}, created_at: {}}
+        @producss = @products.search "*", where: args,  aggs: {price: {ranges: price_ranges }, category_id: {}, condition: {}, date: {}}
         @FilterList = []
         @producss.each do |pro|
             @FilterList[@FilterList.length] = Product.find(pro.id)

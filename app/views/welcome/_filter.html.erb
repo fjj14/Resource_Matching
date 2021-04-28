@@ -39,11 +39,11 @@
     </div>
     <div class ="col-md-3">
     <h4>Date Created</h4>
-    <% @producss.aggs["created_at"]["buckets"].sort_by{ |b| b["key"] }.reverse.each do |bucket|%>
-      <% if params[:created_at] == bucket["key"]%>
-             <strong><%= link_to bucket["key"], request.params.except(:created_at) %></strong>
+    <% @producss.aggs["date"]["buckets"].sort_by{ |b| b["key"] }.reverse.each do |bucket|%>
+      <% if params[:date] == bucket["key"]%>
+             <strong><%= link_to bucket["key"], request.params.except(:date) %></strong>
         <% else %>
-          <%= link_to  bucket["key"], request.params.merge(created_at: bucket["key"]) %>
+          <%= link_to  bucket["key"], request.params.merge(date: bucket["key"]) %>
         <% end %>
          (<%= bucket["doc_count"]%>)
          <br>    
