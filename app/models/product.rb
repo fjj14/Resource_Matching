@@ -11,7 +11,14 @@ class Product < ApplicationRecord
     has_many_attached :images
     acts_as_votable
     has_many :line_items, dependent: :destroy
-  
-   
+  def search_data
+    {
+      date: created_at.year,
+      price: price,
+      category_id: category_id,
+      condition: condition
+
+    }
+    end
    
 end

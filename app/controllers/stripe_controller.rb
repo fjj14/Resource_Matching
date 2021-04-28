@@ -1,7 +1,7 @@
 class StripeController < ApplicationController   
   # Create stripe connect express account
   def create
-    if current_user.stripe_user_id.nil?
+    #if current_user.stripe_user_id.nil?
       account = Stripe::Account.create({
         type: 'express',
         country: 'US',
@@ -18,21 +18,21 @@ class StripeController < ApplicationController
       # Create temporary account link and redirect to express onboarding
       account_link = Stripe::AccountLink.create({
         account: account.id,
-        refresh_url: 'https://buydeis.herokuapp.com/stripe/refresh/',
+        refresh_url: 'https://buydeis.herokuapp.com/stripe/reauth',
         return_url: 'https://buydeis.herokuapp.com/mypage/',
         type: 'account_onboarding'
       })
       redirect_to account_link.url
-    else
+   # else
       # Create temporary account link and redirect to express onboarding
-      account_link = Stripe::AccountLink.create({
-          account: current_user.stripe_user_id,
-          refresh_url: 'https://buydeis.herokuapp.com/stripe/refresh/',
-          return_url: 'https://buydeis.herokuapp.com/mypage/',
-          type: 'account_onboarding'
-        })
-      redirect_to account_link.url
-    end
+    #  account_link = Stripe::AccountLink.create({
+    #      account: current_user.stripe_user_id,
+    #      refresh_url: 'https://buydeis.herokuapp.com/stripe/refresh/',
+    #      return_url: 'https://buydeis.herokuapp.com/mypage/',
+    #      type: 'account_onboarding'
+    #    })
+    #  redirect_to account_link.url
+   # end
   end
   
   def refresh; end
