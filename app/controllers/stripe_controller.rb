@@ -1,7 +1,7 @@
 class StripeController < ApplicationController   
   # Create stripe connect express account
   def create
-   
+    Stripe.api_key = Rails.configuration.stripe[:secret_key]
     if current_user.stripe_user_id.nil?
       account = Stripe::Account.create({
         type: 'express',

@@ -13,6 +13,7 @@ class Product < ApplicationRecord
     has_many :line_items, dependent: :destroy
   def search_data
     {
+        name: name,
       date: created_at.year,
       price: price,
       category_id: category_id,
