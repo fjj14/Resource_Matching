@@ -1,71 +1,71 @@
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/js/bootstrap.bundle.js'></script>
-<%= stylesheet_link_tag 'profile', media: 'all'%>
+<%= stylesheet_link_tag 'users', media: 'all'%>
 
-
-<div class="container emp-profile">        
+<div class="container">
+  <main>
     <div class="row">
-        <div class="col-md-4">
-            <div class="profile-img">
-                <% if @user.image.present? %>
-                    <%= image_tag(@user.image, class:"card-img-top")%> 
-                <% else %>
-                    <%= link_to image_tag('default.png', class:"card-img-top") %> 
-                <% end %>
+        <div class="left col-lg-4">
+            <div class="photo-left">
+                <div class="photo">
+                    <% if @user.image.present? %>
+                        <%= image_tag(User.where(id: session[:user_id]).first.image, class:"card-img-top")%> 
+                    <% else %>
+                        <%= link_to image_tag('default.png', class:"card-img-top") %> 
+                    <% end %>
+                </div>
+            </div>
+            <h4 class="name"><%= @user.first + " "+@user.last%></h4>
+            <p class="info">@<%= @user.username %></p>
+            <p class="info"><%= @user.email %></p>
+            <div class="stats row">
+            <div class="stat col-xs-4" style="padding-right: 50px;">
+                <p class="desc-stat">
+                <link_to id="btnFollowers" type="link" class="btn btn-primary" data-bs-toggle="modal"  style="margin-left:10%" data-toggle="modal" data-target="#followersModal">
+                <%= @user.followers.count%> Followers
+                </p>
+            </div>
+
+            <div class="stat col-xs-4" style="padding-left: 50px;">
+            <p class="desc-stat">
+            <link_to id="btnFollowers" type="link" class="btn btn-primary" data-bs-toggle="modal"  style="margin-left:10%" data-toggle="modal" data-target="#followingModal">
+            <%= @user.following.count%> Following
+            </p>
             </div>
         </div>
-        <div class="col-md-3">
-            <div class="profile-head">
-                <h3><%= @user.first + " "+ @user.last%></h3>
-                <h6> @<%= @user.username %> </h6>
-                <div class="stats">
-                    <h5>
-                         <button id="btnFollowing" type="button" class="btn btn-primary" data-bs-toggle="modal"  style="margin-left:10%" data-toggle="modal" data-target="#followingModal">
-                            <%= @user.following.count%>
-                        </button>
-                        Following
-                    </h5>
-                    <h5>
-                     <button id="btnFollowers" type="button" class="btn btn-primary" data-bs-toggle="modal"  style="margin-left:10%" data-toggle="modal" data-target="#followersModal">
-                            <%= @user.followers.count%>
-                        </button>
-                        Followers
-                    </h5>
-                </div>
-                
-                <% @user.average_rating.to_i.times do %>
-                    <span class="glyphicon glyphicon-star"></span>
-                <% end %>
-                <% (5- @user.average_rating).to_i.times do  %>
-                    <span class="glyphicon glyphicon-star-empty"></span>
-                <% end %>
-                <button id="btnview" type="button" class="btn btn-primary" data-bs-toggle="modal"  style="margin-left:10%" data-toggle="modal" data-target="#myModal">
-                    <%= Rating.where(user_id: @user.id).length%>
-                </button>
-                <div class="modal" id="myModal" tabindex="-1">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title">Reviews</h5>
-                            </div>
-                            <div class="modal-body">
-                                <% Rating.where(user_id: @user.id).each do |rate| %>
-                                    <%= User.where(id: rate.reviewer_id).first.username %>
-                                    <%= rate.rating_number %>
-                                    <%= rate.comment %>
-                                    <br>
-                                <%end%>
-                            </div>    
+    </div>
+    <div class="row">
+        <div class="right col-lg-8">
+            <% @user.average_rating.to_i.times do %>
+                <span class="glyphicon glyphicon-star"></span>
+            <% end %>
+            <% (5- @user.average_rating).to_i.times do  %>
+                <span class="glyphicon glyphicon-star-empty"></span>
+            <% end %>
+            <button id="btnview" type="button" class="btn btn-primary" data-bs-toggle="modal"  style="margin-left:10%" data-toggle="modal" data-target="#myModal">
+                <%= Rating.where(user_id: @user.id).length%>
+            </button>
+            <div class="modal" id="myModal" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Reviews</h5>
                         </div>
+                        <div class="modal-body">
+                            <% Rating.where(user_id: @user.id).each do |rate| %>
+                                <%= User.where(id: rate.reviewer_id).first.username %>
+                                <%= rate.rating_number %>
+                                <%= rate.comment %>
+                                <br>
+                            <%end%>
+                        </div>    
                     </div>
                 </div>
-                <% if current_user && current_user != @user%>
-                    <%= render 'follow_form' %>
-                <%end%>
             </div>
             <br>
+            <br>
             <%if current_user && @user.bought_from_me?(current_user)&& !@user.rated_already(current_user)%>
-                <button id="btnStart" type="button" class="btn btn-primary" data-bs-toggle="modal" data-target="#formModal" style="margin-left:90%" data-toggle="modal" data-target="#formModal">
+                <button id="btnStart" type="button" class="btn btn-primary" data-bs-toggle="modal" data-target="#formModal"  data-toggle="modal" data-target="#formModal">
                   Leave Review
                 </button>  
                 <div class="modal" id="formModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel"  aria-hidden="true">
@@ -84,9 +84,17 @@
                     </div>
                 </div>
             <%end%>
+            
+            <div class="follow">
+            <% if current_user && current_user != @user%>
+                <%= render 'follow_form' %>
+            <%end%> 
+           
+            </div>
         </div>
     </div>
-    <br><br>
+
+    <div class="row gallery">
         <% Product.where(user_id: @user.id).order('created_at DESC').each_slice(3)  do |products| %>
             <div class="row no-gutters" id="pro">
                 <% products.each do |product| %> 
@@ -105,54 +113,58 @@
                             <% end %>
                             <br>
                             <div class="card-body">
-                            <br>
-                            <div class ="col-md-6 nopadding" >
-                                $<%= number_with_precision(product.price, :precision => 2)%>
+                                <br>
+                                <div class ="col-md-6 nopadding" >
+                                    $<%= number_with_precision(product.price, :precision => 2)%>
+                                </div>   
+                                <br>
+                                <div class ="col-md-12">
+                                    <p class="card-text"><%= product.description %></p>
+                                </div>
                             </div>   
-                            <br>
-                            <div class ="col-md-12">
-                                <p class="card-text"><%= product.description %></p>
-                            </div>
-                        </div>   
+                        </div>
                     </div>
-                </div>
-            <% end %>
+                <% end %>
+            </div>
+        <% end %>
+    </div>
+  </main>
+</div>
+
+
+<div class="modal" id="followingModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">following</h5>
+            </div>
+            <div class="modal-body">
+                <% @user.following.each do |user| %>
+                    <%= user.first %> <%= user.last %>
+                    Learn more: <%=link_to "#{user.username}",user %>
+                    <br>
+                <%end%>
+            </div>    
         </div>
-    <% end %>
-
-
- <div class="modal" id="followingModal" tabindex="-1">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title">following</h5>
-                            </div>
-                            <div class="modal-body">
-                                <% @user.following.each do |user| %>
-                                    <%= user.first %> <%= user.last %>
-                                    Learn more: <%=link_to "#{user.username}",user %>
-                                   
-                                    <br>
-                                <%end%>
-                            </div>    
-                        </div>
-                    </div>
-                </div>
-                <div class="modal" id="followersModal" tabindex="-1">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title">followers</h5>
-                            </div>
-                            <div class="modal-body">
-                                <% @user.followers.each do |user| %>
-                                    <%= user.first %> <%= user.last %>
-                                    Learn more: <%=link_to  "#{user.username}",user %>
-                                   
-                                    <br>
-                                <%end%>
-                            </div>    
-                        </div>
-                    </div>
-                </div>
+    </div>
+</div>
+<div class="modal" id="followersModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">followers</h5>
+            </div>
+            <div class="modal-body">
+                <% @user.followers.each do |user| %>
+                    <%= user.first %> <%= user.last %>
+                    Learn more: <%=link_to  "#{user.username}",user %>
+                    <br>
+                <%end%>
+            </div>    
+        </div>
+    </div>
+</div>
        
+
+
+

@@ -2,11 +2,11 @@
 <div class="container">
   <main>
     <div class="row">
-        <div class="left col-lg-4">
+        <div class="center">
             <div class="photo-left">
                 <div class="photo">
                     <% if current_user.image.present? %>
-                        <%= image_tag(User.where(id: session[:user_id]).first.image, class:"card-img-top")%> 
+                        <%= image_tag(User.where(id: session[:user_id]).first.image, class:"img-responsive" )%> 
                     <% else %>
                         <%= link_to image_tag('default.png', class:"card-img-top") %> 
                     <% end %>
@@ -22,18 +22,15 @@
                 <%= current_user.followers.count%> Followers
                 </p>
             </div>
-
-            <div class="stat col-xs-4" style="padding-left: 50px;">
             <p class="desc-stat">
             <link_to id="btnFollowers" type="link" class="btn btn-primary" data-bs-toggle="modal"  style="margin-left:10%" data-toggle="modal" data-target="#followingModal">
-            <%= 0%> Following
+            <%= current_user.following.count%> Following
             </p>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="right col-lg-8">
-            <span class="follow">Follow</span>
             <% if current_user.stripe_user_id && !currently_due %>
                 <%= link_to "Go to Stripe Dashboard", stripe_dashboard_path(current_user.id) %>
             <% elsif current_user.stripe_user_id && currently_due %>
@@ -44,8 +41,7 @@
             <% end %>
         </div>
     </div>
-    <div class="row gallery">
-        
+    <div class="row">
         <% Product.where(user_id: session[:user_id]).order('created_at DESC').each_slice(3)  do |products| %>
             <div class="row no-gutters" id="pro">
                 <% products.each do |product| %> 
