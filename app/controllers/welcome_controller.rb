@@ -44,7 +44,11 @@ class WelcomeController < ApplicationController
             @products = Product.all
         end
       price_ranges = [ {to: 10 }, {from: 10.01, to: 20 }, {from: 20.01, to: 30 }, {from: 30.01}]
-      @producss = Product.search "*",   aggs: {price: {ranges: price_ranges}, category_id: {}, condition: {}, created_at: {}}
-      @producs = Product.search(params.fetch(:name, "*")).to_a
+      if !@producss
+        @producss = Product.search "*",   aggs: {price: {ranges: price_ranges}, category_id: {}, condition: {}, created_at: {}}
+      end
+      if !@producs
+        @producs = Product.search(params.fetch(:name, "*")).to_a
+      end
     end
 end
