@@ -36,11 +36,12 @@
     </div>
     <div class="product-removal">
     <% if false %>
+    
       <button class="remove-product">
-         <%= link_to "remove item", item, :method => :delete, :confirm => "Are you sure?",:remote => true %>
+         <%= link_to "remove item", item, :method => :delete, :confirm => "Are you sure?", :remote => true %>
       </button>
       <%end%>
-      <%= link_to "<button class='remove-product'>remove item</button>".html_safe, item, :method => :delete, :confirm => 'Are you sure?',:remote => true %>
+      <%= link_to "<button class='remove-product'>remove item</button>".html_safe, item, :method => :delete, :confirm => 'Are you sure?'%>
     </div>
     <div class="product-line-price">  <%= item.quantity * item.product.price %> </div>
   </div>
