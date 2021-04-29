@@ -8,12 +8,12 @@
 <span> To:&nbsp <span class="name-time">
 
 <% if @conversation.participants[0] == current_user  %> 
-<%= @conversation.participants[1].username %>
+  <%=link_to  "#{@conversation.participants[1].username}", @conversation.participants[1]%>
 <%else%>
-<%= @conversation.participants[0].username %> 
+<%=link_to  "#{@conversation.participants[0].username}", @conversation.participants[0] %>
 <%end%>
 
-<div style="border-bottom: 1px solid #e6ecf3;" ></div>
+<div style="border-bottom: 1px solid #e6ecf3;" ></div> 
 </span></span>
 
 
