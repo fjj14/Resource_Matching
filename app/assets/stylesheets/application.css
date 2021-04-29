@@ -25,7 +25,7 @@
 
  .navbar{
    background-color: #2F3F5F;
-  
+   border-radius: 0px !important;
    
  }
  
@@ -34,8 +34,14 @@
  }
  .navbutt{
    color:white !important;
+   transition: 0.2s;
+
 
  }
+ .navbutt:hover{
+  color: #b4c3e2 !important;
+
+}
 
  #brand{
    color:white;
@@ -45,3 +51,8 @@
    color:white !important;
  }
 
+
+
+ .heading{
+   font-size: 3rem;
+ }

@@ -60,14 +60,14 @@
 
             </div>
             <p class="name-time">
-               <span class="name"> 
+               <span class="namemes"> 
                <% if conversation.participants[0] == current_user  %> 
-               <%= conversation.participants[1].username %>
+               <%= conversation.participants[1].username %> 
                <%else%>
-               <%= conversation.participants[0].username %>
-               <%end%>
-               </span> -
-               <span class="name">   <%= conversation.subject %>     </span>
+               <%= conversation.participants[0].username %> 
+               <%end%>-
+               </span> 
+               <span class="namemes">   <%= conversation.subject %>     </span>
                <span class="time"></span>
             </p>
          </li>
@@ -109,14 +109,14 @@
             
             </div>
             <p class="name-time">
-               <span class="name"> 
+               <span class="namemes"> 
                <% if conversation.participants[0] == current_user  %> 
                <%= conversation.participants[1].username %>
                <%else%>
                <%= conversation.participants[0].username %>
-               <%end%>
-               </span> -
-               <span class="name">   <%= conversation.subject %>     </span>
+               <%end%>-
+               </span> 
+               <span class="namemes">   <%= conversation.subject %>  </span>
                <span class="time"></span>
             </p>
          </li>

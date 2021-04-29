@@ -65,8 +65,9 @@ a{
 }
 
 #loginlink{
-    margin-bottom: 5%;
-    margin-left: 10%;
+
+    padding-left: 10% !important; //doesnt work?
+    
 }
 
 #links a:link, a:hover, a:visited, a:active {

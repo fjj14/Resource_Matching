@@ -5,12 +5,12 @@
            
 <div class="col-xl-8 col-lg-8 col-md-8 col-sm-9 col-9">
     <div class="selected-user"> 
-<span> To: <span class="name">
+<span> To:&nbsp <span class="name">
 
 <% if @conversation.participants[0] == current_user  %> 
 <%= @conversation.participants[1].username %>
 <%else%>
-<%= @conversation.participants[0].username %>
+<%= @conversation.participants[0].username %> 
 <%end%>
 
 <div style="border-bottom: 1px solid #e6ecf3;" ></div>
@@ -30,7 +30,7 @@
 				</div>
 				<div class="chat-container">
 					<ul class="chat-box chatContainerScroll">
-						<% if current_user.username ==  receipt.message.sender.username %>
+						<% if current_user.username ==  receipt.message.sender.username %> 
 							<li class="chat-right">
 								<div class="chat-text">
 									<%= receipt.message.body %>

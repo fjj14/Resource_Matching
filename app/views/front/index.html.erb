@@ -1,70 +1,7 @@
 <head>
 <%= stylesheet_link_tag 'frontpage', media: 'all'%>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<style>
 
-#bod{
-#fronttitle{
-    padding-top:10%;
-    text-align: left;
-    font-family: Roboto, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    color: #2F3F5F;
-   
-    font-size: 5rem ;
-   
-    
-}
-body{
-        margin-bottom: 5%;
-        background-color:  #F0F4FF ;
-}
-
-@media (max-width: 1200px) {
- 
-  .im{
-    height:auto !important;
-    max-width:60% !important;
-
-  }
-.right{
-  
-  text-align:center;
-padding-right:0rem;
-padding-left:0rem;
-     margin-right: 4rem; 
-   margin-left: 4rem;  
-}
-h1{
-  text-align:center;
-   padding-right: 1rem; 
-   padding-left: 1rem;   
-
-}
-#info,#moreinfo, #otherinfo{
-  text-align:center;
-   padding-right: 1rem; 
-   padding-left: 1rem;   
-}
-.left{
-      padding-left: 1rem;
-}
-
-
-.btn-primary {
-  text-align:center;
- margin-right: 1rem; 
-   margin-left: 1rem;   
-    justify-content: center;
-    align-content: center;
-}
-.col-lg-6{
-  text-align:center;
-}
-
-}
-}
-
-</style>
 
 
 </head>
@@ -80,7 +17,7 @@ h1{
         </div>
         <div class="col-lg-6">
           <div class="right">
-            <%= image_tag "humans1.png",  class: "im",style: 'height:auto;max-width:70%;'%>
+            <%= image_tag "humans1.png",  class: "im"%>
           </div>
         <div style=" margin-top:15%; ">
       </div>
@@ -91,9 +28,9 @@ h1{
   <div style=" padding-top:8%; background-color:white"></div>
     <div class="row" id="two">
       <div class="col-lg-6 left">
-        <h1 id="fronttitle"  style="font-size: 3.4rem">
+        <div id="fronttitle"  style="font-size: 3.4rem;">
           What is buyDeis?
-        </h1>       
+        </div>       
         <p id ="intro">
           buyDeis is an application designed to provide the Brandeis student body with a space for trading/selling items that they are no longer in need of. It is also a platform where students can connect with each other through their presence of the creations/goods that they sell online. 
         </p>
@@ -105,7 +42,7 @@ h1{
       <br/>
       <div class="col-lg-6">
         <div class="right">
-          <%= image_tag "product.png", class: "im", style: "height:auto !important;max-width:80% !important;"%>
+        <%= image_tag "product.png", class: "im"%>
         </div>
       <div style=" margin-top:20%; "></div>
     </div>  
@@ -161,8 +98,8 @@ h1{
       </div>
     </div>
   </div>
-  <div style=" padding-top:10%; background-color:white">
-  </div>
+   <div style=" padding-top:6%; background-color:white"></div>
+  <div style=" padding-top:3%; background-color:#F0F4FF"></div>
 </div>
 <div class="container-fluid" style="background-color:#F0F4FF" >
   <h1 style="text-align:center">
@@ -183,11 +120,13 @@ h1{
     <div class="col-lg-4 ">
       <%= image_tag "sophia.png",  class:"im", style: 'height:auto;max-width:60%;' %>
       <h1 style="font-size:3rem;font-weight:400;text-align:center;margin-bottom:1%;margin-top:1%">Sophia Wang</h1>
-      <p style="text-align:center;font-size:1.4rem"> CS & Studio Art, Brandeis University 2023      </p>
+      <p style="text-align:center;font-size:1.4rem"> CS & Studio Art, Brandeis University 2023
+        <div style=" padding-top:11%;background-color:#F0F4FF"></div>      </p>
     </div>
-  <div style=" margin-top:38%;"></div>
+
   </div>
 </div>
+ <div style=" padding-top:6%; background-color:white"></div>
 <div class="container-fluid" id="four">
   <h1 style="text-align:center" >Contact Us</h1>
   <p style="text-align:center"> Questions? Concerns? Email us at  <u><a href="mailto:buydeisco@gmail.com">buydeisco@gmail.com<a></u> to get in touch.</p>

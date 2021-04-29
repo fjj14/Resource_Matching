@@ -11,7 +11,7 @@
   <h2 id="signin">Sign in</h2>
   <div class="form-row">
     <%= form_with url: login_path do |f| %>
-      <div class="form-group">
+      <div class="form-group" class="emailpassattr">
         <%= f.label :email %>
         <%= f.text_field :email, class: "form-control" %>
       </div>
