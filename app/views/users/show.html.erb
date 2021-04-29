@@ -22,15 +22,13 @@
             <div class="stat col-xs-4" style="padding-right: 50px;">
                 <p class="desc-stat">
                 <link_to id="btnFollowers" type="link" class="btn btn-primary" data-bs-toggle="modal"  style="margin-left:10%" data-toggle="modal" data-target="#followersModal">
-                <%= @user.followers.count%> Followers
-                </p>
+                <%= @user.followers.count%> Followers</p>
             </div>
 
             <div class="stat col-xs-4" style="padding-left: 50px;">
             <p class="desc-stat">
             <link_to id="btnFollowers" type="link" class="btn btn-primary" data-bs-toggle="modal"  style="margin-left:10%" data-toggle="modal" data-target="#followingModal">
-            <%= @user.following.count%> Following
-            </p>
+            <%= @user.following.count%> Following</p>
             </div>
         </div>
     </div>
