@@ -1,7 +1,7 @@
-<div class ="container" style: 'width:600px;'>
+<div class="card">
     <div class ="row">
-        <div class ="col-md-3">
-            <h4>Price</h4>
+        <div class ="col-md-9">
+            <span class=" card-text  name-time">Price: </span> <br>
             <% @producss.aggs["price"]["buckets"].sort_by{ |b| b["key"] }.each do |bucket|%>
                 <% if params[:price_from] == bucket["from"].to_s && params[:price_to] == bucket["to"].to_s%>
                     <strong><%= link_to price_range_name(bucket), request.params.except(:price) %></strong>
@@ -12,8 +12,8 @@
                 <br>
             <% end%>
         </div>
-        <div class ="col-md-3">
-            <h4>Condition</h4>
+          <div class ="col-md-9">
+      <span class="card-text name-time" >Condition: </span> <br>
             <% @producss.aggs["condition"]["buckets"].sort_by{ |b| b["key"] }.each do |bucket|%>
                 <% if params[:condition] == bucket["key"].to_s%>
                     <strong><%= link_to bucket["key"], request.params.except(:condition) %></strong>
@@ -24,8 +24,8 @@
                 <br>
             <% end%>
         </div>
-        <div class ="col-md-3">
-            <h4>Category</h4>
+               <div class ="col-md-9">
+            <span class=" card-text name-time">Category: </span><br>
             <%  @producss.aggs["category_id"]["buckets"].sort_by{ |b| Category.find(b["key"]).name }.each do |bucket|%>
                 <% if params[:category_id] == bucket["key"]%>
                     <strong><%= link_to bucket["key"], request.params.except(:category_id) %></strong>
@@ -36,8 +36,8 @@
                 <br>    
             <% end%>
         </div>
-        <div class ="col-md-3">
-            <h4>Date Created</h4>
+                <div class ="col-md-9">
+        <span class="card-text name-time">Date Posted: </span><br>
             <% @producss.aggs["date"]["buckets"].sort_by{ |b| b["key"] }.reverse.each do |bucket|%>
                 <% if params[:date] == bucket["key"]%>
                     <strong><%= link_to bucket["key"], request.params.except(:date) %></strong>

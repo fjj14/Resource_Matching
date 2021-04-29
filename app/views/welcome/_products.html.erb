@@ -100,7 +100,7 @@ $(document).ready(function(){
                     
                     <span style="margin-left:-1%;float:left;"> <%= button_to 'buy now', checkout_create_path,params: {id: product.id }, remote: true, class: "bottombutton" %></span>
                   
-                    <div class="col-md-6 nopadding" id="lik" style="margin-right:-5%;margin-top:2%">
+                    <div class="col-md-6 nopadding" id="lik" style="margin-right:-4%;margin-top:2%">
           <%= link_to "Message", conversations_path(user_id: product.user_id, body: "I want to buy your product", subject: product.name ), method: 'post', class: 'btn btn-primary bottombutton' %>
          <div class="padd"></div>
           </div>
