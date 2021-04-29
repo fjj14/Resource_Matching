@@ -16,7 +16,7 @@
 
 #lik {
     display: inline-block;
-     float: right !important;
+    float: right;
   text-align:right;
   font-size:1.5rem;
    width: 50%;
@@ -61,6 +61,11 @@
     .col-md-4{
         width: 100%;
     }
-   
+    #lik{
+        margin-left: 0% !important;
+        margin-right: 0% !important;
+        margin-top: 0% !important;
+
+    }
     
 }

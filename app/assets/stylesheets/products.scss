@@ -24,6 +24,20 @@
     margin-left:65% ;
 }
 
+.bottombutton{
+    background-color: #2F3F5F;
+    font-size:12px;
+    padding: 6px;
+    border-radius: 5px;
+    border:none;
+    outline:none;
+    color:white;
+}
+
+.bottombutton:hover{
+    background-color: #566583;
+}
+
 #fo{
     background-color: white;
     width: 80%;
@@ -34,4 +48,36 @@
        margin-bottom: 3%;
       
    }
+}
+
+
+#heartbutton{
+    border:none;
+    outline:none;
+    background-color: gray;
+
+}
+
+.fa-heart-o {
+    color: red;
+    cursor: pointer;
+  }
+
+  .fa-heart {
+    color: red;
+    cursor: pointer;
+  }
+#c{
+    border: 1px solid rgb(224, 224, 224);
+    border-radius: 7px;
+}
+
+.padd{
+    padding-top:14%;
+}
+
+@media (max-width: 990px) {
+    .padd{
+        margin-top:30%;
+    }
 }

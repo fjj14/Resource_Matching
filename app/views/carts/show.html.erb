@@ -1,16 +1,4 @@
-<% if false %>
-<h1> Cart </h1>
-<% current_cart.line_items.each do |item| %>
-  <p>
-    <%= item.product.name %>
-    <%= item.quantity %>
-    <%= link_to "remove item", item, :method => :delete, :confirm => "Are you sure?",:remote => true %>
-    
-<% end %>
 
-<%= button_to "Checkout", checkout_create_path,params: {id: nil}, remote: true %> %>
-
-<%end%>
 
 
 <div class= "cartcontain">
@@ -32,9 +20,9 @@
     <div class="product-image">
        <% if item.product.images[0].present? %>
        
-            <%= image_tag(item.product.images[0], class:"card-img-top")%> 
+           <%= image_tag(item.product.images[0], class:"card-img-top", style:"max-width:120px;height:auto")%>
         <% else %>
-            <%= image_tag( '/loginImage.jpg', class:"card-img-top", style:"width:80%;") %> 
+       <%= image_tag( '/loginImage.jpg', class:"card-img-top", style:"max-width:120px;height:auto") %>
         <% end %>
       
     </div>
@@ -47,9 +35,12 @@
   <%= item.quantity %>
     </div>
     <div class="product-removal">
+    <% if false %>
       <button class="remove-product">
          <%= link_to "remove item", item, :method => :delete, :confirm => "Are you sure?",:remote => true %>
       </button>
+      <%end%>
+      <%= link_to "<button class='remove-product'>remove item</button>".html_safe, item, :method => :delete, :confirm => 'Are you sure?',:remote => true %>
     </div>
     <div class="product-line-price">  <%= item.quantity * item.product.price %> </div>
   </div>

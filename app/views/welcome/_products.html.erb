@@ -1,3 +1,4 @@
+
 <%if @message  %>
 <%= flash[:alert] = @message %> 
 <%end%>
@@ -34,8 +35,8 @@ $(document).ready(function(){
 <% @products.each_slice(3)  do |products| %>
     <div class="row " >
      <% products.each do |product| %> 
-      <div class="col-md-4 " >
-            <div class="card">
+  <div class="col-md-4 " id="c">
+            <div class="card" >
                
                  <br>
                   <% if product.images.present? %>
@@ -76,14 +77,17 @@ $(document).ready(function(){
 
 
                 <div style="float:left;width: 50%; display: inline-block;"> $<%= number_with_precision(product.price, :precision => 2)%> </div>
-                         
+               <br/>  
+
+               <%if false%>        
                    <div class ="col-md-6 nopadding" id="lik" style="margin-top:-5%;margin-right:-5%">
                              
-               <%= button_to product_like_path(product), params: {id: product.id },  remote: true do %>
-               
-<span id = heart><i class='fa fa-heart-o' aria-hidden='true' style=" color: red; cursor:pointer"></i>  likes: <%= product.votes_for.size %> </span>
-<% end %>
+                     <%= button_to product_like_path(product), params: {id: product.id },  id:"heartbutton", remote: true do %>
+
+<span id = heart><i class="fa fa-heart-o" aria-hidden="true" > </i> <%= product.votes_for.size %></span>
 </div>
+<% end %><% end %>
+
 
 
                
@@ -93,9 +97,14 @@ $(document).ready(function(){
              
                    <div class ="col-md-12" style="text-align:left;">
                     <p class="card-text"><%= product.description %>   &nbsp<%= link_to 'learn_more', product_path(id: product.id ) %>    </p>
-                      <%= button_to 'buy now', checkout_create_path,params: {id: product.id }, remote: true %>
-                    </div> 
                     
+                    <span style="margin-left:-1%;float:left;"> <%= button_to 'buy now', checkout_create_path,params: {id: product.id }, remote: true, class: "bottombutton" %></span>
+                  
+                    <div class="col-md-6 nopadding" id="lik" style="margin-right:-5%;margin-top:2%">
+          <%= link_to "Message", conversations_path(user_id: product.user_id, body: "I want to buy your product", subject: product.name ), method: 'post', class: 'btn btn-primary bottombutton' %>
+         <div class="padd"></div>
+          </div>
+               </div> 
               
      
                 <% else %> 
@@ -109,20 +118,23 @@ $(document).ready(function(){
                          
                    <div class ="col-md-6 nopadding" id="lik" style="margin-right:-5%">
                              
-               <%= button_to product_like_path(product), params: {id: product.id },  remote: true do %>
+             <%if false%>                       
+               <%= button_to product_like_path(product), params: {id: product.id }, id:"heartbutton", remote: true do %>
 <span id = heart><i class='fa fa-heart-o' aria-hidden='true' style=" "></i>  <%= product.votes_for.size %> </span>
 <% end %>
+<% end %>
+
 </div>
 
 
 
-       
+       <br/>
                 
                    <div class ="col-md-12" style="text-align:left;">
                     <p class="card-text"><%= product.description %>    </p>
                     
                     </div> 
-                    
+                    <div class="padd"></div>
 
                     
                    <% end %> 
