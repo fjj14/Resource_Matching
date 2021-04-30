@@ -21,5 +21,10 @@ class Product < ApplicationRecord
 
     }
     end
+   def user_needs_stripe
+      if record.first_name == "Evil"
+        record.errors.add :base, "This person is evil"
+      end
+    end
    
 end
