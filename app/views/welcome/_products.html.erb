@@ -79,6 +79,12 @@ $(document).ready(function(){
                 <div style="float:left;width: 50%; display: inline-block;"> $<%= number_with_precision(product.price, :precision => 2)%> </div>
                <br/>  
 
+  <div class ="col-md-6 nopadding" id="lik" style="margin-top:-5%;margin-right:-5%">
+  <%= button_to 'Like', product_like_path(product), params: {id: product.id } %>   <%= product.votes_for.size %>
+  </div>
+               
+
+               
                <%if false%>        
                    <div class ="col-md-6 nopadding" id="lik" style="margin-top:-5%;margin-right:-5%">
                              
@@ -117,7 +123,10 @@ $(document).ready(function(){
                   <div style="float:left;width: 50%; display: inline-block;"> $<%= number_with_precision(product.price, :precision => 2)%> </div>
                          
                    <div class ="col-md-6 nopadding" id="lik" style="margin-right:-5%">
-                             
+
+
+                             <%= button_to 'Like', product_like_path(product), params: {id: product.id } %>
+                  <%= product.votes_for.size %>   
              <%if false%>                       
                <%= button_to product_like_path(product), params: {id: product.id }, id:"heartbutton", remote: true do %>
 <span id = heart><i class='fa fa-heart-o' aria-hidden='true' style=" "></i>  <%= product.votes_for.size %> </span>
