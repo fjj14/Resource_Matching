@@ -4,6 +4,7 @@
 // that code so it'll be compiled.
 
 import Rails from "@rails/ujs"
+
 import "@hotwired/turbo-rails"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
@@ -13,6 +14,7 @@ import { fas } from '@fortawesome/free-solid-svg-icons'
 import { faTwitter } from '@fortawesome/free-brands-svg-icons'
 library.add(fas, faTwitter)
 Rails.start()
+window.Turbo = Turbo
 ActiveStorage.start()
 //= require jquery
 //= require jquery-ui

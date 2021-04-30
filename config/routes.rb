@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     post 'like', to: 'products#like'
     
   end
-  resources :stripe
+  
   resources :users do
     member do
       get :following, :followers
@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   end
 
   scope '/stripe' do
+    get "stripe/connect", to: "stripe#connect", as: :stripe_connect
     post 'create', to: 'stripe#create', as: 'stripe_create'
     get 'refresh', to: 'stripe#refresh', as: 'stripe_refresh'
     get 'returns', to: 'stripe#returns', as: 'stripe_returns'

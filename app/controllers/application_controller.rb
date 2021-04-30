@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
-    helper_method :current_user, :currently_due, :current_cart
+ 
+  helper_method :current_user, :currently_due, :current_cart
     before_action :current_cart
     rescue_from CanCan::AccessDenied do |exception|
         redirect_to main_app.login_path, alert: exception.message
