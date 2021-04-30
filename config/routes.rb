@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     post 'like', to: 'products#like'
     
   end
-  
+  resources :stripe
   resources :users do
     member do
       get :following, :followers

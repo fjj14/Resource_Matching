@@ -1,5 +1,5 @@
 
-<%= form_for (@rating), :html => { id: dom_id(@rating) } do |form| %>
+<%= form_for (@rating), remote:true  do |form| %>
     <% if rating.errors.any? %>
         <div class="alert alert-danger"id="err">
             <h2><%= pluralize(rating.errors.count, "error") %> prohibited this product from being saved:</h2>
