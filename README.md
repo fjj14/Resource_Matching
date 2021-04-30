@@ -1,4 +1,3 @@
-# checking
 # buyDeis
 > buyDeis is an application designed to provide the Brandeis student body with a space for trading/selling items that they are no longer in need of. 
 
