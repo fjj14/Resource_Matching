@@ -15,32 +15,20 @@
                     <% end %>
                 </div>
             </div>
+        </div>
+        
+        <div class="col-xs-2">
             <h4 class="name"><%= @user.first + " "+@user.last%></h4>
             <p class="info">@<%= @user.username %></p>
             <p class="info"><%= @user.email %></p>
-            <div class="stats row">
-            <div class="stat col-xs-4" style="padding-right: 50px;">
-                <p class="desc-stat">
-                <link_to id="btnFollowers" type="link" class="btn btn-primary" data-bs-toggle="modal"  style="margin-left:10%" data-toggle="modal" data-target="#followersModal">
-                <%= @user.followers.count%> Followers</p>
-            </div>
-
-            <div class="stat col-xs-4" style="padding-left: 50px;">
-            <p class="desc-stat">
-            <link_to id="btnFollowers" type="link" class="btn btn-primary" data-bs-toggle="modal"  style="margin-left:10%" data-toggle="modal" data-target="#followingModal">
-            <%= @user.following.count%> Following</p>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="right col-lg-8">
+            <br>
             <% @user.average_rating.to_i.times do %>
                 <span class="glyphicon glyphicon-star"></span>
             <% end %>
-            <% (5- @user.average_rating).to_i.times do  %>
+                <% (5- @user.average_rating).to_i.times do  %>
                 <span class="glyphicon glyphicon-star-empty"></span>
             <% end %>
-            <button id="btnview" type="button" class="btn btn-primary" data-bs-toggle="modal"  style="margin-left:10%" data-toggle="modal" data-target="#myModal">
+            <button id="btnview" type="button" class="btn btn-primary bottombutton" data-bs-toggle="modal"  style="margin-left:10%, " data-toggle="modal" data-target="#myModal">
                 <%= Rating.where(user_id: @user.id).length%>
             </button>
             <div class="modal" id="myModal" tabindex="-1">
@@ -54,7 +42,6 @@
                                 <%= User.where(id: rate.reviewer_id).first.username %>
                                 <%= rate.rating_number %>
                                 <%= rate.comment %>
-                                <br>
                             <%end%>
                         </div>    
                     </div>
@@ -62,10 +49,25 @@
             </div>
             <br>
             <br>
-            <%if current_user && @user.bought_from_me?(current_user)&& !@user.rated_already(current_user)%>
-                <button id="btnStart" type="button" class="btn btn-primary" data-bs-toggle="modal" data-target="#formModal"  data-toggle="modal" data-target="#formModal">
-                  Leave Review
-                </button>  
+            
+            <div class="stats row">
+                <div class="stat col-xs-5" style="margin-left: -15%" >
+                    <p class="desc-stat">
+                    <link_to id="btnFollowers" type="link" class="info" data-bs-toggle="modal"  style= "font-size: 14pt" data-toggle="modal" data-target="#followersModal">
+                    <%= @user.followers.count%><br> Followers</p>
+                </div>
+
+                <div class="stat col-xs-5" style="margin-left: 15%">
+                    <p class="desc-stat">
+                    <link_to id="btnFollowers" type="link" class="info" data-bs-toggle="modal"  style= "font-size: 14pt" data-toggle="modal" data-target="#followingModal">
+                    <%= @user.following.count%> <br>Following</p>
+                </div>
+            </div>
+            <div class="row">
+                <%if current_user && @user.bought_from_me?(current_user)&& !@user.rated_already(current_user)%>
+                    <button id="btnStart" type="button" class="btn btn-primary bottombutton" data-bs-toggle="modal" data-target="#formModal"  style= "font-size: 12pt" data-toggle="modal" data-target="#formModal">
+                        Leave Review
+                    </button>  
                 <div class="modal" id="formModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel"  aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
@@ -81,14 +83,13 @@
                         </div>
                     </div>
                 </div>
-            <%end%>
-            
-            <div class="follow">
+                <%end%>
+            </div>
+        </div>
+        <div class="col-xs-3">
             <% if current_user && current_user != @user%>
                 <%= render 'follow_form' %>
-            <%end%> 
-           
-            </div>
+            <%end%>
         </div>
     </div>
 
@@ -115,11 +116,9 @@
                                 <div class ="col-md-6 nopadding" >
                                     $<%= number_with_precision(product.price, :precision => 2)%>
                                 </div>  
-  <div class ="col-md-6 nopadding" id="lik">
-                <%= link_to "Message", conversations_path(user_id: product.user_id, body: "I want to buy your product", subject: product.name ), method: 'post', class: 'btn btn-primary bottombutton' %>
-                   </div>
-
-
+                                <div class ="col-md-6 nopadding" id="lik">
+                                    <%= link_to "Message", conversations_path(user_id: product.user_id, body: "I want to buy your product", subject: product.name ), method: 'post', class: 'btn btn-primary bottombutton' %>
+                                 </div>
                                 <br>
                                 <div class ="col-md-12">
                                     <p class="card-text"><%= product.description %></p>
@@ -151,6 +150,7 @@
         </div>
     </div>
 </div>
+
 <div class="modal" id="followersModal" tabindex="-1">
     <div class="modal-dialog">
         <div class="modal-content">
