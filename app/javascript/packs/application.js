@@ -7,6 +7,7 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
+import "bootstrap"
 import "@fortawesome/fontawesome-free/css/all.css";
 import { library, dom } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
@@ -18,6 +19,7 @@ ActiveStorage.start()
 //= require jquery
 //= require jquery-ui
 //= require popper
+//= require jquery.turbolinks
 //= require bootstrap-sprockets
 //= require rails-ujs
 //= require activestorage
