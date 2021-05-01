@@ -36,14 +36,13 @@
                 
             <% elsif current_user.stripe_user_id && currently_due %>
                 You still have some things due before you are finish setting up 
-                <a href = stripe_button_link > </a>
-                   <%= link_to "join", stripe_button_link %>
-                <%= link_to image_tag("ConnectwithStripe.png", width:"120px", height:"auto"), stripe_create_url,  method: :post, params: {current_user: current_user}, remote: false %>
-              <a href ="https://connect.stripe.com/express/onboarding/#{current_user.stripe_user_id}">Click me </a>
+               
+                  
+                <%= link_to image_tag("ConnectwithStripe.png", width:"120px", height:"auto"), stripe_create_url,  method: :post, params: {current_user: current_user}, remote: true %>
+              
             <% else %>
-                 <a href = stripe_button_link > </a>
-                   <%= link_to "join", stripe_button_link %>
-                <%= link_to image_tag("ConnectwithStripe.png", width:"120px", height:"auto"), stripe_create_path,  method: :post, params: {current_user: current_user},  remote: false %>
+               
+                <%= link_to image_tag("ConnectwithStripe.png", width:"120px", height:"auto"), stripe_create_path,  method: :post, params: {current_user: current_user},  remote: true %>
               
             <% end %>
         </div>
