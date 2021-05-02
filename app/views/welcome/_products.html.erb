@@ -70,7 +70,7 @@
                 <div style="float:left;width: 50%; display: inline-block;"> $<%= number_with_precision(product.price, :precision => 2)%> </div>
                <br/>  
 
- <div class ="col-md-6 nopadding" id="lik" style="margin-right:-4%">
+ <div class ="col-md-6 nopadding" id="lik" style="margin-right:-3%;margin-top:-5%">
 
 <%= button_to product_like_path(product), params: {id: product.id }, id:"likebutton" do %>
 <span><div class="heart" data-id="ID1"> <i id="heart_icon" class="fa fa-heart fa-1x"> &nbsp</i><%= product.votes_for.size %>  </div>  </span>
