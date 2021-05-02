@@ -51,9 +51,7 @@ html{
     width: 80%;
     justify-content: space-between;
     }
-    .reviews{
-
-    }
+   
     .info-content{
         font-size: 12px;
     }
@@ -63,16 +61,19 @@ html{
         justify-content: space-between;
     }
     .buttons button{
+        margin-left: 0%!important;
+        padding: 0%!important;
         width: 45%;
         font: inherit;
         border: 2px solid #5fdffc;
         border-radius: 25px;
         background-color: white;
+
     }
-    .buttons button:nth-child(1) i{
-        margin-right: 10px;
+    .buttons button{
+        margin-right: 5%;
     }
-    .buttons button:hover{
+    .buttons button:hover,#buynow:hover, #curr:hover{
         color: white;
         background-color:#5fdffc ;
     }
@@ -102,5 +103,32 @@ html{
     .img-slider img{
 
         height: 100%;
+    }
+    #curr{
+    margin: 0%!important;
+     padding: 0%!important;
+     background-color: white;
+     border: none;
+     width: 100%;
+     text-align: center;
+     margin: 0%!important;
+     padding: 0%!important;
+     
+     font: inherit;
+
+    }
+    #buynow{
+    padding: 0%!important;
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    border: 2px solid #5fdffc;
+    border-radius: 25px;
+    align-items: center;
+    height: 40px;
+    text-align: center;    
+    width: 45%;
+   
+    margin-right: 5%;
     }
 }
