@@ -18,7 +18,8 @@
   max-width: 100%;
 }
 .card-text {
-  word-wrap: break-word;
+  word-wrap: break-word !important;
+  
 }
  .nostyle{
    background:none;
@@ -27,16 +28,17 @@
    text-align:left !important;
 
 }
-#navBarSearchForm input[type=text]{width:350px !important;}
+#navBarSearchForm input[type=text]{width:530px !important;}
 
  .navbar{
    background-color: #2F3F5F;
    border-radius: 0px !important;
-   
+   border:none;
  }
  
  #nav-cont{
    padding: 0 ;
+   background-color: #2F3F5F;
  }
  .navbutt{
    color:white !important;
