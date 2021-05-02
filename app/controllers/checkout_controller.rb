@@ -14,7 +14,7 @@ class CheckoutController < ApplicationController
             return
         end
         @product = Product.find( params[:id])
-        @product.update!(buyer_id: current_user.id)
+        #@product.update!(buyer_id: current_user.id)
         
         if @product.nil?
             self.create_from_cart
@@ -48,7 +48,7 @@ class CheckoutController < ApplicationController
         current_cart.line_items.each do |item|
             @name = @name + "#{item.product.name}" + "\tquantity: #{item.quantity}\n"
             @product = item.product
-            @product.update!(buyer_id: current_user.id)
+            
         end
         @session = Stripe::Checkout::Session.create(
             payment_method_types: ['card'],
@@ -76,61 +76,43 @@ class CheckoutController < ApplicationController
             if @products.index(',') == nil
                 product= (@products.from(1).to(-2)).to_i
                 @product = Product.find(product)
+                @product.update!(buyer_id: current_user.id)
                 @all[@all.length]= @product
                 seller = User.find(@product.user_id)
-                if seller.stripe_user_id
+               
                     transfer = Stripe::Transfer.create({
                     amount: (((@product.price) *100).to_i),
                     currency: 'usd',
                     destination: seller.stripe_user_id,
                     })
-                else 
-                    if seller.balance
-                        bal = seller.balance + @product.price
-                    else 
-                        bal =  @product.price
-                    end
-                    seller.update_column(:balance, bal)
-                end
+               
             else
                 @all =[]
                 @products.tr('[]', '').split(',').map(&:to_i).each do |i|
                     @product = Product.find(i)
+                    @product.update!(buyer_id: current_user.id)
                     @all[@all.length] = @product
                     seller = User.find(@product.user_id)
-                    if seller.stripe_user_id
+                   
                         transfer = Stripe::Transfer.create({
                         amount: (((@product.price) *100).to_i),
                         currency: 'usd',
                         destination: seller.stripe_user_id,
                         })
-                    else 
-                        if seller.balance
-                            bal = seller.balance + @product.price
-                        else 
-                            bal =  @product.price
-                        end
-                        seller.update_column(:balance, bal)
-                    end
+                    
                 end
             end
         else
             @product = Product.find(params[:product])
+            @product.update!(buyer_id: current_user.id)
             seller = User.find(@product.user_id)
-            if seller.stripe_user_id
+            
                 transfer = Stripe::Transfer.create({
                 amount: (((@product.price) *100).to_i),
                 currency: 'usd',
                 destination: seller.stripe_user_id,
                 })
-            else 
-                if seller.balance
-                    bal = seller.balance + @product.price
-                else 
-                    bal =  @product.price
-                end
-                seller.update_column(:balance, bal)
-            end
+            
         end
     end
 
@@ -140,12 +122,12 @@ class CheckoutController < ApplicationController
             @products = params[:products]
             @products.each do |i|
                 @product = Product.find(i)
-                @product.update_column(:buyer_id, nil)
+                
             end    
         else
             #buying from buy now
             @product = Product.find(params[:product])
-            @product.update_column(:buyer_id, nil)
+            
         end
         redirect_to welcome_path  
     end 
