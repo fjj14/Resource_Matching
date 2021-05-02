@@ -148,6 +148,7 @@ ActiveRecord::Schema.define(version: 2021_05_02_055823) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "buyer_id"
+    t.string "condition"
     t.integer "condition_id"
   end
 
@@ -165,9 +166,7 @@ ActiveRecord::Schema.define(version: 2021_05_02_055823) do
     t.integer "followed_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["followed_id"], name: "index_relationships_on_followed_id"
     t.index ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
-    t.index ["follower_id"], name: "index_relationships_on_follower_id"
   end
 
   create_table "taggings", id: :serial, force: :cascade do |t|
