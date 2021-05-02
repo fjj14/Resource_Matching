@@ -51,25 +51,23 @@
 }
 
 
-#heartbutton{
-    border:none;
-    outline:none;
-    background-color: gray;
+#likebutton{
+    border:none !important;
+    outline:none !important;
+    background-color: white;
 
 }
 
-.fa-heart-o {
-    color: red;
-    cursor: pointer;
-  }
 
-  .fa-heart {
-    color: red;
-    cursor: pointer;
-  }
 #c{
     border: 1px solid rgb(224, 224, 224);
-    border-radius: 7px;
+    border-radius: 6px;
+    padding-right:2%;
+    padding-left:2%;
+    margin-top:0%;
+    padding:0%;
+
+ 
 }
 
 .padd{
