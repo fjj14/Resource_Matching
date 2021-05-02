@@ -24,10 +24,10 @@ class WelcomeController < ApplicationController
         args[:price][:gte] = params[:price_from] if params[:price_from].present?
         args[:price][:lte] = params[:price_to] if params[:price_to].present?
         args[:category_id] = params[:category_id] if params[:category_id].present?
-        args[:condition] = params[:condition] if params[:condition].present?
+        args[:condition_id] = params[:condition_id] if params[:condition_id].present?
         args[:date] = params[:date] if params[:date].present?
         price_ranges = [ {to: 10 }, {from: 10.01, to: 20 }, {from: 20.01, to: 30 }, {from: 30.01}]
-        @producss = @products.search "*", where: args,  aggs: {price: {ranges: price_ranges }, category_id: {}, condition: {}, date: {}}
+        @producss = @products.search "*", where: args,  aggs: {price: {ranges: price_ranges }, category_id: {}, condition_id: {}, date: {}}
         @FilterList = []
         @producss.each do |pro|
             @FilterList[@FilterList.length] = Product.find(pro.id)
@@ -45,7 +45,7 @@ class WelcomeController < ApplicationController
         end
       price_ranges = [ {to: 10 }, {from: 10.01, to: 20 }, {from: 20.01, to: 30 }, {from: 30.01}]
       if !@producss
-        @producss = Product.search "*",   aggs: {price: {ranges: price_ranges}, category_id: {}, condition: {}, date: {}}
+        @producss = Product.search "*",   aggs: {price: {ranges: price_ranges}, category_id: {}, condition_id: {}, date: {}}
       end
       if !@producs
         @producs = Product.search(params.fetch(:name, "*")).to_a

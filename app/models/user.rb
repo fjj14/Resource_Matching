@@ -43,7 +43,20 @@ class User < ApplicationRecord
     def following?(other_user)
         following.include?(other_user)
     end
-
+    def average_rating
+        total =0
+        @current_ratings =ratings
+        @current_ratings.each do |rate|
+          total = total + rate.rating_number
+        end
+    
+        if @current_ratings != []
+          average_rating = total /@current_ratings.length
+        else 
+          average_rating = 0
+        end 
+    
+      end
     def send_welcome 
         NotificationMailer.welcome_email(self)
     end

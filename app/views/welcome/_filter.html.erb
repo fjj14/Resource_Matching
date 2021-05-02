@@ -15,12 +15,12 @@
         </div>
         <div class ="col-md-3">
             <h5>Condition</h5>
-            <% @producss.aggs["condition"]["buckets"].sort_by{ |b| b["key"] }.each do |bucket|%>
+            <% @producss.aggs["condition_id"]["buckets"].sort_by{ |b| Condition.find(b["key"]).name }.each do |bucket|%>
                 <p>
-                    <% if params[:condition] == bucket["key"].to_s%>
-                        <strong><%= link_to bucket["key"], request.params.except(:condition) %></strong>
+                    <% if params[:condition_id] == bucket["key"]%>
+                        <strong><%= link_to bucket["key"], request.params.except(:condition_id) %></strong>
                     <% else %>
-                        <%= link_to bucket["key"], request.params.merge(condition: bucket["key"]) %>
+                        <%= link_to Condition.find(bucket["key"]).name, request.params.merge(condition_id: bucket["key"]) %>
                     <% end %>
                     (<%= bucket["doc_count"]%>)
                 </p>

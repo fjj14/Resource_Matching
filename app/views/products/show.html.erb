@@ -3,20 +3,22 @@
 
 <%= stylesheet_link_tag 'product_detail', media: 'all' %>
  <div class="container-fluid" id="body">
-<div class="container" id="individualProduct">
+
   <div class ="card" id="productcard">
     <div class = "images">
       <div class = "slider">
         <% if @product.images.present? %>
-          <%= image_tag(@product.images.first)%> 
+          <%= image_tag(@product.images.first , id:"largeImage")%> 
         <% else %>
-            <%= image_tag('/loginImage.jpg') %> 
+            <%= image_tag('/loginImage.jpg', id:"largeImage")%> 
         <% end %>
       </div>
       <div class="img-slider">
-          <div class="imgs"> <%= image_tag('/loginImage.jpg') %></div>
-          <div class="imgs"> <%= image_tag('/loginImage.jpg') %></div>
-          <div class="imgs"> <%= image_tag('/loginImage.jpg') %></div>  
+        <%if @product.images && @product.images.length > 1%>
+          <%@product.images.each do |mini|%>
+            <div class="imgs"> <%= image_tag(mini) %></div>
+          <%end%>
+        <%end%>
       </div>
     </div>
     <div class = "infos">
@@ -26,22 +28,53 @@
       <div class ="price"><h3><%=@product.price%>$</h3> </div>
    
       <div class ="more-infos">
-        <h5>Description </h5>
-        <h5>Owner</h5>
-        <h5>Stats</h5>
+        <h5 onclick="myFunction('des');">Description </h5>
+        <h5 onclick="myFunction('own');">Owner</h5>
+        <h5 onclick="myFunction('stat');">Stats</h5>
       </div>
-      <div class ="info-content">
+      <div id="info-switch"class ="info-content">
         <p><%=@product.description%></p>
       </div>
       <div class = "buttons">
-        <button> <%= link_to raw("<i class=\"fa fa-shopping-cart \"></i>ADD TO CART"), line_items_path(product_id: @product.id), method: :post, type:"button"%></button>
-    
-    
-<div id="buynow"><%= button_to 'Buy Now', checkout_create_path,params: {id: @product.id }, remote: true,  id:"curr" %></div>
+        <button> <%= link_to raw("<i class=\"fa fa-shopping-cart \"></i>ADD TO CART"), line_items_path(product_id: @product.id), method: :post, type:"button"%></button>  
+        <div id="buynow"><%= button_to 'Buy Now', checkout_create_path,params: {id: @product.id }, remote: true,  id:"curr" %></div>
       </div>
     </div>
   </div>
-</div>
+
 </div>
 
 
+<script>
+$('.imgs img').click(function(){
+  var thumbSrc = $('.imgs').attr('src');
+
+ // Grab img#largeImage src attribute
+   var largeSrc = $('#largeImage').attr('src');
+    $('#largeImage').attr('src',$(this).attr('src').replace(thumbSrc,largeSrc));
+    document.getElementById("largeImage").style.maxHeight  = "100%";
+});
+
+function myFunction(num) {
+
+  var text;
+  
+  switch(num) {
+    case "own":
+      text = "The owner of this product is owned by <%=@product.user.first%>.\nThey have"
+     + " <%=@product.user.followers.count%> followers. They're average rating is <%=@product.user.average_rating%>, given by a total of <%= @product.user.ratings.count %> users. You can view their profile at "
+     +" <%=  escape_javascript link_to("@#{@product.user.username}", @product.user) %>. They have "
+     +"sold <%= @product.user.products.where.not(buyer_id: nil).length %> products so far! Ask them about their product: "
+     +"  <%=escape_javascript link_to("Message", conversations_path(user_id: @product.user_id, body: "Hey! I am interested in #{@product.name}", subject: @product.name ), method: 'post') %>";
+    break;
+    case "stat":
+    text = "Condition: <%= @product.condition.name %> Category: <%=@product.category.name%> Date posted: <%= @product.created_at.month%>/<%= @product.created_at.day%>/<%= @product.created_at.year%>"
+    +"Number of likes: <%= @product.votes_for.size %>";
+    break;
+    default:
+    text = "<%= @product.description%>";
+  }
+ document.getElementById("info-switch").innerHTML = text; 
+}
+
+</script>
