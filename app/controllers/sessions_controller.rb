@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
         current_cart.user = current_user
         current_user
       end 
-      redirect_to welcome_path, notice: "Logged in succesfully"
+      redirect_to welcome_path
     else
       flash[:error] = 'Invalid email/password combination'
       render 'new'
@@ -23,8 +23,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_id]=nil
-   # session[:cart_id]=nil
-    redirect_to root_path, notice:"Logged out."
+    redirect_to root_path
   end
   
 end

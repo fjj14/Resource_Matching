@@ -10,7 +10,7 @@
   </head>
   <body>
   
-    <div  id="wel"><h1 class="log">buyDeis</h1></div>
+    <div class="container" id="wel"><h1 class="log">buyDeis</h1></div>
    
     <div class="container" id="signupform">
         <div class="row no-gutters">
@@ -19,9 +19,9 @@
             
             </div>
             <div class="col-md-6 nopadding" id="info">
-                <h2 id="createaccount"style=" font-size: x-large !important;">Create your account</h2>
+                <h2 style=" font-size: x-large !important;">Create your account</h2>
                 <%= render 'form', user: @user %>
-                <span id="loginLink" style="padding-left:10%"> Already have an account? <%= link_to 'log in', login_path %></span>
+                <h5> Already have an account? <%= link_to 'log in', login_path %></h5>
             </div>
         </div>
     </div>

@@ -1,5 +1,4 @@
 
-
 #wel{
 
     color:  #2F3F5F;
@@ -15,7 +14,6 @@
     background: white;
     height: 70%;
     padding-left: 0 !important;
-
 }
 
 .nopadding {
@@ -27,7 +25,7 @@
     padding-left: 0 !important;
 }
 
-#createaccount{
+h2{
     margin-top: 10%;
     color: #2F3F5F;
     font-family: serif;
@@ -48,6 +46,9 @@ form{
    margin-right: 10%;
    margin-top: 10%;
    margin-bottom: 10%;
+   .control-label{
+       color: black;
+   }
 }
 
 .form-row .col{
@@ -65,10 +66,9 @@ a{
   // text-decoration: underline;
 }
 
-#loginlink{
-
-    padding-left: 10% !important; //doesnt work?
-    
+h5{
+    margin-bottom: 5%;
+    margin-left: 10%;
 }
 
 #links a:link, a:hover, a:visited, a:active {

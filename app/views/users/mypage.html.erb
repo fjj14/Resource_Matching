@@ -1,9 +1,8 @@
 <%= stylesheet_link_tag 'users', media: 'all',   'data-turbolinks-eval' => false %>
-
 <div class="container">
   <main>
     <div class="row">
-        <div class="left col-lg-4">
+        <div class="center">
             <div class="photo-left">
                 <div class="photo">
                     <% if current_user.image.present? %>
@@ -13,75 +12,41 @@
                     <% end %>
                 </div>
             </div>
-        </div>
-
-        <div class="col-xs-2">
             <h4 class="name"><%= current_user.first + " "+current_user.last%></h4>
             <p class="info">@<%= current_user.username %></p>
             <p class="info"><%= current_user.email %></p>
-            <br>
-            <% current_user.average_rating.to_i.times do %>
-                <span class="glyphicon glyphicon-star"></span>
-            <% end %>
-                <% (5- current_user.average_rating).to_i.times do  %>
-                <span class="glyphicon glyphicon-star-empty"></span>
-            <% end %>
-            <button id="btnview" type="button" class="btn btn-primary bottombutton" data-bs-toggle="modal"  style="margin-left:10%, " data-toggle="modal" data-target="#myModal">
-                <%= Rating.where(user_id: current_user.id).length%>
-            </button>
-            <div class="modal" id="myModal" tabindex="-1">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title">Reviews</h5>
-                        </div>
-                        <div class="modal-body">
-                            <% Rating.where(user_id: current_user.id).each do |rate| %>
-                                <%= User.where(id: rate.reviewer_id).first.username %>
-                                <%= rate.rating_number %>
-                                <%= rate.comment %>
-                            <%end%>
-                        </div>    
-                    </div>
-                </div>
-            </div>
-            <br>
-            <br>
-
             <div class="stats row">
-                <div class="stat col-xs-5" style="margin-left: -15%" >
-                    <p class="desc-stat">
-                    <link_to id="btnFollowers" type="link" class="info" data-bs-toggle="modal"  style= "font-size: 1.2vw" data-toggle="modal" data-target="#followersModal">
-                    <%= current_user.followers.count%><br> Followers</p>
-                </div>
-
-                <div class="stat col-xs-5" style="margin-left: 15%">
-                    <p class="desc-stat">
-                    <link_to id="btnFollowers" type="link" class="info" data-bs-toggle="modal"  style= "font-size: 1.2vw" data-toggle="modal" data-target="#followingModal">
-                    <%= current_user.following.count%> <br>Following</p>
-                </div>
+            <div class="stat col-xs-4" style="padding-right: 50px;">
+                <p class="desc-stat">
+                <link_to id="btnFollowers" type="link" class="btn btn-primary" data-bs-toggle="modal"  data-toggle="modal" data-target="#followersModal">
+                <%= current_user.followers.count%> Followers
+                </p>
             </div>
-            <div class="row">
-                <div class="right col-lg-12">
-                    <% if current_user.stripe_user_id && !currently_due %>
-                        <%= link_to "Go to Stripe Dashboard", stripe_dashboard_path(current_user.id) %>
-                    <% elsif current_user.stripe_user_id && currently_due %>
-                        You still have some things due before you are finish setting up 
-                        <%= link_to image_tag("ConnectwithStripe.png", width:"120vw", height:"auto"), stripe_create_url,  method: :post, params: {current_user: current_user}, remote: true %>
-                    <% else %>
-                        <%= link_to image_tag("ConnectwithStripe.png", width:"120vw", height:"auto"), stripe_create_path,  method: :post, params: {current_user: current_user},  remote: true %>
-                    <% end %>
-                </div>
+            <p class="desc-stat">
+            <link_to id="btnFollowers" type="link" class="btn btn-primary" data-bs-toggle="modal"   data-toggle="modal" data-target="#followingModal">
+            <%= current_user.following.count%> Following
+            </p>
             </div>
-        </div>
-        <div class="col-xs-3">
-            <% if current_user && current_user != current_user%>
-                <%= render 'follow_form' %>
-            <%end%>
         </div>
     </div>
-     
-    
+    <div class="row">
+        <div class="right col-lg-8">
+            <% if current_user.stripe_user_id && !currently_due %>
+                <%= link_to "Go to Stripe Dashboard", stripe_dashboard_path(current_user.id) %>
+                
+            <% elsif current_user.stripe_user_id && currently_due %>
+                You still have some things due before you are finish setting up 
+               
+                  
+                <%= link_to image_tag("ConnectwithStripe.png", width:"120px", height:"auto"), stripe_create_url,  method: :post, params: {current_user: current_user}, remote: true %>
+              
+            <% else %>
+               
+                <%= link_to image_tag("ConnectwithStripe.png", width:"120px", height:"auto"), stripe_create_path,  method: :post, params: {current_user: current_user},  remote: true %>
+              
+            <% end %>
+        </div>
+    </div>
     <div class="row">
         <% Product.where(user_id: session[:user_id]).order('created_at DESC').each_slice(3)  do |products| %>
             <div class="row no-gutters" id="pro">
