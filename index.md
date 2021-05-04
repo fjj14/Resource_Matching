@@ -1,7 +1,7 @@
 ## buyDeis Final Report - SWE Capstone Project
 
 You can check out our application [here](https://buydeis.herokuapp.com/).
-
+Fatumata Jalloh, Yalda Mauj, Sophia Wang
 
 ### **What we did**
 In the span of this semester of Spring 2021, we created an application for the Brandeis student body with a space for trading/selling items that they are no longer in need of. It is also a platform where students can connect with each other through their presence of the creations/goods that they sell online. 
