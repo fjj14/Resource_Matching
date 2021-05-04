@@ -1,4 +1,4 @@
-## Welcome to GitHub Pages
+## buyDeis Final Report - SWE Capstone Project
 
 You can use the [editor on GitHub](https://github.com/fjj14/Resource_Matching/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
 
