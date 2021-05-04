@@ -1,0 +1,15 @@
+<div id='like-post-container<%=product.id%>' class="heartholder" >
+    <% if current_user.voted_for? product %>
+      
+        <%= button_to  product_like_path(product), params: {id: product.id }, class: "heart", remote: true do %>
+        <i style="color:red; border:red;"class='fas fa-heart'></i>  <%= product.votes_for.size%>
+        <%end %>
+       
+    <%else%>  
+       
+        <%= button_to  product_like_path(product), params: {id: product.id }, class: "heart", remote: true do %>
+        <i style="color:grey; "class='fas fa-heart'></i>  <%= product.votes_for.size%>
+        <%end %>
+        
+    <%end%>
+</div>

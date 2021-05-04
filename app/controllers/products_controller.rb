@@ -17,6 +17,7 @@ class ProductsController < ApplicationController
       @product = Product.find(params[:id])
       current_cart.add_item(@product.id, current_cart) 
     end
+
     def like
       @product = Product.find(params[:id])
       if current_user.voted_for? @product 
@@ -24,7 +25,10 @@ class ProductsController < ApplicationController
       else
         @product.liked_by current_user
       end
-      redirect_to welcome_path
+      respond_to do |format|
+      
+        format.js
+      end
     end
     
     def create

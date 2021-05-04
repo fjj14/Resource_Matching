@@ -1,0 +1,9 @@
+<div id='like-post-container' >
+    <% if current_user.voted_for? product %>
+      
+        <%= button_to "Unlike", like_path, params: {id: product.id },  remote: true %>
+    <%else%>  
+       
+        <%= button_to "like", like_path, params: {id: product.id },  remote: true %>
+    <%end%>
+</div>

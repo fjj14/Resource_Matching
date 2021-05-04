@@ -38,6 +38,18 @@ class WelcomeController < ApplicationController
         @products = @pros
     end
     private
+    def like
+        @product = Product.find(params[:id])
+        if current_user.voted_for? @product 
+          @product.unliked_by current_user
+        else
+          @product.liked_by current_user
+        end
+        respond_to do |format|
+        
+          format.js 
+        end
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_product
         if !@products
