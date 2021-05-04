@@ -18,7 +18,7 @@
 * [Key Models](#key-models)
 * [APIs, Gems, Libraries](#APIs-Gems-Libraries)
 * [Code Examples](#code-examples)
-* [To-do list](#to-do-list)
+* [features we want to add in the future](#to-do-list)
 * [Prototypes and Screenshots](#Prototypes-and-Screenshot)
 * [Inspiration](#inspiration)
 * [Creators](#creators)
@@ -88,18 +88,7 @@ Our Features Include...
 * active_storage_blobs -key (Str), filename(str), content_type(str), metadata(text), service_name(str), byte_size(bigint), checksum(str)
 * active_storage_variant_reocrds - blob_id(bigint), variantion_digest(str)
 
-gems used in schema.rb
-* Mailboxer: Mailboxer allows any object created with a acts_as_messageable property to have a mailbox. This means they can send and receive messages. The can also have conversations with other users. This is implemented with the messages and conversations controllers and views
-* Active storage: Active storage allows us to upload files, in our case images, and store the data of the files. By default, it stores the data locally, which why we used google cloud to  store it on the cloud.
-* Google cloud storage: We used google cloud storage and created a bucket to store all images uploaded on the site. We added this to our storage.yml file with the specific encryption data given by google so all images stored in the site are saved.
-* Bcrypt 
-Allows us to encrypt user passwords and ensures all user password created are correct
-* Stripe, omniauth-stripe-connect, oauth: These gems allowed us to connect with the stripe UI to integrate transactions. The oauth2/omniauth-stripe-connect allowed for authorization with these transactions
-* Searchkick (with Elasticsearch): Searchkick allows for more advanced searching and filtering. It accounts for misspelled search input and incomplete input. It also allows for compound filtering with the products
-* Acts_as_votable: Allows users to like/unlike a product and helps track number of likes and dislikes
-* Cancancan, rails-admin: Allowed us to verify views. Users cannot see restricted views
-
-#Relationships 
+## Relationships 
 * User --> Product
 * user --> rating
 * user --> active_relationships
@@ -202,16 +191,15 @@ Allows us to encrypt user passwords and ensures all user password created are co
 
 
 ## APIs, Gems, Libraries
-* Mailboxer 
-    * Allows any object created with a acts_as_messageable property to have a mailbox. This means they can send and receive messages. The can also have conversations with other users. This is implemented with the messages and conversations controllers and views
-* Active Storage 
-    * Allows us to upload files, in our case images, and store the data of the files. By default, it stores the data locally, which why we used google cloud to  store it on the cloud.
-*Image_processing
-    * Active storage variant
-* Google Cloud Storage 
-    * Used Google Cloud Storage and created a bucket to store all images uploaded on the site. Added this to our storage.yml file with the specific encryption data given by google so all images stored in the site are saved.
+* Mailboxer: Mailboxer allows any object created with a acts_as_messageable property to have a mailbox. This means they can send and receive messages. The can also have conversations with other users. This is implemented with the messages and conversations controllers and views
+* Active storage: Active storage allows us to upload files, in our case images, and store the data of the files. By default, it stores the data locally, which why we used google cloud to  store it on the cloud.
+* Google cloud storage: We used google cloud storage and created a bucket to store all images uploaded on the site. We added this to our storage.yml file with the specific encryption data given by google so all images stored in the site are saved.
 * Bcrypt 
-    * Allows us to encrypt user passwords and ensures all user password created are correct
+Allows us to encrypt user passwords and ensures all user password created are correct
+* Stripe, omniauth-stripe-connect, oauth: These gems allowed us to connect with the stripe UI to integrate transactions. The oauth2/omniauth-stripe-connect allowed for authorization with these transactions
+* Searchkick (with Elasticsearch): Searchkick allows for more advanced searching and filtering. It accounts for misspelled search input and incomplete input. It also allows for compound filtering with the products
+* Acts_as_votable: Allows users to like/unlike a product and helps track number of likes and dislikes
+* Cancancan, rails-admin: Allowed us to verify views. Users cannot see restricted views
 
 Other gems used
 * faker 
@@ -235,9 +223,16 @@ gems used for development and testing
 * webdrivers
 * pg
 
-## To-do list:
-* Transactions - use Stripe API to implement transactions 
-* Reviews and Ratings - create a rating form for users to rate sellers for credibility - [see resource here](https://medium.com/@toodimes/how-to-implement-a-simple-5-star-rating-system-in-rails-using-native-bootstrap-48d5be205fdc)
+## Features we want to add in the future:
+* In app notification 
+* New messages, follows and likes 
+* Email notification
+* When a new product is purchased 
+* Comments on posts 
+* Resetting  password 
+* Using only Brandeis emails to sign up
+* Trading
+
 
 
 ## Prototypes and Screenshot
