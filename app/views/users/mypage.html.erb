@@ -108,7 +108,11 @@
                                 <div class ="col-md-6 nopadding" >
                                     $<%= number_with_precision(product.price, :precision => 2)%>
                                 </div>  
-        
+                                <div class ="col-md-6 nopadding " id="wa" >
+                                    <%= link_to "edit/delete", edit_product_path(product.id) ,  class: 'btn btn-primary bottombutton', id:'edi' %>
+                                </div>
+                                <br>
+                                <br>
                                 <div class ="col-md-12">
                                     <p class="card-text"><%= product.description %></p>
                                 </div>
@@ -177,7 +181,7 @@
                                 </div>
                             </div>
                         </div>
-        
+
                         <div class="col-xs-4">
                             <h4 class="name"><%= user.first+" "+user.last%></h4>
                             Learn more: <%=link_to  "#{user.username}",user %>
