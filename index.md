@@ -18,7 +18,7 @@ On buyDeis, users can:
 
 
 ### **How we did it**
-* We created our application through many gorails tutorials, ROR tutorials, stack overflow questions and research, office hours sessions, and pair programming sessions. 
+* We created our application through many gorails tutorials, ROR tutorials, stack overflow questions and research, office hours sessions, and pair programming sessions. We met every Wednesday with our TA, Julian, and also touched base on any bugs and issues we encountered. We also met after every Friday and Sunday to work on the project together and distribute tasks.  
 Here are some specific technologies used for some main features:
 * Sign up, Sign in, Log out safely - Bycrpt  
 * Post a product to sell online, as well as edit and delete them - Active Storage, Google Cloud Storage, 
@@ -46,7 +46,7 @@ Here are some specific technologies used for some main features:
 
 
 ### **Future Plans**
-* This is not the end! In the future, we plan to implement:
+This is not the end! In the future, we plan to implement:
 *  in-app notification 
 *  New messages, follows and likes 
 *  Email notifications
