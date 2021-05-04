@@ -1,10 +1,11 @@
 ## buyDeis Final Report - SWE Capstone Project
 
-You can use the [editor on GitHub](https://github.com/fjj14/Resource_Matching/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+buyDeis is an application designed to provide the Brandeis student body with a space for trading/selling items that they are no longer in need of. It is also a platform where students can connect with each other through their presence of the creations/goods that they sell online. 
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+You can check out our application [here](https://buydeis.herokuapp.com/).
 
-### Markdown
+
+### **What did we do?**
 
 Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 
