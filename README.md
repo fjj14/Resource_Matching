@@ -55,16 +55,19 @@ Our Features Include...
 * Display user logout prompt and allow user to end a session : /logout
 * Display Full Text Search results: /search
 * Create a product to post: /createProduct
+* delete a product that was created: /delete 
 * See all the conversations: /messages
 * View one of the conversations: /conversations/conversationid
 * View own user profile when logged in: /mypage
 * Search form: /welcome/search
-* Delete a product that was created: /delete 
-* Users urls: /users, /users/new, /users/create, /users/delete, /users/1, /users/1/change, /users/1/update
-* Categories urls: /categories,  /categories/1, /categories/new, /categories/1/edit
-* Products urls:  /products,  /products/1, /products/new, /products/1/edit
-* GIT Sessions urls: /sessions/new, /sessions
-
+* add a product to the cart: add_to_cart
+* display cart: /cart
+* frontpage: /index
+* search function: /search
+* get user rating: /ratings/_form
+* display likes on a product: like
+* stripe: /stripe
+* checkout to post the stripe dashboard: /checkout
 
 
 ## DB Schema
