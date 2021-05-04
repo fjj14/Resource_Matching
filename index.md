@@ -40,6 +40,7 @@ Here are some specific technologies used for some main features:
 ### **Challenges We Faced**
 * Stripe was difficult to implement
 * Each person had different experience levels coming in
+* Sometimes the features one of us worked on would mess up other features, so communicating was important
 * Being transparent about workloads for the week was sometimes hard
 
 
