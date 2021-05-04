@@ -8,7 +8,7 @@ class RatingsController < ApplicationController
         @rating = Rating.new(rating_params)
         respond_to do |format|
             if @rating.save
-                format.html { redirect_to user_path(@rating.user_id), notice: "Rating was successfully created." }
+                format.html { redirect_to user_path(@rating.user_id)}
                # Notification.create(recipient: current_user, actor: User.find(params[:reviewer_id]), action: "reviewed", notifiable: @rating)
             else
                 
@@ -33,7 +33,7 @@ class RatingsController < ApplicationController
     def update
         respond_to do |format|
           if @rating.update(rating_params)
-            format.html { redirect_to welcome_path, notice: "Review was successfully updated." }
+            format.html { redirect_to welcome_path }
            # format.json { render :show, status: :ok, location: @user }
           else
             format.html { render 'ratings/form', status: :unprocessable_entity }
