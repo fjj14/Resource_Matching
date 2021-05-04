@@ -1,7 +1,12 @@
 # buyDeis
 > buyDeis is an application designed to provide the Brandeis student body with a space for trading/selling items that they are no longer in need of. 
 
-CHECKING!
+## Links
+* Heroku: https://buydeis.herokuapp.com/
+* Trello: https://trello.com/b/fnsJIQ6E/kanban-template
+* Figma Prototype: https://www.figma.com/file/mBWOSr2oJdLQBINujVpqJB/SWE-project---2021?node-id=0%3A1
+* Final Report Github Pages: https://fjj14.github.io/Resource_Matching/
+* Presentation: https://docs.google.com/presentation/d/1T9kUSkWXx3vpSHea1BNmguWfBvuK2_Bm3LmZIwjy-ko/edit?ts=605e23bd#slide=id.gc7bd8fdc3a_0_4
 
 ## Table of contents
 * [General info](#general-info)
