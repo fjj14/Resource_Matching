@@ -22,7 +22,7 @@
 <h1> <% @conversation.subject %> </h1>
 <% @conversation.receipts_for(current_user).each do |receipt| %>
 	<div>
-		<div class="row no-gutters">
+		<div class="row no-gutters" style="border:none;background:none">
 			<div class="col-xl-8 col-lg-8 col-md-8 col-sm-9 col-9">
 				<div class="selected-user">
 					</span>
