@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     post 'like', to: 'products#like'
     
   end
+
   resources :stripe
   resources :users do
     member do
@@ -64,4 +65,5 @@ Rails.application.routes.draw do
   get '/ratings/_form', to: "ratings#new"
   post   '/ratings/_form', to:  'ratings#create'
   get 'user/:id', to: 'users#show'
+  post "like", to: "welcome#like"
 end
