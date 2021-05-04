@@ -18,8 +18,8 @@ On buyDeis, users can:
 
 
 ### **How we did it**
-* We created our application through many gorails tutorials, ROR tutorials, stack overflow, office hours sessions, and pair programming sessions. 
-* Here are some specific technologies used for some main features:
+* We created our application through many gorails tutorials, ROR tutorials, stack overflow questions and research, office hours sessions, and pair programming sessions. 
+Here are some specific technologies used for some main features:
 * Sign up, Sign in, Log out safely - Bycrpt  
 * Post a product to sell online, as well as edit and delete them - Active Storage, Google Cloud Storage, 
 * Messaging sellers and buyers - Mailboxer gem
