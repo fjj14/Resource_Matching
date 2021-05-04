@@ -89,13 +89,46 @@ Our Features Include...
 * active_storage_variant_reocrds - blob_id(bigint), variantion_digest(str)
 
 gems used in schema.rb
-* Active Storage - storing images like profile pictures, product images
-* Mailboxer - storing, sending, and receiving messages 
+* Mailboxer: Mailboxer allows any object created with a acts_as_messageable property to have a mailbox. This means they can send and receive messages. The can also have conversations with other users. This is implemented with the messages and conversations controllers and views
+* Active storage: Active storage allows us to upload files, in our case images, and store the data of the files. By default, it stores the data locally, which why we used google cloud to  store it on the cloud.
+* Google cloud storage: We used google cloud storage and created a bucket to store all images uploaded on the site. We added this to our storage.yml file with the specific encryption data given by google so all images stored in the site are saved.
+* Bcrypt 
+Allows us to encrypt user passwords and ensures all user password created are correct
+* Stripe, omniauth-stripe-connect, oauth: These gems allowed us to connect with the stripe UI to integrate transactions. The oauth2/omniauth-stripe-connect allowed for authorization with these transactions
+* Searchkick (with Elasticsearch): Searchkick allows for more advanced searching and filtering. It accounts for misspelled search input and incomplete input. It also allows for compound filtering with the products
+* Acts_as_votable: Allows users to like/unlike a product and helps track number of likes and dislikes
+* Cancancan, rails-admin: Allowed us to verify views. Users cannot see restricted views
 
+#Relationships 
 * User --> Product
-    * In this relationship, a User can have many Products, and a Product can only belong to one User(a seller). It is a One-to-many Relationship.
+* user --> rating
+* user --> active_relationships
+* user --> followers
+* user --> followings
+* user --> passive_relationships
+* user belongs to cart
+* product belongs to a user
+* product belongs to category 
+* product belongs to condition
+* product --> attachment
+* product --> line_items
 * Category --> Product
-    * In this relationship, a Category can have many products, and a Product can only have one Category. It is a Many-to-one Relationship.
+* cart --> products
+* cart --> lines_items
+* cart belongs to a user 
+* categories <--> products 
+* condition <--> products 
+* conversation <--> messages
+* conversation <--> users
+* conversation belongs to user
+* lineItem belongs to product 
+* lineItem belongs to cart
+* message belongs to conversation
+* message belongs to user
+* rating belongs to user
+* relationship belongs to follower
+* relationship belongs to followed
+
 
 ## Views
 * Implemented Views
