@@ -16,3 +16,9 @@
   <%@products = current_user.feed(@products)%>
 <%end%>
 <%= render 'products/product', products: @products %>
+<script>
+    $(document).ready(function () {
+        $('.dropdown-toggle').dropdown();
+        
+    });
+</script> 
