@@ -42,22 +42,15 @@ $font-bold: 'HelveticaNeue-Medium', 'Helvetica Neue Medium';
     zoom: 1;
 }
 
-
 /* Apply clearfix in a few places */
 .shopping-cart, .column-labels, .product, .totals-item {
   @extend .group;
 }
 
-
 /* Apply dollar signs */
 .product .product-price:before, .product .product-line-price:before, .totals-value:before {
   content: '$';
 }
-
-
-
-
-
 
 label {
   color: $color-label;
@@ -66,7 +59,6 @@ label {
 .shopping-cart {
   margin-top: -45px;
 }
-
 
 /* Column headers */
 .column-labels {
@@ -80,7 +72,6 @@ label {
     text-indent: -9999px;
   }
 }
-
 
 /* Product entries */
 .product {
@@ -127,7 +118,6 @@ label {
     background-color: #a44;
   }
 }
-
 
 /* Totals section */
 .totals {

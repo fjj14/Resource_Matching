@@ -157,18 +157,14 @@ html,body {
   font-family: "Arial";
 }
 
-#mypage-container {
-  
+#container {
   max-width: 1250px;
   margin: 30px auto 30px;
   padding: 0 !important;
   width: 90%;
- background-color: #F6FDFF;
+  background-color: #F6FDFF;
   box-shadow: 0 3px 6px rgba(0,0,0,0.10), 0 3px 6px rgba(0,0,0,0.10);
-}
-
-main {
-      padding: 20px 20px 20px 20px;
+  padding: 20px 20px 20px 20px;
 }
 
 .left {
