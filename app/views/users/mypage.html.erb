@@ -28,6 +28,32 @@
             <button id="btnview" type="button" class="btn btn-primary bottombutton" data-bs-toggle="modal"  style="margin-left:5%, " data-toggle="modal" data-target="#myModal">
                 <%= Rating.where(user_id: current_user.id).length%>
             </button>
+            <div class="modal" id="myModal" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Reviews</h5>
+                        </div>
+                        <div class="modal-body">
+
+                            <% Rating.where(user_id: current_user.id).each do |rate| %>
+                                <div id="container">
+                                @<%= User.where(id: rate.reviewer_id).first.username %>
+                                <br>
+                                <% rate.rating_number.times do %>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                <% end %>
+                                    <% (5- rate.rating_number).times do  %>
+                                    <span class="glyphicon glyphicon-star-empty"></span>
+                                <% end %>
+                                <br>
+                                <%= rate.comment %>
+                                </div>
+                            <%end%>
+                        </div>    
+                    </div>
+                </div>
+            </div>
             <br>
             <br>
             
@@ -90,24 +116,25 @@
             </div>
             <div class="modal-body">
                 <% current_user.following.order('created_at DESC').each_slice(1) do |users| %>
-                    <div class="row">
-                        <% users.each do |user| %>
-                        <div class="col-md-8">
-                            <div class="card">
-                                <% if user.image.present? %>
-                                <%= image_tag(user.image, class:"card-img-top")%> 
-                                <% else %>
-                                <%= link_to image_tag('default.png', class:"card-img-top") %> 
-                                <% end %>
-                                <div class="card-body">
-                                <h5 class="card-title"><%= user.first+" "+user.last %></h5>
-                                <p class="card-text"><%= user.username%></p>
+                    <div class="row"  style="border-style: none">
+                        <% users.each do |user| %>    
+                        <div class="left col-lg-4">
+                            <div class="photo-left">
+                                <div class="photo">
+                                    <% if user.image.present? %>
+                                        <%= image_tag(user.image, class:"card-img-top")%> 
+                                            <% else %>
+                                        <%= link_to image_tag('default.png', class:"card-img-top") %> 
+                                    <% end %>
                                 </div>
-                                Learn more: <%=link_to  "#{user.username}",user %>
-                                <br>
                             </div>
-                            <% end %>
                         </div>
+        
+                        <div class="col-xs-4">
+                            <h4 class="name"><%= user.first+" "+user.last%></h4>
+                            Learn more: <%=link_to  "#{user.username}",user %>
+                        </div>
+                        <% end %>
                     </div>
                 <% end %>
             </div>
@@ -124,24 +151,25 @@
             </div>
             <div class="modal-body">
                 <% current_user.followers.order('created_at DESC').each_slice(1) do |users| %>
-                    <div class="row">
-                        <% users.each do |user| %>
-                        <div class="col-md-8">
-                            <div class="card">
-                                <% if user.image.present? %>
-                                <%= image_tag(user.image, class:"card-img-top")%> 
-                                <% else %>
-                                <%= link_to image_tag('default.png', class:"card-img-top") %> 
-                                <% end %>
-                                <div class="card-body">
-                                <h5 class="card-title"><%= user.first+" "+user.last %></h5>
-                                <p class="card-text"><%= user.username%></p>
+                    <div class="row"  style="border-style: none">
+                        <% users.each do |user| %>    
+                        <div class="left col-lg-4">
+                            <div class="photo-left">
+                                <div class="photo">
+                                    <% if user.image.present? %>
+                                        <%= image_tag(user.image, class:"card-img-top")%> 
+                                            <% else %>
+                                        <%= link_to image_tag('default.png', class:"card-img-top") %> 
+                                    <% end %>
                                 </div>
-                                Learn more: <%=link_to  "#{user.username}",user %>
-                                <br>
                             </div>
-                            <% end %>
                         </div>
+        
+                        <div class="col-xs-4">
+                            <h4 class="name"><%= user.first+" "+user.last%></h4>
+                            Learn more: <%=link_to  "#{user.username}",user %>
+                        </div>
+                        <% end %>
                     </div>
                 <% end %>
             </div>
