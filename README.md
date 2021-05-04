@@ -40,8 +40,7 @@ Our Features Include...
     * follow users
     * Shopping cart
     * Filtered search
-    * In app notification
-    * Email notification 
+
 
 ## URL Patterns
 * Home page page: /welcome
@@ -66,6 +65,8 @@ Our Features Include...
 * Users - first name(str), last name(str), email(str), password(str), username(str) 
 * Products - name(str), description(str), price(float), user id(int), category id(int), status(boolean), quantity(int)
 * Categories - name(str), description(str)
+* cart 
+* 
 
 gems used in schema.rb
 * Active Storage - storing images like profile pictures, product images
