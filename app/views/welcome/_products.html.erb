@@ -16,17 +16,3 @@
   <%@products = current_user.feed(@products)%>
 <%end%>
 <%= render 'products/product', products: @products %>
-<script>
-function myFunction(id) {
-  var like = document.getElementById(id);
-//if the current first element is the white heart then the div will show the first element as a red heart and then products 
-  var produ =  Product.find(id);
- if (like.innerHTML.child[0]=='<i class=\"far fa-heart\"></i>' ){
-  like.innerHTML = <i style="color:red; background-color:red;"class="fas fa-heart"></i> ;
-  }else {
-    like.innerHTML = <i class="far fa-heart"></i> ;
-  }
-
-  
-} 
-</script>
