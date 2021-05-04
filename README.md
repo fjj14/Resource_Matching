@@ -7,6 +7,7 @@
 * Figma Prototype: https://www.figma.com/file/mBWOSr2oJdLQBINujVpqJB/SWE-project---2021?node-id=0%3A1
 * Final Report Github Pages: https://fjj14.github.io/Resource_Matching/
 * Presentation: https://docs.google.com/presentation/d/1Rre3mR8db8b0iWMTIdvfF3aqGnKtfwV2lCjRSk2-jq0/edit?usp=sharing
+* Brandeis Projects Text File: https://docs.google.com/document/d/1sMSO9wtyi5U4pwuYtg97mgm7SApaY_J9EpqQfEZ0o44/edit
 
 ## Table of contents
 * [General info](#general-info)
@@ -67,11 +68,22 @@ Our Features Include...
 
 
 ## DB Schema
-* Users - first name(str), last name(str), email(str), password(str), username(str) 
-* Products - name(str), description(str), price(float), user id(int), category id(int), status(boolean), quantity(int)
+* Users - first(str), last (str), email(str), password(str), username(str), cart_id (int), admin(boolean), average_rating(int), stripe_user_id(int), balanace(int)
+* Products - name(str), description(str), price(float), user id(int), category id(int), status(boolean), quantity(int), buyer_id(int), condition(str), conditon_id(int)
 * Categories - name(str), description(str)
-* cart 
-* 
+* conditions - name(str)
+* carts - user_id(int)
+* relationship - follower_id(int), followed_id(int)
+* ratings - user_id(int), reviewer_id(int), rating_number(int), comment(str)
+* mailboxer_receipts - receiver_type(str), receiver_id(int), nofitication_id(int), is_read(boolean), trashed(boolean), deleted(boolean), mailbox_type(str), is_delivered(boolean), delivery_method(str), message_id(str) 
+* mailboxer_conversation_opt_outs - unsubscriber_type(str), unsubscriber_id(int), conversation_id(int)
+* mailboxer_conversations - subject(str)
+* mailboxer_notifications - type(str), body(text), subject(str), sender_type(str), sender_id(int), conversation_id(int), draft(boolean), notifcation_code(str), notified_object_type(str), notified_object_id(int), attachment(str), expires(datatime)
+* line_items - product_id(bigint), cart_id(bigint), quantity(int)
+* votes - votable_type(str), votable_id(int), voter_type(str), vote_flag(boolean), vote_scope(str), vote_weight(int)
+* active_storage_attachments -  name(str), record_type(str), record_id(bigint), blob_id(bigint)
+* active_storage_blobs -key (Str), filename(str), content_type(str), metadata(text), service_name(str), byte_size(bigint), checksum(str)
+* active_storage_variant_reocrds - blob_id(bigint), variantion_digest(str)
 
 gems used in schema.rb
 * Active Storage - storing images like profile pictures, product images
