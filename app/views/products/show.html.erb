@@ -22,18 +22,20 @@
       </div>
     </div>
     <div class = "infos">
-      <h1><%= @product.name%></h1>
-      <div class = "likes">likes:<%=@product.votes_for.size%></div>
-      <div class ="reviews"></div>
-      <div class ="price"><h3><%=@product.price%>$</h3> </div>
-   
+    <div class = "row " id ="littleInfo">
+          <h1><%= @product.name%></h1>
+      </div>
+      <div class = "row " id ="littleInfo">
+        <%=@product.price%>$
+      </div>
+      <h2 id= "describe"> <%=@product.description%></h2>
       <div class ="more-infos">
-        <h5 onclick="myFunction('des');">Description </h5>
+       
         <h5 onclick="myFunction('own');">Owner</h5>
         <h5 onclick="myFunction('stat');">Stats</h5>
       </div>
       <div id="info-switch"class ="info-content">
-        <p><%=@product.description%></p>
+        <p></p>
       </div>
       <div class = "buttons">
         <button> <%= link_to raw("<i class=\"fa fa-shopping-cart \"></i>ADD TO CART"), line_items_path(product_id: @product.id), method: :post, type:"button"%></button>  
@@ -61,18 +63,22 @@ function myFunction(num) {
   
   switch(num) {
     case "own":
-      text = "The owner of this product is owned by <%=@product.user.first%>.\nThey have"
-     + " <%=@product.user.followers.count%> followers. They're average rating is <%=@product.user.average_rating%>, given by a total of <%= @product.user.ratings.count %> users. You can view their profile at "
-     +" <%=  escape_javascript link_to("@#{@product.user.username}", @product.user) %>. They have "
-     +"sold <%= @product.user.products.where.not(buyer_id: nil).length %> products so far! Ask them about their product: "
-     +"  <%=escape_javascript link_to("Message", conversations_path(user_id: @product.user_id, body: "Hey! I am interested in #{@product.name}", subject: @product.name ), method: 'post') %>";
+      text = "The owner of this product is <emp><%=@product.user.first%></emp><br/>They have"
+     + " <%=@product.user.followers.count%> followers<br/>They're average rating is <%=@product.user.average_rating%>, given by a total of <%= @product.user.ratings.count %> users<br/>You can view their profile at "
+     +" <%=  escape_javascript link_to("@#{@product.user.username}", @product.user) %><br/>They have "
+     +"sold <%= @product.user.products.where.not(buyer_id: nil).length %> products so far! Ask them about their product:<br/>"
+     +"<%=escape_javascript link_to("Message", conversations_path(user_id: @product.user_id, body: "Hey! I am interested in #{@product.name}", subject: @product.name ), type:"button", class:"btn btn-primary",method: 'post') %>";
     break;
     case "stat":
-    text = "Condition: <%= @product.condition.name %> Category: <%=@product.category.name%> Date posted: <%= @product.created_at.month%>/<%= @product.created_at.day%>/<%= @product.created_at.year%>"
-    +"Number of likes: <%= @product.votes_for.size %>";
+    text = "Condition: <%= @product.condition.name %> <br />Category: <%=@product.category.name%> <br />Date posted: <%= @product.created_at.month%>/<%= @product.created_at.day%>/<%= @product.created_at.year%>"
+    +"<br />Number of likes: <%= @product.votes_for.size %>";
     break;
     default:
-    text = "<%= @product.description%>";
+    text =  "The owner of this product is <emp><%=@product.user.first%></emp>.<br/>They have"
+     + " <%=@product.user.followers.count%> followers. They're average rating is <%=@product.user.average_rating%>, given by a total of <%= @product.user.ratings.count %> users<br/>You can view their profile at "
+     +" <%=  escape_javascript link_to("@#{@product.user.username}", @product.user) %>. They have "
+     +"sold <%= @product.user.products.where.not(buyer_id: nil).length %> products so far! Ask them about their product:<br/>"
+     +"<%=escape_javascript link_to("Message", conversations_path(user_id: @product.user_id, body: "Hey! I am interested in #{@product.name}", subject: @product.name ), type:"button", class:"btn btn-primary", method: 'post') %>";
   }
  document.getElementById("info-switch").innerHTML = text; 
 }
