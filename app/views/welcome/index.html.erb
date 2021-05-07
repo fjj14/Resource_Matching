@@ -24,16 +24,23 @@
   </div>
 </div>
 </div>
+<button type="button" id="filter" class="btn btn-primary btn-lg bottombutton" data-bs-toggle="modal" data-toggle="modal" data-target="#exampleModal">
+  Filter Products<span class="caret"></span>
+</button>
 
-
-
-
-<div class="btn-group" style="background-color:#2F3F5F" id="filter">
-  <button class="btn btn-primary btn-lg dropdown-toggle bottombutton" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color:#2F3F5F" >
-    Filter Products <span class="caret"></span>
-  </button>
-  <div class="dropdown-menu"  >
-   <a class="dropdown-item" href="#"> <%= render 'filter' %></a>
+<!-- Modal -->
+<div class="modal " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" >
+  <div class="modal-dialog">
+    <div class="modal-content">
+     
+      <div class="modal-body">
+       <%= render 'filter' %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+       
+      </div>
+    </div>
   </div>
 </div>
 
