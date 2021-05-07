@@ -13,12 +13,14 @@ class Cart < ApplicationRecord
 
     def add_product(product)
         current_item = line_items.find_by(product_id: product.id)
-        if current_item
-            current_item.quantity += 1 #quantity of line_item, product in cart
-        else
-            current_item = line_items.build(product_id: product.id)
+        if current_item && current_item.quantity < current_item.product.quantity
+            curr = current_item.quantity + 1 
+            current_item.update!(quantity: curr)
+            
+        elsif !current_item
+            current_item = line_items.build(product_id: product.id, quantity: 1)
         end
-    current_item
+        current_item
     end
 
     def totalPrice
