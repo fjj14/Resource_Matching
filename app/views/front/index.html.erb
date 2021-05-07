@@ -17,8 +17,8 @@
         </div>
         <div class="col-lg-6">
      
-                     <div class="right" style="height: 370px;">
-            <%= image_tag "humans1.png",  class: "im"%>
+                     <div class="right" style="height: auto;">
+            <%= image_tag "humans1.png",  class: "im", style:"max-width:400px"%>
           </div>
         <div style=" margin-top:15%; ">
       </div>
@@ -44,8 +44,8 @@
       </div>
       <br/>
       <div class="col-md-6" >
-        <div class="right" style="height: 500px;">
-        <%= image_tag "product.png", style:"max-height:100%;",class: "im"%>
+        <div class="right" style="height: auto;">
+        <%= image_tag "product.png", style:"max-height:100%;width:500px",class: "im"%>
         </div>
       <div style=" margin-top:20%; "></div>
     </div>  
@@ -57,7 +57,8 @@
       <%= image_tag "humans2.png", class: "im", style: 'height:auto;max-width:90%;'%>
     </div>  
     <div class="col-lg-6 right" style="display:block;">
-     <h1 class="headinglabel">Find the products you love.</h1>   
+    <br><br>
+     <h1 class="headinglabel" >Find the products you love.</h1>   
         <p id="moreinfo">Looking to buy something you need here at Brandeis? Buy a product quickly and hassle-free locally from your peers at university.</p>
         <br/>       
       <%= button_tag onclick: "location.href='/welcome'",type: :button, class: "btn btn-primary" do %>
@@ -78,7 +79,7 @@
     </div>
     <br/> 
     <div class="col-lg-6">
-      <div class="right"  style="height: 800px;">
+      <div class="right"  style="height: auto;">
         <%= image_tag "brandeis.png", class: "im", style: 'height:auto;max-width:85%;'%>
       </div>
       <div style=" padding-top:20%; "></div>
@@ -91,7 +92,7 @@
       <%= image_tag "message.png",  class: "im", style: 'height:auto;max-width:93%;' %>
     </div>
     <div class="col-lg-6">
-      <div class="right" style="display:block;">
+      <div class="right" style="display:block;height:auto">
        <h1 class="headinglabel">Network with other Brandeis creatives</h1>  
         <p>Chat with students about a product, or find and connect with Brandeis creatives on the platform. </p>
       <br/>
