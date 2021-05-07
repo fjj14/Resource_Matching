@@ -12,6 +12,7 @@ class Product < ApplicationRecord
     has_many_attached :images
     acts_as_votable
     validate :validate_images
+    validate :validate_user_has_stripe_id
     has_many :line_items, dependent: :destroy
   def search_data
     {
@@ -23,18 +24,19 @@ class Product < ApplicationRecord
 
     }
     end
-   def user_needs_stripe
-      if record.first_name == "Evil"
-        record.errors.add :base, "This person is evil"
-      end
-    end
+
+ 
    
 
 private
 def validate_images
   return if images.count <= 4
-
   errors.add(:images, 'You can upload max 4 images')
 end
    
+def validate_user_has_stripe_id
+  if user.stripe_user_id == nil
+    errors.add(:base, "You can't create a product without a stripe id")
+  end
+end
 end
