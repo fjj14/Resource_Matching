@@ -9,6 +9,7 @@ Rating.destroy_all
 User.destroy_all
 Product.destroy_all
 Category.destroy_all
+Condition.destroy_all
 
 20.times do
     User.create(first: Faker::Name.first_name, last:Faker::Name.last_name, email: Faker::Internet.username+"@gmail.com", username: Faker::Internet.username, password: Faker::Internet.password, stripe_user_id: rand(1000), venmo_id: Faker::Internet.username) #password: Faker::Internet.password
