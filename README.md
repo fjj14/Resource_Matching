@@ -7,7 +7,7 @@
 * Figma Prototype: https://www.figma.com/file/mBWOSr2oJdLQBINujVpqJB/SWE-project---2021?node-id=0%3A1
 * Final Report Github Pages: https://fjj14.github.io/Resource_Matching/
 * Presentation: https://docs.google.com/presentation/d/1Rre3mR8db8b0iWMTIdvfF3aqGnKtfwV2lCjRSk2-jq0/edit?usp=sharing
-* Presentation (pdf): [Final Presentation -team 6.pdf](https://github.com/fjj14/Resource_Matching/files/6423002/Final.Presentation.-team.6.pdf)
+* Presentation (pdf): [Final Presentation -team 6.pdf](https://github.com/fjj14/Resource_Matching/files/6423002/Final.Presentation.-team 6 (3).pdf)
 * Brandeis Projects Text File: https://docs.google.com/document/d/1sMSO9wtyi5U4pwuYtg97mgm7SApaY_J9EpqQfEZ0o44/edit
 
 ## Table of contents
