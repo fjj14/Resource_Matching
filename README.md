@@ -8,7 +8,7 @@
 * Final Report Github Pages: https://fjj14.github.io/Resource_Matching/
 * Presentation: https://docs.google.com/presentation/d/1Rre3mR8db8b0iWMTIdvfF3aqGnKtfwV2lCjRSk2-jq0/edit?usp=sharing
 * Presentation (pdf): [FinalPresentation-team6.pdf](https://github.com/fjj14/Resource_Matching/blob/main/FinalPresentation-Team6.pdf)
-* Brandeis Projects Text File: https://github.com/fjj14/Resource_Matching/blob/main/BrandeisProjectsTextFile.pdf
+* Brandeis Projects Text File: https://github.com/fjj14/Resource_Matching/blob/main/BrandeisProjectsTextFile.txt
 
 ## Table of contents
 * [General info](#general-info)
