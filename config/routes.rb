@@ -24,9 +24,7 @@ Rails.application.routes.draw do
   end
 
   #Notification
-  resources :notifications do
-    
-  end
+  
 
   scope '/stripe' do
     get "stripe/connect", to: "stripe#connect", as: :stripe_connect
