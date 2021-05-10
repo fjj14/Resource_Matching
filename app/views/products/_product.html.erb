@@ -17,7 +17,7 @@
                 <div class ="col-md-6 nopadding" >
                   <span  style="float:right"> @you </span>
                 </div>
-              <%else %>
+              <%elsif current_user %>
                 <div class ="col-md-6 nopadding" id="lik">
                   <%= link_to "@#{(User.find(product.user_id)).username}", user_path(product.user_id) if User.where(id: product.user_id)!= [] %>
                 </div>
@@ -25,11 +25,13 @@
             </h5> 
             <div class ="col-md-6 nopadding">
             </div> 
-            <br>              
+                   
             <div style="float:right;text-align:right;width: 50%; display: inline-block;"> $<%= number_with_precision(product.price, :precision => 2)%> </div>
             <br>
             <% if current_user%>
+             <br/>
               <div class ="col-md-6 nopadding"  >
+             
                     <%= render 'products/likes', product: product %>
               </div>
               <div class ="col-md-12" style="text-align:left;">
