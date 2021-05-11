@@ -6,7 +6,7 @@
             <div class="photo-left">
                 <div class="photo">
                     <% if @user.image.present? %>
-                        <%= image_tag(User.where(id: session[:user_id]).first.image, class:"card-img-top")%> 
+                        <%= image_tag(@user.image, class:"card-img-top")%> 
                     <% else %>
                         <%= link_to image_tag('default.png', class:"card-img-top") %> 
                     <% end %>
