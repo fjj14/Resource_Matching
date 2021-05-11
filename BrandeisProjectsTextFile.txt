@@ -1,0 +1,12 @@
+﻿name: buyDeis
+Description: Buydeis is an online buying and selling platform that allows people in the Brandeis Area to connect and sell, buy, and trade products.
+course: CS166B
+semester: 2021 (Spring)
+github: fjj14/Resource_Matching: Resource_Matching (github.com)
+application: ResourceMatching (buydeis.herokuapp.com)
+presentation:  buyDeis -team6 - Google Slides 
+image: 
+  
+
+team: Fatumata Jalloh, Sophia Wang, Yalda Mauj
+---
